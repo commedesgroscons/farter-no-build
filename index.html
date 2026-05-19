@@ -808,8 +808,7 @@ $("recordBtn").textContent = "Tap to record";
 $("recordBtn").onclick = async (e) => {
   e.preventDefault();
 
-  if (mediaRecorder?.state === "recording") {
-    stopRecording();
+  if (mediaRecorder?.state === "recording" || recordingMode === "wav-recording") {
     return;
   }
 
