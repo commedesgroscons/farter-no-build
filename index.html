@@ -1,0 +1,7483 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Live Room</title>
+<link rel="icon" href="data:,">
+<style>
+*{box-sizing:border-box}html,body{height:100%}body{margin:0;background:#000;color:#fff;font-family:Inter,Arial,sans-serif;overflow:hidden}button,input{font:inherit}button{cursor:pointer}audio{width:100%;filter:invert(1);opacity:.9}.hidden{display:none!important}
+.landing{min-height:100vh;padding:34px clamp(22px,5vw,72px);background:radial-gradient(circle at 50% 0%,rgba(255,255,255,.16),transparent 38%),#000}.nav,.header{display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:12px;font-size:18px;font-weight:800}.logo{width:40px;height:40px;border-radius:14px;background:#fff;color:#000;display:grid;place-items:center;font-weight:900}.links{display:flex;gap:28px;color:#a1a1aa;font-size:14px}.hero{min-height:calc(100vh - 90px);display:flex;flex-direction:column;justify-content:center;max-width:960px}.pill{width:fit-content;display:flex;gap:9px;align-items:center;color:#d4d4d8;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.045);padding:10px 14px;border-radius:999px;margin-bottom:24px}.dot{width:7px;height:7px;border-radius:50%;background:#fff;display:inline-block}h1{margin:0;font-size:clamp(54px,9vw,112px);line-height:.88;letter-spacing:-.078em}.hero p{max-width:720px;color:#a1a1aa;font-size:clamp(18px,2vw,22px);line-height:1.55}.username{display:flex;gap:10px;margin-top:24px;width:min(540px,100%)}.username input{flex:1;min-height:52px;border-radius:18px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.045);color:#fff;padding:0 16px}.username button,.primary{border:0;border-radius:18px;background:#fff;color:#000;font-weight:800;padding:0 18px}.buttons{display:flex;gap:14px;margin-top:40px;flex-wrap:wrap}.primary,.secondary,.ghost{min-height:54px;padding:0 26px}.secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.15);border-radius:18px}.ghost{background:rgba(255,255,255,.045);color:#fff;border:1px solid rgba(255,255,255,.1);border-radius:18px}.app{height:100vh;overflow:hidden;background:radial-gradient(circle at 50% -20%,rgba(255,255,255,.08),transparent 28%),#000}.header{position:sticky;top:0;z-index:10;padding:16px clamp(18px,4vw,48px);border-bottom:1px solid rgba(255,255,255,.09);background:rgba(0,0,0,.78);backdrop-filter:blur(16px)}.brand small{display:block;color:#71717a;font-size:11px}.actions{display:flex;gap:10px;flex-wrap:wrap}.error{width:min(1460px,calc(100% - 32px));margin:14px auto 0;padding:12px;border-radius:16px;background:rgba(127,29,29,.62);border:1px solid rgba(248,113,113,.35)}.error.small{width:min(540px,100%);margin:14px 0 0}.grid{width:min(1460px,calc(100% - 32px));height:calc(100vh - 82px);margin:0 auto;padding:20px 0;display:grid;grid-template-columns:310px minmax(0,1fr) 350px;gap:20px;overflow:hidden}.panel,.post,.chat,.intro,.modal{border:1px solid rgba(255,255,255,.105);background:rgba(15,15,17,.78);border-radius:28px;box-shadow:0 26px 80px rgba(0,0,0,.22)}.left,.feed{display:flex;flex-direction:column;gap:20px;min-height:0;overflow:hidden}.panel,.post,.intro,.modal{padding:20px}.panel{overflow:hidden}.rank{display:flex;justify-content:space-between;gap:14px;border-radius:18px;background:rgba(255,255,255,.045);padding:12px;margin-bottom:10px}.rankL{display:flex;align-items:center;gap:11px}.rankNo{width:32px;height:32px;border-radius:50%;background:#fff;color:#000;display:grid;place-items:center;font-weight:900}.muted{color:#71717a}.tag{padding:6px 10px;border-radius:999px;background:#fff;color:#000;font-size:11px;font-weight:800}.intro{display:flex;justify-content:space-between;align-items:center}.intro h1{font-size:28px;letter-spacing:-.04em}.postTop{display:flex;justify-content:space-between;gap:18px;margin-bottom:16px}.eyebrow{color:#a1a1aa;font-size:13px;display:flex;align-items:center;gap:7px}.post h3{margin:5px 0 3px;font-size:20px}.audioMeta{min-width:116px;text-align:right;border:1px solid rgba(255,255,255,.105);background:rgba(255,255,255,.04);border-radius:20px;padding:12px}.audioMeta span{display:block;color:#71717a;text-transform:uppercase;letter-spacing:.18em;font-size:10px}.audioMeta strong{font-size:22px}.player{display:flex;align-items:center;gap:16px;border:1px solid rgba(255,255,255,.105);background:rgba(255,255,255,.035);border-radius:22px;padding:14px}.reactions{margin-top:14px;display:flex;flex-wrap:wrap;gap:9px}.reactions button{border:1px solid rgba(255,255,255,.105);color:#d4d4d8;background:transparent;border-radius:999px;min-height:34px;padding:0 13px}.feedScroll{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:20px;padding-right:6px}.chat{height:100%;min-height:0;display:flex;flex-direction:column;overflow:hidden}.chatH{padding:20px;border-bottom:1px solid rgba(255,255,255,.105)}.msgs{flex:1;min-height:0;display:flex;flex-direction:column;gap:10px;padding:16px;overflow-y:auto}.bubble{color:#d4d4d8;background:rgba(255,255,255,.04);border-radius:18px;padding:11px 12px;font-size:14px}.bubble span{color:#71717a;margin-right:8px}.chatInput{display:flex;gap:8px;padding:14px;border-top:1px solid rgba(255,255,255,.105)}.chatInput input{flex:1;border:1px solid rgba(255,255,255,.105);background:#000;color:#fff;border-radius:16px;padding:0 14px}.chatInput button{width:46px;height:46px;border:0;border-radius:16px;background:#fff;color:#000;font-weight:900}.overlay{position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(16px);z-index:50;display:grid;place-items:center;padding:20px}.modal{width:min(620px,100%)}.record{border:1px solid rgba(255,255,255,.105);background:rgba(255,255,255,.035);border-radius:24px;padding:16px;margin:18px 0}.recordTop{display:flex;justify-content:space-between;gap:14px;margin-bottom:12px}.timer{font-size:34px;font-weight:900}.status{color:#a1a1aa;border:1px solid rgba(255,255,255,.105);border-radius:999px;padding:8px 11px;font-size:12px}.recording{color:#fff;border-color:rgba(239,68,68,.45);background:rgba(239,68,68,.16)}.steps{display:grid;gap:8px;margin-top:12px}.steps div{display:flex;justify-content:space-between;padding:10px;border-radius:14px;background:rgba(255,255,255,.04);color:#a1a1aa;font-size:13px}.steps b{color:#fff}.modalActions{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:18px}.danger{background:rgba(239,68,68,.14);color:#fff;border:1px solid rgba(239,68,68,.35)}@media(max-width:1100px){body{overflow:auto}.app{height:auto;overflow:visible}.grid{height:auto;grid-template-columns:1fr;overflow:visible}.left{display:grid;grid-template-columns:repeat(2,1fr)}.feed{overflow:visible}.feedScroll{max-height:70vh}.chat{height:70vh;min-height:520px}}@media(max-width:720px){.links{display:none}h1{font-size:58px}.username{flex-direction:column}.left{grid-template-columns:1fr}.intro,.postTop{align-items:flex-start;flex-direction:column}.audioMeta{width:100%;text-align:left}}
+
+.holdCircle{width:150px;height:150px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:radial-gradient(circle at 50% 45%,rgba(255,255,255,.16),transparent 45%),rgba(255,255,255,.045);display:grid;place-items:center;position:relative;transition:transform .18s ease,border-color .18s ease,background .18s ease}
+.holdCircle:before{content:"";position:absolute;inset:-10px;border-radius:inherit;border:1px solid rgba(255,255,255,.12);opacity:0;transform:scale(.92)}
+.holdCircle.recordingCircle{transform:scale(1.06);border-color:rgba(255,255,255,.45);background:radial-gradient(circle at 50% 45%,rgba(255,255,255,.28),transparent 48%),rgba(255,255,255,.08)}
+.holdCircle.recordingCircle:before{animation:pulseRecord 1.05s ease-out infinite}
+@keyframes pulseRecord{0%{opacity:.8;transform:scale(.92)}100%{opacity:0;transform:scale(1.22)}}
+.holdCircleInner{display:flex;flex-direction:column;align-items:center;gap:6px;user-select:none}
+.holdCircleInner span{font-size:22px;font-weight:900}
+.holdCircleInner small{color:#a1a1aa;font-size:15px;font-weight:800}
+#recordBtn{min-width:240px;touch-action:none;user-select:none}
+
+
+#duration.recordingTime{
+  color:#fff;
+  text-shadow:0 0 18px rgba(255,255,255,.65);
+  animation:blinkTime .75s ease-in-out infinite;
+}
+@keyframes blinkTime{
+  0%,100%{opacity:1}
+  50%{opacity:.38}
+}
+#duration{
+  transition:color .18s ease,text-shadow .18s ease,opacity .18s ease;
+}
+
+
+#recordBtn,
+#stopBtn,
+.holdCircle,
+.holdCircleInner,
+.holdCircleInner span,
+.holdCircleInner small {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+#recordBtn, #stopBtn { touch-action: manipulation; }
+#enterBtn.locked, #viewBtn.locked { opacity:.45; cursor:not-allowed; }
+#micStatus.ready { color:#fff; }
+#micStatus.blocked { color:#ef4444; }
+
+
+.recorderModal{
+  padding:22px;
+}
+
+.modalTop{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:18px;
+  margin-bottom:16px;
+}
+
+.modalTop h2{
+  margin:0;
+  font-size:30px;
+  letter-spacing:-.04em;
+}
+
+.modalTop p{
+  margin:7px 0 0;
+}
+
+.iconBtn{
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.045);
+  color:#fff;
+  font-size:28px;
+  line-height:1;
+}
+
+.recorderModal .record{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:16px;
+  text-align:center;
+}
+
+.recorderModal .holdCircle{
+  width:174px;
+  height:174px;
+}
+
+.previewBlock{
+  width:100%;
+  border:1px solid rgba(255,255,255,.105);
+  background:rgba(0,0,0,.35);
+  border-radius:22px;
+  padding:14px;
+}
+
+.previewTitle{
+  margin:0 0 10px;
+  color:#a1a1aa;
+  font-size:13px;
+  text-align:left;
+}
+
+.simpleStatus{
+  color:#a1a1aa;
+  font-size:14px;
+  min-height:20px;
+}
+
+.recorderActions{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:10px;
+}
+
+.recorderActions button{
+  min-height:56px;
+  width:100%;
+}
+
+.recorderActions .publishMain{
+  font-size:16px;
+  box-shadow:0 0 0 1px rgba(255,255,255,.08), 0 18px 60px rgba(255,255,255,.08);
+}
+
+@media(max-width:720px){
+  .overlay{
+    align-items:end;
+    padding:10px;
+  }
+
+  .recorderModal{
+    width:100%;
+    max-height:92vh;
+    border-radius:30px 30px 22px 22px;
+    padding:20px;
+  }
+
+  .modalTop h2{
+    font-size:27px;
+  }
+
+  .recorderModal .holdCircle{
+    width:190px;
+    height:190px;
+  }
+
+  .holdCircleInner span{
+    font-size:26px;
+  }
+
+  .holdCircleInner small{
+    font-size:17px;
+  }
+
+  .recorderActions{
+    position:sticky;
+    bottom:0;
+    background:linear-gradient(transparent, rgba(15,15,17,.95) 28%);
+    padding-top:12px;
+  }
+}
+
+
+/* V17 clean dashboard polish */
+.app{
+  background:
+    radial-gradient(circle at 35% -10%, rgba(255,255,255,.10), transparent 30%),
+    radial-gradient(circle at 85% 20%, rgba(255,255,255,.045), transparent 28%),
+    #000;
+}
+
+.header{
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.grid{
+  gap:18px;
+}
+
+.intro{
+  padding:18px 20px;
+  border-radius:24px;
+  background:rgba(12,12,13,.86);
+}
+
+.intro h1{
+  font-size:24px;
+}
+
+.feedScroll{
+  gap:14px;
+}
+
+.post{
+  padding:16px;
+  border-radius:24px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025)),
+    rgba(12,12,13,.88);
+  box-shadow:0 18px 55px rgba(0,0,0,.24);
+}
+
+.postTop{
+  margin-bottom:12px;
+  align-items:center;
+}
+
+.eyebrow{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  color:#71717a;
+}
+
+.post h3{
+  font-size:17px;
+  margin:6px 0 0;
+  letter-spacing:-.02em;
+}
+
+.post p{
+  font-size:13px;
+}
+
+.audioMeta{
+  min-width:92px;
+  border-radius:16px;
+  padding:10px 12px;
+}
+
+.audioMeta span{
+  font-size:9px;
+}
+
+.audioMeta strong{
+  font-size:15px;
+  letter-spacing:.02em;
+}
+
+.player{
+  padding:10px 12px;
+  border-radius:18px;
+  min-height:52px;
+}
+
+.player audio{
+  height:38px;
+}
+
+.reactions{
+  margin-top:11px;
+  gap:7px;
+}
+
+.reactions button{
+  min-height:32px;
+  padding:0 11px;
+  font-size:13px;
+  background:rgba(255,255,255,.025);
+}
+
+.panel{
+  border-radius:24px;
+  background:rgba(12,12,13,.78);
+}
+
+.panel h2{
+  margin-top:0;
+  font-size:15px;
+  letter-spacing:-.01em;
+}
+
+.rank{
+  padding:10px;
+  border-radius:16px;
+  margin-bottom:8px;
+}
+
+.rankNo{
+  width:28px;
+  height:28px;
+  font-size:13px;
+}
+
+.rankL strong{
+  font-size:13px;
+}
+
+.rankL p{
+  margin:1px 0 0;
+}
+
+.chat{
+  border-radius:24px;
+  background:rgba(12,12,13,.82);
+}
+
+.chatH{
+  padding:17px 18px;
+}
+
+.chatH h2{
+  margin:0;
+  font-size:15px;
+}
+
+.chatH p{
+  margin:4px 0 0;
+}
+
+.msgs{
+  gap:8px;
+  padding:13px;
+}
+
+.bubble{
+  padding:9px 10px;
+  border-radius:15px;
+  font-size:13px;
+  background:rgba(255,255,255,.035);
+}
+
+.chatInput{
+  padding:12px;
+}
+
+.chatInput input{
+  min-height:44px;
+}
+
+.chatInput button{
+  width:44px;
+  height:44px;
+}
+
+.emptyState{
+  border:1px dashed rgba(255,255,255,.12);
+  background:rgba(255,255,255,.025);
+  border-radius:24px;
+  padding:28px 22px;
+  text-align:center;
+}
+
+.emptyState h3{
+  margin:0;
+  font-size:20px;
+  letter-spacing:-.03em;
+}
+
+.emptyState p{
+  max-width:360px;
+  margin:9px auto 0;
+  color:#71717a;
+  line-height:1.45;
+}
+
+.feedHeaderMeta{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.feedHeaderMeta .tag{
+  background:rgba(255,255,255,.08);
+  color:#d4d4d8;
+  border:1px solid rgba(255,255,255,.10);
+}
+
+@media(max-width:720px){
+  .grid{
+    width:calc(100% - 20px);
+    gap:14px;
+    padding:12px 0 22px;
+  }
+
+  .intro{
+    padding:16px;
+  }
+
+  .intro h1{
+    font-size:23px;
+  }
+
+  .post{
+    padding:14px;
+    border-radius:22px;
+  }
+
+  .player{
+    padding:8px;
+  }
+
+  .reactions button{
+    flex:1;
+    min-width:72px;
+  }
+
+  .chat{
+    border-radius:22px;
+  }
+}
+
+
+/* V18 user-friendly layout order */
+.mainGrid{
+  grid-template-columns:minmax(0, 1.3fr) 360px 310px;
+  grid-template-areas:"feed chat side";
+  align-items:stretch;
+}
+
+.primaryFeed{
+  grid-area:feed;
+}
+
+.chatColumn{
+  grid-area:chat;
+}
+
+.sideStack{
+  grid-area:side;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  min-height:0;
+  overflow:hidden;
+}
+
+.leaderboardPanel{
+  flex:0 0 auto;
+}
+
+.battlePanel{
+  flex:1;
+  min-height:0;
+}
+
+.primaryFeed .intro{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.070), rgba(255,255,255,.030)),
+    rgba(12,12,13,.90);
+}
+
+.primaryFeed .intro h1{
+  font-size:28px;
+}
+
+.feedScroll{
+  padding-right:8px;
+}
+
+.post{
+  position:relative;
+}
+
+.post:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:20px;
+  bottom:20px;
+  width:3px;
+  border-radius:999px;
+  background:rgba(255,255,255,.22);
+}
+
+.postTop{
+  padding-left:4px;
+}
+
+.battlePlaceholder{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  border:1px dashed rgba(255,255,255,.14);
+  background:rgba(255,255,255,.025);
+  border-radius:18px;
+  padding:16px;
+  color:#a1a1aa;
+  line-height:1.4;
+}
+
+.battlePlaceholder strong{
+  color:#fff;
+  font-size:14px;
+}
+
+.battlePlaceholder span{
+  font-size:13px;
+}
+
+.chatColumn{
+  height:100%;
+}
+
+.chatColumn .chatH h2,
+.leaderboardPanel h2,
+.battlePanel h2{
+  letter-spacing:-.02em;
+}
+
+@media(max-width:1180px){
+  .mainGrid{
+    grid-template-columns:minmax(0, 1fr) 340px;
+    grid-template-areas:
+      "feed chat"
+      "side side";
+  }
+
+  .sideStack{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    overflow:visible;
+  }
+}
+
+@media(max-width:820px){
+  body{
+    overflow:auto;
+  }
+
+  .app{
+    height:auto;
+    overflow:visible;
+  }
+
+  .mainGrid{
+    height:auto;
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "feed"
+      "chat"
+      "side";
+    overflow:visible;
+  }
+
+  .primaryFeed{
+    min-height:auto;
+  }
+
+  .feedScroll{
+    max-height:none;
+    overflow:visible;
+    padding-right:0;
+  }
+
+  .chatColumn{
+    height:560px;
+    order:2;
+  }
+
+  .sideStack{
+    display:flex;
+    flex-direction:column;
+    overflow:visible;
+  }
+
+  .primaryFeed .intro h1{
+    font-size:25px;
+  }
+}
+
+
+/* V19 landing iPhone UX */
+.farterBrand{
+  font-size:20px;
+  letter-spacing:-.05em;
+}
+
+.planetPill{
+  width:fit-content;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#d9f99d;
+  border:1px solid rgba(163,230,53,.34);
+  background:rgba(77,124,15,.16);
+  box-shadow:0 0 30px rgba(163,230,53,.10);
+  padding:10px 14px;
+  border-radius:999px;
+  margin-bottom:24px;
+  font-size:14px;
+  font-weight:750;
+}
+
+.planetIcon{
+  width:28px;
+  height:28px;
+  display:grid;
+  place-items:center;
+  border-radius:999px;
+  background:#a3ff12;
+  box-shadow:0 0 22px rgba(163,255,18,.55);
+  font-size:17px;
+}
+
+.landingCta{
+  margin-top:28px;
+}
+
+.landingCta .primary{
+  min-width:220px;
+}
+
+.landing .username{
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:24px;
+  padding:10px;
+}
+
+.landing .username input{
+  border:0;
+  background:transparent;
+}
+
+.landing .username button{
+  min-height:46px;
+}
+
+#enableMicBtn{
+  min-height:48px;
+}
+
+#micStatus{
+  display:flex;
+  align-items:center;
+  font-size:14px;
+}
+
+@media(max-width:720px){
+  .landing{
+    min-height:100svh;
+    padding:22px 18px;
+  }
+
+  .landing .nav{
+    align-items:center;
+  }
+
+  .landing .links{
+    display:none;
+  }
+
+  .farterBrand{
+    font-size:22px;
+  }
+
+  .landing .logo{
+    width:44px;
+    height:44px;
+    border-radius:16px;
+  }
+
+  .hero{
+    min-height:calc(100svh - 80px);
+    justify-content:flex-start;
+    padding-top:54px;
+  }
+
+  .planetPill{
+    margin:0 auto 22px;
+    padding:10px 13px;
+    font-size:13px;
+  }
+
+  .hero h1{
+    text-align:center;
+    font-size:clamp(52px, 15vw, 78px);
+    line-height:.88;
+    letter-spacing:-.085em;
+  }
+
+  .hero p{
+    text-align:center;
+    margin:22px auto 0;
+    font-size:17px;
+    line-height:1.5;
+    max-width:340px;
+  }
+
+  .landing .username{
+    width:100%;
+    margin-top:28px;
+    flex-direction:column;
+    padding:12px;
+  }
+
+  .landing .username input{
+    min-height:54px;
+    text-align:center;
+    font-size:17px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:18px;
+  }
+
+  .landing .username button{
+    width:100%;
+    min-height:54px;
+  }
+
+  .landing .buttons:not(.landingCta){
+    width:100%;
+    margin-top:12px!important;
+    display:grid;
+    grid-template-columns:1fr;
+  }
+
+  #enableMicBtn{
+    width:100%;
+    min-height:54px;
+  }
+
+  #micStatus{
+    justify-content:center;
+    min-height:22px;
+    text-align:center;
+  }
+
+  .landingCta{
+    width:100%;
+    margin-top:22px;
+  }
+
+  .landingCta .primary{
+    width:100%;
+    min-height:58px;
+    border-radius:20px;
+    font-size:15px;
+  }
+
+  .signedIn,
+  #signedInLabel{
+    text-align:center;
+  }
+
+  .error.small{
+    width:100%;
+    text-align:center;
+  }
+}
+
+
+/* V21 homepage, reactions and waveform polish */
+.homeSteps{
+  display:grid;
+  grid-template-columns:repeat(4, minmax(0,1fr));
+  gap:10px;
+  width:min(760px,100%);
+  margin-top:24px;
+}
+
+.homeSteps div{
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.04);
+  border-radius:18px;
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.homeSteps b{
+  width:28px;
+  height:28px;
+  border-radius:999px;
+  background:#a3ff12;
+  color:#000;
+  display:grid;
+  place-items:center;
+  box-shadow:0 0 20px rgba(163,255,18,.35);
+  font-size:13px;
+}
+
+.homeSteps span{
+  color:#d4d4d8;
+  font-size:13px;
+  font-weight:700;
+}
+
+.customPlayer{
+  width:100%;
+  display:grid;
+  grid-template-columns:46px minmax(0,1fr) auto;
+  align-items:center;
+  gap:12px;
+}
+
+.playBubble{
+  width:46px;
+  height:46px;
+  border-radius:999px;
+  border:0;
+  background:#fff;
+  color:#000;
+  display:grid;
+  place-items:center;
+  font-weight:900;
+  box-shadow:0 12px 35px rgba(255,255,255,.08);
+}
+
+.waveform{
+  height:54px;
+  display:flex;
+  align-items:center;
+  gap:3px;
+  overflow:hidden;
+  padding:0 4px;
+  mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.waveform span{
+  width:4px;
+  min-width:4px;
+  border-radius:999px;
+  background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.34));
+  opacity:.86;
+}
+
+.durationPill{
+  color:#a1a1aa;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.035);
+  border-radius:999px;
+  padding:7px 9px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.player{
+  background:
+    radial-gradient(circle at 15% 50%, rgba(163,255,18,.10), transparent 24%),
+    rgba(255,255,255,.035);
+}
+
+.reactions button{
+  font-weight:750;
+}
+
+.reactions button:hover{
+  background:rgba(255,255,255,.075);
+}
+
+@media(max-width:720px){
+  .homeSteps{
+    grid-template-columns:1fr 1fr;
+    margin-top:20px;
+  }
+
+  .homeSteps div{
+    text-align:left;
+  }
+
+  .customPlayer{
+    grid-template-columns:44px minmax(0,1fr);
+  }
+
+  .durationPill{
+    grid-column:2;
+    width:fit-content;
+    margin-top:-4px;
+  }
+
+  .waveform{
+    height:48px;
+  }
+
+  .reactions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+
+  .reactions button{
+    min-height:38px;
+  }
+}
+
+
+/* V22 simple admin moderation */
+.adminFloating{
+  position:fixed;
+  right:14px;
+  bottom:14px;
+  z-index:40;
+  min-height:38px;
+  padding:0 13px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(0,0,0,.68);
+  color:#a1a1aa;
+  font-size:12px;
+  font-weight:800;
+  backdrop-filter:blur(14px);
+}
+
+.adminFloating.active{
+  color:#000;
+  background:#fff;
+}
+
+.adminDelete{
+  border:1px solid rgba(239,68,68,.32)!important;
+  color:#fecaca!important;
+  background:rgba(127,29,29,.28)!important;
+}
+
+.adminDelete:hover{
+  background:rgba(127,29,29,.50)!important;
+}
+
+
+/* V23 unified FARTER theme */
+:root{
+  --farter-green:#a3ff12;
+  --farter-green-soft:rgba(163,255,18,.14);
+  --farter-green-line:rgba(163,255,18,.34);
+  --panel-bg:rgba(8,10,8,.84);
+  --panel-bg-soft:rgba(163,255,18,.035);
+}
+
+.app{
+  background:
+    radial-gradient(circle at 22% -8%, rgba(163,255,18,.13), transparent 30%),
+    radial-gradient(circle at 84% 8%, rgba(255,255,255,.075), transparent 30%),
+    radial-gradient(circle at 50% 110%, rgba(163,255,18,.055), transparent 42%),
+    #000;
+}
+
+.header{
+  background:rgba(0,0,0,.78);
+  border-bottom:1px solid rgba(163,255,18,.16);
+  box-shadow:0 12px 44px rgba(0,0,0,.28);
+}
+
+.header .logo,
+.landing .logo{
+  background:var(--farter-green);
+  color:#000;
+  box-shadow:0 0 24px rgba(163,255,18,.42);
+}
+
+.header .brand,
+.landing .brand{
+  letter-spacing:-.055em;
+}
+
+.header .brand small{
+  color:#d9f99d;
+  opacity:.85;
+}
+
+.header .primary,
+.landing .primary,
+.publishMain{
+  background:var(--farter-green);
+  color:#000;
+  box-shadow:0 0 32px rgba(163,255,18,.20);
+}
+
+.header .primary:hover,
+.landing .primary:hover,
+.publishMain:hover{
+  filter:brightness(1.06);
+}
+
+.mainGrid{
+  gap:18px;
+}
+
+.intro,
+.panel,
+.chat,
+.post{
+  border-color:rgba(163,255,18,.13);
+}
+
+.primaryFeed .intro,
+.intro{
+  background:
+    radial-gradient(circle at 12% 10%, rgba(163,255,18,.10), transparent 38%),
+    linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.020)),
+    var(--panel-bg);
+}
+
+.intro h1{
+  color:#fff;
+}
+
+.intro .muted{
+  color:#b6c6a2;
+}
+
+.tag,
+.feedHeaderMeta .tag{
+  background:var(--farter-green-soft);
+  color:#d9f99d;
+  border:1px solid var(--farter-green-line);
+  box-shadow:0 0 22px rgba(163,255,18,.08);
+}
+
+.post{
+  background:
+    radial-gradient(circle at 3% 22%, rgba(163,255,18,.10), transparent 22%),
+    linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.020)),
+    var(--panel-bg);
+}
+
+.post:before{
+  background:var(--farter-green);
+  box-shadow:0 0 18px rgba(163,255,18,.60);
+}
+
+.eyebrow{
+  color:#d9f99d;
+}
+
+.audioMeta{
+  border-color:rgba(163,255,18,.18);
+  background:rgba(163,255,18,.075);
+}
+
+.audioMeta span{
+  color:#b6c6a2;
+}
+
+.audioMeta strong{
+  color:#ecfccb;
+}
+
+.player{
+  border-color:rgba(163,255,18,.16);
+  background:
+    radial-gradient(circle at 15% 50%, rgba(163,255,18,.16), transparent 30%),
+    rgba(255,255,255,.030);
+}
+
+.playBubble{
+  background:var(--farter-green);
+  color:#000;
+  box-shadow:0 0 24px rgba(163,255,18,.30);
+}
+
+.waveform span{
+  background:linear-gradient(180deg, #ecfccb, rgba(163,255,18,.38));
+}
+
+.durationPill{
+  color:#d9f99d;
+  border-color:rgba(163,255,18,.18);
+  background:rgba(163,255,18,.07);
+}
+
+.reactions button{
+  border-color:rgba(163,255,18,.14);
+  background:rgba(163,255,18,.045);
+  color:#e5e7eb;
+}
+
+.reactions button:hover{
+  border-color:rgba(163,255,18,.32);
+  background:rgba(163,255,18,.10);
+}
+
+.panel{
+  background:
+    radial-gradient(circle at 0% 0%, rgba(163,255,18,.08), transparent 34%),
+    var(--panel-bg);
+}
+
+.panel h2,
+.chatH h2{
+  color:#fff;
+}
+
+.panel .muted,
+.chatH .muted,
+.battlePlaceholder,
+.emptyState p{
+  color:#9ca88c;
+}
+
+.rank{
+  background:rgba(163,255,18,.050);
+  border:1px solid rgba(163,255,18,.10);
+}
+
+.rankNo{
+  background:var(--farter-green);
+  color:#000;
+  box-shadow:0 0 18px rgba(163,255,18,.30);
+}
+
+.battlePlaceholder{
+  border-color:rgba(163,255,18,.18);
+  background:rgba(163,255,18,.035);
+}
+
+.battlePlaceholder strong{
+  color:#ecfccb;
+}
+
+.chat{
+  background:
+    radial-gradient(circle at 100% 0%, rgba(163,255,18,.08), transparent 34%),
+    var(--panel-bg);
+}
+
+.chatH{
+  border-bottom-color:rgba(163,255,18,.13);
+}
+
+.bubble{
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(163,255,18,.07);
+}
+
+.bubble span{
+  color:#d9f99d;
+}
+
+.chatInput{
+  border-top-color:rgba(163,255,18,.13);
+}
+
+.chatInput input{
+  border-color:rgba(163,255,18,.13);
+  background:rgba(0,0,0,.45);
+}
+
+.chatInput input:focus{
+  outline:none;
+  border-color:rgba(163,255,18,.40);
+  box-shadow:0 0 0 3px rgba(163,255,18,.08);
+}
+
+.chatInput button{
+  background:var(--farter-green);
+  color:#000;
+  box-shadow:0 0 18px rgba(163,255,18,.22);
+}
+
+.emptyState{
+  border-color:rgba(163,255,18,.20);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(163,255,18,.10), transparent 32%),
+    rgba(163,255,18,.030);
+}
+
+.emptyState h3{
+  color:#ecfccb;
+}
+
+.adminFloating{
+  border-color:rgba(163,255,18,.20);
+}
+
+.adminFloating.active{
+  background:var(--farter-green);
+  color:#000;
+  box-shadow:0 0 22px rgba(163,255,18,.28);
+}
+
+.adminDelete{
+  border-color:rgba(239,68,68,.36)!important;
+  background:rgba(127,29,29,.24)!important;
+}
+
+.recorderModal{
+  border-color:rgba(163,255,18,.16);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(163,255,18,.10), transparent 40%),
+    rgba(8,10,8,.95);
+}
+
+.recorderModal .holdCircle{
+  border-color:rgba(163,255,18,.18);
+  background:
+    radial-gradient(circle at 50% 45%, rgba(163,255,18,.18), transparent 45%),
+    rgba(163,255,18,.045);
+}
+
+.holdCircle.recordingCircle{
+  border-color:rgba(163,255,18,.50);
+  background:
+    radial-gradient(circle at 50% 45%, rgba(163,255,18,.30), transparent 48%),
+    rgba(163,255,18,.09);
+}
+
+.holdCircle.recordingCircle:before{
+  border-color:rgba(163,255,18,.38);
+}
+
+.status{
+  border-color:rgba(163,255,18,.14);
+  background:rgba(163,255,18,.045);
+}
+
+.status.recording{
+  border-color:rgba(163,255,18,.40);
+  background:rgba(163,255,18,.12);
+  color:#ecfccb;
+}
+
+#duration.recordingTime{
+  color:#d9f99d;
+  text-shadow:0 0 18px rgba(163,255,18,.70);
+}
+
+.iconBtn{
+  border-color:rgba(163,255,18,.14);
+  background:rgba(163,255,18,.050);
+}
+
+.previewBlock{
+  border-color:rgba(163,255,18,.14);
+  background:rgba(0,0,0,.38);
+}
+
+.previewTitle{
+  color:#d9f99d;
+}
+
+@media(max-width:720px){
+  .header{
+    border-bottom-color:rgba(163,255,18,.12);
+  }
+
+  .mainGrid{
+    gap:16px;
+  }
+
+  .post,
+  .panel,
+  .chat,
+  .intro{
+    border-color:rgba(163,255,18,.14);
+  }
+
+  .primaryFeed .intro{
+    box-shadow:0 18px 60px rgba(163,255,18,.05);
+  }
+}
+
+
+/* V24 share-ready features */
+.homeRules{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:16px;
+  width:min(760px,100%);
+}
+
+.homeRules span,
+.homeRules strong{
+  border:1px solid rgba(163,255,18,.16);
+  background:rgba(163,255,18,.055);
+  color:#d9f99d;
+  border-radius:999px;
+  padding:8px 11px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.homeRules strong{
+  background:#a3ff12;
+  color:#000;
+  box-shadow:0 0 20px rgba(163,255,18,.28);
+}
+
+.reportBtn{
+  border-color:rgba(255,255,255,.12)!important;
+  background:rgba(255,255,255,.025)!important;
+  color:#a1a1aa!important;
+}
+
+.reportBtn.reported{
+  color:#d9f99d!important;
+  border-color:rgba(163,255,18,.28)!important;
+  background:rgba(163,255,18,.08)!important;
+}
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:18px;
+  transform:translateX(-50%) translateY(20px);
+  z-index:80;
+  background:rgba(0,0,0,.82);
+  color:#fff;
+  border:1px solid rgba(163,255,18,.22);
+  box-shadow:0 18px 50px rgba(0,0,0,.35), 0 0 24px rgba(163,255,18,.12);
+  border-radius:999px;
+  padding:11px 15px;
+  font-size:13px;
+  font-weight:800;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .18s ease, transform .18s ease;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
+
+.loadingState{
+  border:1px solid rgba(163,255,18,.16);
+  background:rgba(163,255,18,.035);
+  border-radius:24px;
+  padding:26px;
+  color:#d9f99d;
+  text-align:center;
+  font-weight:800;
+}
+
+.loadingDots:after{
+  content:"";
+  animation:dots 1.2s steps(4,end) infinite;
+}
+
+@keyframes dots{
+  0%{content:""}
+  25%{content:"."}
+  50%{content:".."}
+  75%{content:"..."}
+  100%{content:""}
+}
+
+.limitPill{
+  color:#d9f99d;
+  font-size:12px;
+  border:1px solid rgba(163,255,18,.18);
+  background:rgba(163,255,18,.06);
+  border-radius:999px;
+  padding:7px 10px;
+}
+
+@media(max-width:720px){
+  .homeRules{
+    justify-content:center;
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .header .actions{
+    gap:7px;
+  }
+
+  .header .ghost{
+    min-height:40px;
+    padding:0 11px;
+    font-size:12px;
+  }
+}
+
+
+/* V25 mobile feed cleanup */
+.fartCard{
+  padding:16px;
+  overflow:hidden;
+}
+
+.fartCard:before{
+  top:16px;
+  bottom:16px;
+}
+
+.fartHeader{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:12px;
+  padding-left:4px;
+}
+
+.fartHeader h3{
+  margin:5px 0 0;
+  font-size:20px;
+  line-height:1.05;
+}
+
+.durationBadge{
+  flex:0 0 auto;
+  border:1px solid rgba(163,255,18,.20);
+  background:rgba(163,255,18,.08);
+  color:#d9f99d;
+  border-radius:999px;
+  padding:7px 10px;
+  font-size:13px;
+  font-weight:900;
+}
+
+.recentBanner{
+  width:fit-content;
+  margin:0 0 12px 4px;
+  border:1px solid rgba(163,255,18,.30);
+  background:rgba(163,255,18,.12);
+  color:#d9f99d;
+  box-shadow:0 0 22px rgba(163,255,18,.13);
+  border-radius:999px;
+  padding:8px 11px;
+  font-size:12px;
+  font-weight:900;
+}
+
+.fartPlayer{
+  padding:10px;
+  border-radius:22px;
+  margin-bottom:12px;
+}
+
+.fartPlayer .customPlayer{
+  grid-template-columns:54px minmax(0,1fr);
+  gap:12px;
+}
+
+.fartPlayer .playBubble{
+  width:54px;
+  height:54px;
+  font-size:20px;
+}
+
+.fartPlayer .waveform{
+  height:56px;
+}
+
+.compactReactions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+  margin-top:0;
+}
+
+.compactReactions button{
+  justify-content:center;
+  min-height:42px;
+  border-radius:18px;
+  font-size:14px;
+}
+
+.compactReactions button b{
+  margin-left:3px;
+}
+
+.compactReactions .reportBtn,
+.compactReactions .adminDelete{
+  grid-column:auto;
+}
+
+.mostRecent{
+  border-color:rgba(163,255,18,.28);
+  box-shadow:0 22px 70px rgba(163,255,18,.08), 0 26px 80px rgba(0,0,0,.24);
+}
+
+.audioMeta{
+  display:none!important;
+}
+
+@media(max-width:720px){
+  .feedScroll{
+    gap:12px;
+  }
+
+  .fartCard{
+    padding:14px;
+    border-radius:24px;
+  }
+
+  .fartHeader{
+    margin-bottom:10px;
+  }
+
+  .fartHeader h3{
+    font-size:22px;
+  }
+
+  .eyebrow{
+    font-size:10px;
+    letter-spacing:.16em;
+  }
+
+  .durationBadge{
+    font-size:12px;
+    padding:7px 9px;
+  }
+
+  .recentBanner{
+    margin-bottom:10px;
+    font-size:11px;
+    padding:7px 10px;
+  }
+
+  .fartPlayer{
+    padding:10px;
+    border-radius:21px;
+  }
+
+  .fartPlayer .customPlayer{
+    grid-template-columns:56px minmax(0,1fr);
+  }
+
+  .fartPlayer .playBubble{
+    width:56px;
+    height:56px;
+  }
+
+  .fartPlayer .waveform{
+    height:54px;
+    gap:2px;
+  }
+
+  .waveform span{
+    width:3px;
+    min-width:3px;
+  }
+
+  .compactReactions{
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+  }
+
+  .compactReactions button{
+    min-height:44px;
+    border-radius:18px;
+    padding:0 8px;
+    font-size:13px;
+  }
+
+  .compactReactions .reportBtn{
+    grid-column:1 / 2;
+  }
+
+  .compactReactions .adminDelete{
+    grid-column:2 / 3;
+  }
+
+  .postTop{
+    margin-bottom:0;
+  }
+}
+
+
+/* V26 engagement pack */
+.profileBox,.dropOfDayBox,.wallBox{display:flex;flex-direction:column;gap:6px;border:1px solid rgba(163,255,18,.14);background:rgba(163,255,18,.045);border-radius:18px;padding:14px;color:#d9f99d}
+.profileBox strong,.dropOfDayBox strong{color:#fff}.profileBox span,.dropOfDayBox span{color:#9ca88c;font-size:13px}
+.leaderTabs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin:10px 0 12px}
+.leaderTabs button{min-height:34px;border-radius:999px;border:1px solid rgba(163,255,18,.14);background:rgba(163,255,18,.045);color:#9ca88c;font-size:12px;font-weight:900}
+.leaderTabs button.active{background:#a3ff12;color:#000;box-shadow:0 0 18px rgba(163,255,18,.25)}
+.wallRow{display:grid;grid-template-columns:24px 1fr auto;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid rgba(163,255,18,.08)}
+.wallRow:last-child{border-bottom:0}.wallRow span{width:22px;height:22px;display:grid;place-items:center;border-radius:999px;background:rgba(163,255,18,.14);color:#d9f99d;font-size:12px;font-weight:900}.wallRow strong{font-size:13px}.wallRow em{font-style:normal;color:#d9f99d;font-size:12px;font-weight:900}
+.battleStartBtn{width:100%;margin-top:12px;min-height:44px}.battleCards{display:grid;grid-template-columns:1fr 1fr;gap:10px}.battleCards button{border:1px solid rgba(163,255,18,.16);background:rgba(163,255,18,.045);color:#fff;border-radius:18px;padding:12px;text-align:left}.battleCards span{display:block;color:#9ca88c;font-size:12px;margin-bottom:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.battleCards strong{font-size:28px;color:#d9f99d}
+.newDropBanner{border:1px solid rgba(163,255,18,.26);background:rgba(163,255,18,.10);color:#d9f99d;border-radius:999px;padding:10px 13px;font-size:13px;font-weight:900;text-align:center;opacity:0;transform:translateY(-8px);transition:opacity .18s ease,transform .18s ease}.newDropBanner.show{opacity:1;transform:translateY(0)}
+@media(max-width:820px){.sideStack{gap:14px}.leaderTabs{gap:7px}.battleCards{grid-template-columns:1fr}}
+
+
+/* V27 mobile app pages */
+.app{
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+
+.appTopbar{
+  min-height:62px;
+  flex:0 0 auto;
+  padding:10px 16px;
+  transition:max-height .22s ease, padding .22s ease, opacity .22s ease;
+}
+
+.appTopbar.collapsed{
+  max-height:42px;
+  min-height:42px;
+  padding:5px 14px;
+}
+
+.appTopbar.collapsed .brand small{
+  display:none;
+}
+
+.appTopbar.collapsed .logo{
+  width:32px;
+  height:32px;
+  border-radius:12px;
+}
+
+.topbarToggle{
+  width:36px;
+  height:36px;
+  border-radius:14px;
+  border:1px solid rgba(163,255,18,.16);
+  background:rgba(163,255,18,.06);
+  color:#d9f99d;
+  font-weight:900;
+}
+
+.appTopbar.collapsed .topbarToggle{
+  transform:rotate(180deg);
+}
+
+.appPage{
+  display:none;
+  flex:1;
+  min-height:0;
+  overflow-y:auto;
+  padding:14px 14px 116px;
+  width:min(980px,100%);
+  margin:0 auto;
+}
+
+.appPage.active{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.pageHero{
+  flex:0 0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  border:1px solid rgba(163,255,18,.14);
+  background:
+    radial-gradient(circle at 12% 10%, rgba(163,255,18,.10), transparent 38%),
+    rgba(8,10,8,.84);
+  border-radius:24px;
+  padding:16px;
+}
+
+.pageHero h1{
+  margin:0;
+  font-size:26px;
+  letter-spacing:-.06em;
+}
+
+.pageHero p{
+  margin:5px 0 0;
+}
+
+.collapsibleHero{
+  transition:max-height .22s ease, padding .22s ease, opacity .22s ease;
+  overflow:hidden;
+}
+
+.collapsibleHero.compact{
+  max-height:54px;
+  padding:11px 14px;
+}
+
+.collapsibleHero.compact p{
+  display:none;
+}
+
+.collapsibleHero.compact h1{
+  font-size:20px;
+}
+
+.pageScroll{
+  flex:1;
+  min-height:0;
+}
+
+.fullChat{
+  height:auto;
+  flex:1;
+  min-height:0;
+}
+
+.floatingDropBtn{
+  position:fixed;
+  z-index:70;
+  left:50%;
+  bottom:82px;
+  transform:translateX(-50%);
+  width:min(320px,calc(100% - 34px));
+  min-height:58px;
+  border:0;
+  border-radius:999px;
+  background:#a3ff12;
+  color:#000;
+  font-weight:950;
+  font-size:16px;
+  box-shadow:0 16px 55px rgba(163,255,18,.25), 0 12px 42px rgba(0,0,0,.35);
+}
+
+.bottomNav{
+  position:fixed;
+  z-index:65;
+  left:10px;
+  right:10px;
+  bottom:10px;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:4px;
+  border:1px solid rgba(163,255,18,.14);
+  background:rgba(0,0,0,.82);
+  backdrop-filter:blur(18px);
+  border-radius:26px;
+  padding:7px;
+  box-shadow:0 18px 60px rgba(0,0,0,.38);
+}
+
+.bottomNav button{
+  min-height:52px;
+  border:0;
+  border-radius:20px;
+  background:transparent;
+  color:#9ca88c;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:2px;
+  font-size:18px;
+  font-weight:900;
+}
+
+.bottomNav button span{
+  font-size:10px;
+}
+
+.bottomNav button.active{
+  background:rgba(163,255,18,.14);
+  color:#d9f99d;
+}
+
+.settingsPanel{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.settingsBtn{
+  min-height:52px;
+  border-radius:18px;
+  border:1px solid rgba(163,255,18,.14);
+  background:rgba(163,255,18,.055);
+  color:#fff;
+  font-weight:850;
+  text-align:left;
+  padding:0 15px;
+}
+
+#page-rankings .panel,
+#page-battles .panel,
+#page-profile .panel{
+  flex:0 0 auto;
+}
+
+@media(min-width:900px){
+  .appPage{
+    padding:20px 20px 126px;
+  }
+
+  #page-feed{
+    width:min(860px,100%);
+  }
+
+  .bottomNav{
+    left:50%;
+    transform:translateX(-50%);
+    width:min(620px,calc(100% - 20px));
+  }
+}
+
+@media(max-width:720px){
+  .appPage{
+    padding:12px 10px 116px;
+  }
+
+  .pageHero{
+    border-radius:22px;
+    padding:14px;
+  }
+
+  .pageHero h1{
+    font-size:24px;
+  }
+
+  .floatingDropBtn{
+    bottom:80px;
+    min-height:56px;
+  }
+}
+
+
+/* V28 Apple-ish room redesign */
+.app{
+  background:
+    radial-gradient(circle at 50% -10%, rgba(163,255,18,.12), transparent 34%),
+    radial-gradient(circle at 100% 0%, rgba(255,255,255,.08), transparent 28%),
+    linear-gradient(180deg, #050605 0%, #000 100%);
+}
+
+.appleTopbar{
+  margin:0 auto;
+  width:100%;
+  background:rgba(0,0,0,.58);
+  backdrop-filter:blur(26px);
+  -webkit-backdrop-filter:blur(26px);
+}
+
+.appPage{
+  width:min(1180px,100%);
+  padding:14px 14px 118px;
+}
+
+.pageHero{
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.09);
+  box-shadow:0 18px 70px rgba(0,0,0,.26);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+}
+
+.pageHero h1{
+  font-size:30px;
+  letter-spacing:-.075em;
+}
+
+.pageHero .tag{
+  background:rgba(163,255,18,.16);
+  border-color:rgba(163,255,18,.28);
+}
+
+.roomLayout{
+  flex:1;
+  min-height:0;
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr);
+  gap:14px;
+}
+
+.roomFeed,
+.roomChat{
+  min-height:0;
+  border:1px solid rgba(255,255,255,.09);
+  background:rgba(255,255,255,.045);
+  border-radius:30px;
+  box-shadow:0 20px 70px rgba(0,0,0,.24);
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+  overflow:hidden;
+}
+
+.roomFeed{
+  display:flex;
+  flex-direction:column;
+  padding:14px;
+}
+
+.sectionHeader{
+  flex:0 0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:4px 4px 12px;
+}
+
+.sectionHeader h2{
+  margin:0;
+  font-size:19px;
+  letter-spacing:-.05em;
+}
+
+.sectionHeader p{
+  margin:4px 0 0;
+  color:#9ca88c;
+  font-size:13px;
+}
+
+.roomFeed .feedScroll{
+  flex:1;
+  min-height:0;
+  overflow-y:auto;
+  gap:12px;
+  padding-right:2px;
+}
+
+.roomChat{
+  display:flex;
+  flex-direction:column;
+  height:100%;
+  min-height:0;
+}
+
+.compactChatHeader{
+  padding:15px 16px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.compactChatHeader h2{
+  font-size:19px;
+  letter-spacing:-.05em;
+}
+
+.compactChatHeader p{
+  font-size:13px;
+}
+
+.post.fartCard{
+  background:
+    radial-gradient(circle at 0% 0%, rgba(163,255,18,.08), transparent 28%),
+    rgba(0,0,0,.38);
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:none;
+  border-radius:26px;
+}
+
+.post.fartCard:before{
+  display:none;
+}
+
+.recentBanner{
+  background:rgba(163,255,18,.16);
+  border-color:rgba(163,255,18,.26);
+  color:#eaffc4;
+}
+
+.fartPlayer{
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.045);
+}
+
+.compactReactions button{
+  border-color:rgba(255,255,255,.08);
+  background:rgba(255,255,255,.040);
+}
+
+.compactReactions button:hover{
+  background:rgba(163,255,18,.09);
+}
+
+.msgs{
+  padding:12px;
+}
+
+.bubble{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:18px;
+}
+
+.chatInput{
+  background:rgba(0,0,0,.20);
+}
+
+.chatInput input{
+  background:rgba(255,255,255,.07);
+  border-color:rgba(255,255,255,.08);
+  min-height:48px;
+}
+
+.chatInput button{
+  min-width:48px;
+  height:48px;
+}
+
+.panel{
+  background:rgba(255,255,255,.050);
+  border-color:rgba(255,255,255,.09);
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+  border-radius:28px;
+}
+
+.appleNav{
+  grid-template-columns:repeat(4,1fr);
+  background:rgba(0,0,0,.72);
+  border-color:rgba(255,255,255,.10);
+  backdrop-filter:blur(28px);
+  -webkit-backdrop-filter:blur(28px);
+}
+
+.appleNav button{
+  color:#8f987f;
+}
+
+.appleNav button.active{
+  background:rgba(163,255,18,.16);
+  color:#e7ffc0;
+}
+
+.floatingDropBtn{
+  bottom:82px;
+  max-width:360px;
+  background:linear-gradient(180deg,#b7ff39,#93ef00);
+  box-shadow:
+    0 18px 55px rgba(163,255,18,.25),
+    0 18px 65px rgba(0,0,0,.45);
+}
+
+@media(min-width:900px){
+  .appPage{
+    padding:18px 18px 120px;
+  }
+
+  .bottomNav{
+    width:min(520px,calc(100% - 20px));
+  }
+}
+
+@media(max-width:860px){
+  .roomLayout{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+
+  .roomFeed{
+    min-height:52vh;
+  }
+
+  .roomChat{
+    height:42vh;
+    min-height:340px;
+  }
+
+  .pageHero{
+    border-radius:26px;
+  }
+
+  .pageHero h1{
+    font-size:27px;
+  }
+}
+
+@media(max-width:720px){
+  .appPage{
+    padding:10px 10px 116px;
+  }
+
+  .roomFeed,
+  .roomChat{
+    border-radius:28px;
+  }
+
+  .roomFeed{
+    padding:10px;
+  }
+
+  .sectionHeader{
+    padding:4px 5px 10px;
+  }
+
+  .roomFeed .feedScroll{
+    max-height:none;
+  }
+
+  .roomChat{
+    min-height:330px;
+  }
+
+  .compactChatHeader{
+    padding:13px 14px;
+  }
+
+  .floatingDropBtn{
+    width:min(330px,calc(100% - 38px));
+  }
+}
+
+
+/* V29 iPhone scroll/readability fix */
+@media(max-width:860px){
+  .app{
+    height:100svh;
+    overflow:hidden;
+  }
+
+  .appPage{
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+    padding-bottom:172px;
+  }
+
+  #page-room.active{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .roomLayout{
+    display:flex;
+    flex-direction:column;
+    min-height:auto;
+    overflow:visible;
+  }
+
+  .roomFeed{
+    min-height:auto;
+    height:auto;
+    overflow:visible;
+    padding:12px;
+  }
+
+  .roomFeed .feedScroll{
+    flex:unset;
+    min-height:auto;
+    max-height:none;
+    overflow:visible;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    padding-right:0;
+  }
+
+  .post.fartCard{
+    min-height:auto;
+    padding:15px;
+    border-radius:24px;
+    overflow:visible;
+  }
+
+  .fartHeader{
+    align-items:flex-start;
+    margin-bottom:12px;
+  }
+
+  .fartHeader h3{
+    font-size:22px;
+    line-height:1.08;
+    white-space:normal;
+    overflow:visible;
+    text-overflow:clip;
+  }
+
+  .durationBadge{
+    flex:0 0 auto;
+  }
+
+  .recentBanner{
+    margin-bottom:12px;
+  }
+
+  .fartPlayer{
+    margin-bottom:12px;
+  }
+
+  .compactReactions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+  }
+
+  .compactReactions button{
+    min-height:44px;
+  }
+
+  .roomChat{
+    height:420px;
+    min-height:420px;
+    flex:0 0 auto;
+    margin-bottom:8px;
+  }
+
+  .floatingDropBtn{
+    bottom:86px;
+    z-index:80;
+  }
+
+  .bottomNav{
+    z-index:78;
+  }
+}
+
+@media(max-width:720px){
+  .appTopbar{
+    min-height:56px;
+    padding:8px 12px;
+  }
+
+  .appTopbar.collapsed{
+    min-height:40px;
+  }
+
+  .pageHero{
+    flex-shrink:0;
+    padding:13px;
+  }
+
+  .pageHero h1{
+    font-size:26px;
+  }
+
+  .sectionHeader{
+    padding:4px 4px 12px;
+  }
+
+  .sectionHeader h2{
+    font-size:20px;
+  }
+
+  .roomFeed,
+  .roomChat{
+    border-radius:26px;
+  }
+
+  .roomChat{
+    height:400px;
+    min-height:400px;
+  }
+
+  .msgs{
+    min-height:0;
+  }
+}
+
+/* Small phones: keep things usable */
+@media(max-width:390px){
+  .appPage{
+    padding-left:8px;
+    padding-right:8px;
+    padding-bottom:178px;
+  }
+
+  .fartCard{
+    padding:13px!important;
+  }
+
+  .fartHeader h3{
+    font-size:20px;
+  }
+
+  .compactReactions button{
+    font-size:12px;
+    padding:0 6px;
+  }
+}
+
+
+/* V30 header, feed scroll, report and battle lobby */
+.appleTopbar{
+  justify-content:space-between;
+}
+
+.appleTopbar .brand{
+  width:100%;
+  justify-content:space-between;
+}
+
+.appleTopbar .brand > div:last-child{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  text-align:right;
+}
+
+.topbarToggle{
+  display:none!important;
+}
+
+@media(max-width:860px){
+  .roomFeed{
+    height:62vh;
+    max-height:62vh;
+    min-height:520px;
+    overflow:hidden;
+  }
+
+  .roomFeed .feedScroll{
+    flex:1;
+    min-height:0;
+    max-height:none;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+    padding-bottom:10px;
+  }
+}
+
+@media(max-width:720px){
+  .roomFeed{
+    height:60vh;
+    min-height:500px;
+  }
+}
+
+.fartCard{
+  position:relative;
+}
+
+.reportBtn{
+  position:absolute;
+  top:12px;
+  left:12px;
+  width:30px!important;
+  height:30px!important;
+  min-height:30px!important;
+  padding:0!important;
+  border-radius:999px!important;
+  font-size:0!important;
+  display:grid!important;
+  place-items:center!important;
+  z-index:2;
+}
+
+.reportBtn::before{
+  content:"⚠️";
+  font-size:14px;
+}
+
+.reportBtn.reported::before{
+  content:"✓";
+  font-size:14px;
+}
+
+.fartHeader{
+  padding-left:26px;
+}
+
+.compactReactions .reportBtn{
+  grid-column:auto!important;
+}
+
+.battleTicker{
+  overflow:hidden;
+  border:1px solid rgba(163,255,18,.22);
+  background:rgba(163,255,18,.09);
+  color:#d9f99d;
+  border-radius:999px;
+  padding:9px 0;
+  font-size:13px;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+.battleTicker span{
+  display:inline-block;
+  padding-left:100%;
+  animation:battleTickerMove 11s linear infinite;
+}
+
+.battleTicker.show{
+  display:block!important;
+}
+
+@keyframes battleTickerMove{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-100%)}
+}
+
+.battleLobbyCard{
+  border:1px solid rgba(163,255,18,.16);
+  background:rgba(163,255,18,.045);
+  border-radius:20px;
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.battleLobbyCard strong{
+  color:#fff;
+  font-size:16px;
+}
+
+.battleActions{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:9px;
+}
+
+.battleActions button,
+.dropPick button{
+  min-height:44px;
+  border-radius:16px;
+  border:1px solid rgba(163,255,18,.16);
+  background:rgba(163,255,18,.08);
+  color:#fff;
+  font-weight:850;
+}
+
+.dropPick{
+  display:grid;
+  gap:8px;
+}
+
+.dropPick button{
+  text-align:left;
+  padding:0 12px;
+}
+
+.profilePanel,
+.settingsPanel{
+  flex-shrink:0;
+}
+
+#page-profile{
+  padding-bottom:190px!important;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+}
+
+@media(max-width:720px){
+  #page-profile{
+    padding-bottom:210px!important;
+  }
+}
+
+
+/* V31 fixes */
+.reportBtn{
+  left:auto!important;
+  right:12px!important;
+  top:12px!important;
+}
+
+.fartHeader{
+  padding-left:0!important;
+  padding-right:34px;
+}
+
+.battleTicker{
+  border-radius:18px!important;
+  padding:10px 12px!important;
+  white-space:normal!important;
+  overflow:visible!important;
+  display:flex!important;
+  align-items:center;
+  gap:9px;
+  min-height:42px;
+}
+
+.battleTicker.hidden{
+  display:none!important;
+}
+
+.battleTicker span{
+  padding-left:0!important;
+  animation:none!important;
+  transform:none!important;
+}
+
+.battleTicker::before{
+  content:"";
+  width:9px;
+  height:9px;
+  border-radius:999px;
+  background:#a3ff12;
+  box-shadow:0 0 18px rgba(163,255,18,.75);
+  flex:0 0 auto;
+  animation:battlePulse 1.1s ease-in-out infinite;
+}
+
+@keyframes battlePulse{
+  0%,100%{transform:scale(1);opacity:1}
+  50%{transform:scale(.55);opacity:.45}
+}
+
+.appPage{
+  padding-bottom:230px!important;
+}
+
+#page-profile,
+#page-battles,
+#page-rankings{
+  overflow-y:auto!important;
+  -webkit-overflow-scrolling:touch;
+}
+
+.app[data-active-page="profile"] .floatingDropBtn,
+.app[data-active-page="rankings"] .floatingDropBtn{
+  display:none;
+}
+
+.battleGameCard{
+  border:1px solid rgba(163,255,18,.16);
+  background:rgba(163,255,18,.045);
+  border-radius:22px;
+  padding:15px;
+  display:grid;
+  gap:14px;
+}
+
+.battleGameCard h3{
+  margin:0;
+  font-size:18px;
+}
+
+.battleGameCard p{
+  margin:0;
+  color:#9ca88c;
+  line-height:1.35;
+}
+
+.playerSlots{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.playerSlot{
+  border:1px solid rgba(255,255,255,.09);
+  background:rgba(0,0,0,.25);
+  border-radius:18px;
+  padding:12px;
+}
+
+.playerSlot strong{
+  display:block;
+  color:#fff;
+  margin-bottom:4px;
+}
+
+.playerSlot span{
+  color:#9ca88c;
+  font-size:13px;
+}
+
+.battleChoiceList{
+  display:grid;
+  gap:9px;
+}
+
+.battleChoiceList button,
+.battleActionBtn{
+  min-height:46px;
+  border-radius:17px;
+  border:1px solid rgba(163,255,18,.18);
+  background:rgba(163,255,18,.075);
+  color:#fff;
+  font-weight:850;
+  text-align:left;
+  padding:0 13px;
+}
+
+.battleActionBtn{
+  text-align:center;
+  background:#a3ff12;
+  color:#000;
+}
+
+.battleVoteGrid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.battleVoteGrid button{
+  border:1px solid rgba(163,255,18,.18);
+  background:rgba(163,255,18,.065);
+  color:#fff;
+  border-radius:20px;
+  padding:13px;
+  text-align:left;
+}
+
+.battleVoteGrid span{
+  display:block;
+  color:#9ca88c;
+  font-size:12px;
+  margin-bottom:8px;
+}
+
+.battleVoteGrid strong{
+  font-size:28px;
+  color:#d9f99d;
+}
+
+@media(max-width:720px){
+  .appPage{
+    padding-bottom:250px!important;
+  }
+
+  .playerSlots,
+  .battleVoteGrid{
+    grid-template-columns:1fr;
+  }
+
+  #page-battles .panel,
+  #page-profile .panel{
+    margin-bottom:12px;
+  }
+}
+
+
+/* V32 report/duration + battle timer + profile scroll fix */
+.reportBtn{
+  top:12px!important;
+  right:12px!important;
+  left:auto!important;
+  width:28px!important;
+  height:28px!important;
+  min-height:28px!important;
+  opacity:.85;
+}
+
+.durationBadge{
+  margin-right:38px!important;
+  min-width:48px;
+  text-align:center;
+}
+
+.fartHeader{
+  padding-right:0!important;
+}
+
+.fartHeader > div{
+  min-width:0;
+}
+
+.battleTicker{
+  border-radius:22px!important;
+  padding:12px 14px!important;
+  background:
+    radial-gradient(circle at 0% 50%, rgba(163,255,18,.22), transparent 34%),
+    rgba(163,255,18,.10)!important;
+  border:1px solid rgba(163,255,18,.30)!important;
+  box-shadow:0 12px 42px rgba(163,255,18,.10);
+}
+
+.battleTicker.hidden{
+  display:none!important;
+}
+
+.battleTicker span{
+  width:100%;
+  padding-left:0!important;
+  animation:none!important;
+  transform:none!important;
+}
+
+.battleTickerContent{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  width:100%;
+}
+
+.battleTickerMain{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  min-width:0;
+}
+
+.battleTickerMain strong{
+  color:#ecfccb;
+  font-size:13px;
+  line-height:1.2;
+}
+
+.battleTickerMain small{
+  color:#9ca88c;
+  font-size:11px;
+  font-weight:800;
+}
+
+.battleTimerPill{
+  flex:0 0 auto;
+  background:#a3ff12;
+  color:#000;
+  border-radius:999px;
+  padding:8px 10px;
+  font-weight:950;
+  font-size:12px;
+  box-shadow:0 0 24px rgba(163,255,18,.35);
+}
+
+.battleTicker::before{
+  animation:battlePulse 1s ease-in-out infinite;
+}
+
+#page-profile,
+#page-battles,
+#page-rankings{
+  height:auto!important;
+  min-height:0!important;
+  padding-bottom:320px!important;
+  overflow-y:auto!important;
+  -webkit-overflow-scrolling:touch!important;
+}
+
+#page-profile .settingsPanel{
+  margin-bottom:120px!important;
+}
+
+@media(max-width:720px){
+  .durationBadge{
+    margin-right:36px!important;
+  }
+
+  .reportBtn{
+    top:11px!important;
+    right:11px!important;
+  }
+
+  #page-profile,
+  #page-battles,
+  #page-rankings{
+    padding-bottom:360px!important;
+  }
+
+  #page-profile .settingsPanel{
+    margin-bottom:160px!important;
+  }
+}
+
+
+/* V33 battle winner animation */
+.winnerBurst{
+  position:fixed;
+  inset:0;
+  z-index:120;
+  pointer-events:none;
+  display:grid;
+  place-items:center;
+  background:radial-gradient(circle at 50% 50%, rgba(163,255,18,.18), transparent 42%);
+  animation:winnerFade 2.8s ease forwards;
+}
+
+.winnerCard{
+  border:1px solid rgba(163,255,18,.32);
+  background:rgba(0,0,0,.82);
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+  border-radius:32px;
+  padding:26px;
+  width:min(340px,calc(100% - 44px));
+  text-align:center;
+  box-shadow:0 30px 90px rgba(0,0,0,.45), 0 0 60px rgba(163,255,18,.20);
+  animation:winnerPop .7s cubic-bezier(.2,1.4,.3,1) forwards;
+}
+
+.winnerCard h2{
+  margin:0;
+  font-size:28px;
+  letter-spacing:-.06em;
+}
+
+.winnerCard p{
+  margin:10px 0 0;
+  color:#d9f99d;
+  font-weight:900;
+}
+
+.confetti{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+}
+
+.confetti i{
+  position:absolute;
+  top:-20px;
+  width:8px;
+  height:14px;
+  background:#a3ff12;
+  border-radius:2px;
+  animation:confettiFall 2.3s ease-in forwards;
+  opacity:.9;
+}
+
+@keyframes winnerFade{
+  0%{opacity:0}
+  12%{opacity:1}
+  82%{opacity:1}
+  100%{opacity:0}
+}
+
+@keyframes winnerPop{
+  0%{transform:scale(.84) translateY(18px);opacity:0}
+  100%{transform:scale(1) translateY(0);opacity:1}
+}
+
+@keyframes confettiFall{
+  0%{transform:translateY(0) rotate(0deg)}
+  100%{transform:translateY(110vh) rotate(520deg)}
+}
+
+.profileStatsGrid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:8px;
+  margin-top:10px;
+}
+
+.profileStat{
+  border:1px solid rgba(163,255,18,.14);
+  background:rgba(163,255,18,.045);
+  border-radius:16px;
+  padding:10px;
+}
+
+.profileStat strong{
+  display:block;
+  color:#fff;
+  font-size:20px;
+}
+
+.profileStat span{
+  color:#9ca88c;
+  font-size:11px;
+  font-weight:800;
+}
+
+.battleWinnerBox{
+  border:1px solid rgba(163,255,18,.22);
+  background:rgba(163,255,18,.08);
+  border-radius:20px;
+  padding:14px;
+  color:#d9f99d;
+  display:grid;
+  gap:6px;
+}
+
+.battleWinnerBox strong{
+  color:#fff;
+  font-size:17px;
+}
+
+@media(max-width:720px){
+  .profileStatsGrid{
+    grid-template-columns:1fr;
+  }
+}
+
+
+/* V34 solid battle system */
+.reportBtn{
+  left:auto!important;
+  right:12px!important;
+  top:12px!important;
+}
+
+.durationBadge{
+  margin-right:42px!important;
+}
+
+.fartHeader{
+  padding-right:0!important;
+}
+
+.battleTicker{
+  border-radius:22px!important;
+  padding:12px 14px!important;
+  background:linear-gradient(135deg, rgba(163,255,18,.16), rgba(163,255,18,.055))!important;
+  border:1px solid rgba(163,255,18,.30)!important;
+  box-shadow:0 14px 46px rgba(163,255,18,.12);
+  white-space:normal!important;
+  overflow:visible!important;
+}
+
+.battleTicker.hidden{
+  display:none!important;
+}
+
+.battleTicker span{
+  padding-left:0!important;
+  animation:none!important;
+  transform:none!important;
+  width:100%;
+}
+
+.battleTickerContent{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  width:100%;
+}
+
+.battleTickerMain{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  min-width:0;
+}
+
+.battleTickerMain strong{
+  color:#ecfccb;
+  font-size:13px;
+  line-height:1.2;
+}
+
+.battleTickerMain small{
+  color:#9ca88c;
+  font-size:11px;
+  font-weight:800;
+}
+
+.battleTimerPill{
+  flex:0 0 auto;
+  background:#a3ff12;
+  color:#000;
+  border-radius:999px;
+  padding:8px 10px;
+  font-weight:950;
+  font-size:12px;
+  box-shadow:0 0 24px rgba(163,255,18,.35);
+}
+
+.battleGameCard{
+  border:1px solid rgba(163,255,18,.16);
+  background:rgba(163,255,18,.045);
+  border-radius:24px;
+  padding:16px;
+  display:grid;
+  gap:14px;
+}
+
+.battleGameCard h3{
+  margin:0;
+  font-size:19px;
+  letter-spacing:-.04em;
+}
+
+.battleGameCard p{
+  margin:0;
+  color:#9ca88c;
+  line-height:1.35;
+}
+
+.battleStep{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  color:#d9f99d;
+  font-size:13px;
+  font-weight:900;
+}
+
+.battleStep b{
+  width:24px;
+  height:24px;
+  display:grid;
+  place-items:center;
+  border-radius:999px;
+  background:#a3ff12;
+  color:#000;
+  font-size:12px;
+}
+
+.playerSlots{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.playerSlot{
+  border:1px solid rgba(255,255,255,.09);
+  background:rgba(0,0,0,.25);
+  border-radius:18px;
+  padding:12px;
+}
+
+.playerSlot strong{
+  display:block;
+  color:#fff;
+  margin-bottom:4px;
+}
+
+.playerSlot span{
+  color:#9ca88c;
+  font-size:13px;
+}
+
+.battleChoiceList{
+  display:grid;
+  gap:9px;
+}
+
+.battleChoiceList button,
+.battleActionBtn{
+  min-height:48px;
+  border-radius:17px;
+  border:1px solid rgba(163,255,18,.18);
+  background:rgba(163,255,18,.075);
+  color:#fff;
+  font-weight:850;
+  text-align:left;
+  padding:0 13px;
+}
+
+.battleActionBtn{
+  text-align:center;
+  background:#a3ff12;
+  color:#000;
+}
+
+.battleActionBtn.secondaryAction{
+  background:rgba(255,255,255,.07);
+  color:#fff;
+}
+
+.battleVoteGrid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.battleVoteGrid button{
+  border:1px solid rgba(163,255,18,.18);
+  background:rgba(163,255,18,.065);
+  color:#fff;
+  border-radius:20px;
+  padding:13px;
+  text-align:left;
+}
+
+.battleVoteGrid span{
+  display:block;
+  color:#9ca88c;
+  font-size:12px;
+  margin-bottom:8px;
+}
+
+.battleVoteGrid strong{
+  font-size:28px;
+  color:#d9f99d;
+}
+
+.battleDropPreview{
+  display:grid;
+  gap:8px;
+  margin-top:6px;
+}
+
+.battleDropPreview audio{
+  width:100%;
+}
+
+.battleWinnerBox{
+  border:1px solid rgba(163,255,18,.22);
+  background:rgba(163,255,18,.08);
+  border-radius:20px;
+  padding:14px;
+  color:#d9f99d;
+  display:grid;
+  gap:6px;
+}
+
+.battleWinnerBox strong{
+  color:#fff;
+  font-size:17px;
+}
+
+.winnerBurst{
+  position:fixed;
+  inset:0;
+  z-index:120;
+  pointer-events:none;
+  display:grid;
+  place-items:center;
+  background:radial-gradient(circle at 50% 50%, rgba(163,255,18,.18), transparent 42%);
+  animation:winnerFade 2.8s ease forwards;
+}
+
+.winnerCard{
+  border:1px solid rgba(163,255,18,.32);
+  background:rgba(0,0,0,.82);
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+  border-radius:32px;
+  padding:26px;
+  width:min(340px,calc(100% - 44px));
+  text-align:center;
+  box-shadow:0 30px 90px rgba(0,0,0,.45), 0 0 60px rgba(163,255,18,.20);
+  animation:winnerPop .7s cubic-bezier(.2,1.4,.3,1) forwards;
+}
+
+.winnerCard h2{
+  margin:0;
+  font-size:28px;
+  letter-spacing:-.06em;
+}
+
+.winnerCard p{
+  margin:10px 0 0;
+  color:#d9f99d;
+  font-weight:900;
+}
+
+.confetti{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+}
+
+.confetti i{
+  position:absolute;
+  top:-20px;
+  width:8px;
+  height:14px;
+  background:#a3ff12;
+  border-radius:2px;
+  animation:confettiFall 2.3s ease-in forwards;
+  opacity:.9;
+}
+
+@keyframes winnerFade{
+  0%{opacity:0}
+  12%{opacity:1}
+  82%{opacity:1}
+  100%{opacity:0}
+}
+
+@keyframes winnerPop{
+  0%{transform:scale(.84) translateY(18px);opacity:0}
+  100%{transform:scale(1) translateY(0);opacity:1}
+}
+
+@keyframes confettiFall{
+  0%{transform:translateY(0) rotate(0deg)}
+  100%{transform:translateY(110vh) rotate(520deg)}
+}
+
+.profileStatsGrid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:8px;
+  margin-top:10px;
+}
+
+.profileStat{
+  border:1px solid rgba(163,255,18,.14);
+  background:rgba(163,255,18,.045);
+  border-radius:16px;
+  padding:10px;
+}
+
+.profileStat strong{
+  display:block;
+  color:#fff;
+  font-size:20px;
+}
+
+.profileStat span{
+  color:#9ca88c;
+  font-size:11px;
+  font-weight:800;
+}
+
+#page-profile,
+#page-battles,
+#page-rankings{
+  height:auto!important;
+  min-height:0!important;
+  padding-bottom:360px!important;
+  overflow-y:auto!important;
+  -webkit-overflow-scrolling:touch!important;
+}
+
+#page-profile .settingsPanel{
+  margin-bottom:180px!important;
+}
+
+.app[data-active-page="profile"] .floatingDropBtn,
+.app[data-active-page="rankings"] .floatingDropBtn{
+  display:none!important;
+}
+
+@media(max-width:720px){
+  .playerSlots,
+  .battleVoteGrid,
+  .profileStatsGrid{
+    grid-template-columns:1fr;
+  }
+
+  #page-profile,
+  #page-battles,
+  #page-rankings{
+    padding-bottom:420px!important;
+  }
+
+  #page-profile .settingsPanel{
+    margin-bottom:220px!important;
+  }
+}
+
+
+/* V35 battle autocleanup */
+.battleTimerPill{
+  min-width:54px;
+  text-align:center;
+}
+
+.battleExpiredNote{
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.045);
+  color:#9ca88c;
+  border-radius:18px;
+  padding:12px;
+  font-size:13px;
+}
+
+
+/* V35 battle autocleanup */
+.battleTimerPill{
+  min-width:54px;
+  text-align:center;
+}
+
+.battleExpiredNote{
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.045);
+  color:#9ca88c;
+  border-radius:18px;
+  padding:12px;
+  font-size:13px;
+}
+
+
+/* =========================================================
+   V37 FINAL POLISH — app-wide stable mobile UX layer
+   ========================================================= */
+:root{
+  --v37-green:#a3ff12;
+  --v37-green-soft:rgba(163,255,18,.12);
+  --v37-green-line:rgba(163,255,18,.26);
+  --v37-bg:#000;
+  --v37-card:rgba(255,255,255,.055);
+  --v37-card-2:rgba(255,255,255,.035);
+  --v37-line:rgba(255,255,255,.10);
+  --v37-muted:#9ca88c;
+  --v37-safe-bottom:env(safe-area-inset-bottom,0px);
+  --v37-bottom-space:calc(164px + var(--v37-safe-bottom));
+}
+
+html,body{
+  width:100%;
+  min-height:100%;
+  background:#000!important;
+  overflow:hidden;
+  overscroll-behavior:none;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+button,input{
+  font:inherit;
+  -webkit-tap-highlight-color:transparent;
+}
+
+button{
+  cursor:pointer;
+}
+
+.hidden{
+  display:none!important;
+}
+
+/* LANDING */
+.landing{
+  min-height:100svh!important;
+  height:100svh!important;
+  overflow-y:auto!important;
+  -webkit-overflow-scrolling:touch!important;
+  padding-bottom:calc(42px + var(--v37-safe-bottom))!important;
+}
+
+.landing .nav{
+  flex-shrink:0;
+}
+
+.hero{
+  min-height:auto!important;
+  padding-top:42px!important;
+  padding-bottom:56px!important;
+}
+
+.planetPill{
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+
+.homeSteps{
+  width:min(760px,100%)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+
+.homeRules{
+  width:min(760px,100%)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+
+.landing .username{
+  width:min(520px,100%)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+
+.landingCta{
+  width:min(520px,100%)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+
+/* APP SHELL */
+.app{
+  height:100svh!important;
+  max-height:100svh!important;
+  overflow:hidden!important;
+  display:flex!important;
+  flex-direction:column!important;
+  background:
+    radial-gradient(circle at 50% -10%, rgba(163,255,18,.14), transparent 36%),
+    radial-gradient(circle at 100% 0%, rgba(255,255,255,.08), transparent 28%),
+    linear-gradient(180deg,#050605 0%,#000 100%)!important;
+}
+
+.header.appTopbar,
+.appleTopbar{
+  flex:0 0 auto!important;
+  min-height:58px!important;
+  height:58px!important;
+  padding:8px 12px!important;
+  background:rgba(0,0,0,.68)!important;
+  border-bottom:1px solid rgba(255,255,255,.08)!important;
+  backdrop-filter:blur(24px)!important;
+  -webkit-backdrop-filter:blur(24px)!important;
+  box-shadow:none!important;
+}
+
+.appTopbar .brand{
+  width:100%!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:10px!important;
+}
+
+.appTopbar .brand > div:last-child{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-end!important;
+  text-align:right!important;
+  min-width:0!important;
+}
+
+.appTopbar .brand small{
+  max-width:230px!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  color:#d9f99d!important;
+}
+
+.topbarToggle{
+  display:none!important;
+}
+
+/* PAGES */
+.appPage{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  height:auto!important;
+  width:min(1180px,100%)!important;
+  margin:0 auto!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  -webkit-overflow-scrolling:touch!important;
+  padding:12px 10px var(--v37-bottom-space)!important;
+  scroll-padding-bottom:var(--v37-bottom-space)!important;
+}
+
+.appPage.active{
+  display:flex!important;
+  flex-direction:column!important;
+  gap:12px!important;
+}
+
+.pageHero{
+  flex:0 0 auto!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:14px!important;
+  padding:14px!important;
+  border-radius:24px!important;
+  border:1px solid rgba(255,255,255,.09)!important;
+  background:rgba(255,255,255,.055)!important;
+  box-shadow:0 16px 60px rgba(0,0,0,.22)!important;
+  backdrop-filter:blur(22px)!important;
+  -webkit-backdrop-filter:blur(22px)!important;
+}
+
+.pageHero h1{
+  margin:0!important;
+  font-size:25px!important;
+  line-height:1!important;
+  letter-spacing:-.07em!important;
+}
+
+.pageHero p{
+  margin:5px 0 0!important;
+  font-size:13px!important;
+  color:var(--v37-muted)!important;
+}
+
+.pageHero .tag{
+  flex:0 0 auto!important;
+  background:var(--v37-green-soft)!important;
+  color:#d9f99d!important;
+  border:1px solid var(--v37-green-line)!important;
+}
+
+/* ROOM = FEED + CHAT */
+#page-room.active{
+  display:flex!important;
+  flex-direction:column!important;
+  gap:12px!important;
+}
+
+.roomLayout{
+  flex:0 0 auto!important;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:12px!important;
+  min-height:auto!important;
+  overflow:visible!important;
+}
+
+.roomFeed,.roomChat,.panel{
+  border:1px solid var(--v37-line)!important;
+  background:var(--v37-card)!important;
+  border-radius:28px!important;
+  box-shadow:0 18px 65px rgba(0,0,0,.24)!important;
+  backdrop-filter:blur(22px)!important;
+  -webkit-backdrop-filter:blur(22px)!important;
+}
+
+.roomFeed{
+  height:min(650px,62svh)!important;
+  min-height:500px!important;
+  max-height:650px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  overflow:hidden!important;
+  padding:12px!important;
+}
+
+.sectionHeader{
+  flex:0 0 auto!important;
+  padding:4px 4px 12px!important;
+}
+
+.sectionHeader h2{
+  margin:0!important;
+  font-size:20px!important;
+  letter-spacing:-.045em!important;
+}
+
+.sectionHeader p{
+  margin:4px 0 0!important;
+  color:var(--v37-muted)!important;
+  font-size:13px!important;
+}
+
+.roomFeed .feedScroll{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  height:auto!important;
+  max-height:none!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  -webkit-overflow-scrolling:touch!important;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:12px!important;
+  padding:0 2px 14px 0!important;
+}
+
+.roomChat{
+  height:420px!important;
+  min-height:420px!important;
+  max-height:420px!important;
+  flex:0 0 auto!important;
+  overflow:hidden!important;
+  display:flex!important;
+  flex-direction:column!important;
+}
+
+.compactChatHeader{
+  flex:0 0 auto!important;
+  padding:14px 16px!important;
+  border-bottom:1px solid rgba(255,255,255,.08)!important;
+}
+
+.msgs{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  -webkit-overflow-scrolling:touch!important;
+  padding:12px!important;
+}
+
+.bubble{
+  word-break:break-word!important;
+}
+
+.chatInput{
+  flex:0 0 auto!important;
+  padding:12px!important;
+  background:rgba(0,0,0,.22)!important;
+}
+
+.chatInput input{
+  min-width:0!important;
+  min-height:48px!important;
+}
+
+.chatInput button{
+  flex:0 0 48px!important;
+  height:48px!important;
+}
+
+/* FEED CARD */
+.post.fartCard{
+  position:relative!important;
+  flex:0 0 auto!important;
+  min-height:auto!important;
+  padding:15px!important;
+  border-radius:24px!important;
+  overflow:visible!important;
+  border:1px solid rgba(255,255,255,.08)!important;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(163,255,18,.08), transparent 30%),
+    rgba(0,0,0,.36)!important;
+  box-shadow:none!important;
+}
+
+.post.fartCard:before{
+  display:none!important;
+}
+
+.reportBtn{
+  position:absolute!important;
+  top:11px!important;
+  right:11px!important;
+  left:auto!important;
+  width:30px!important;
+  height:30px!important;
+  min-width:30px!important;
+  min-height:30px!important;
+  max-height:30px!important;
+  padding:0!important;
+  border-radius:999px!important;
+  font-size:0!important;
+  line-height:1!important;
+  display:grid!important;
+  place-items:center!important;
+  z-index:5!important;
+  opacity:.92!important;
+}
+
+.reportBtn::before{
+  content:"⚠️";
+  font-size:14px;
+}
+
+.reportBtn.reported::before{
+  content:"✓";
+  font-size:14px;
+}
+
+.fartHeader{
+  display:flex!important;
+  justify-content:space-between!important;
+  align-items:flex-start!important;
+  gap:12px!important;
+  padding-left:0!important;
+  padding-right:42px!important;
+  margin-bottom:12px!important;
+}
+
+.fartHeader > div{
+  min-width:0!important;
+}
+
+.fartHeader h3{
+  margin:5px 0 0!important;
+  font-size:21px!important;
+  line-height:1.08!important;
+  white-space:normal!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+}
+
+.durationBadge{
+  flex:0 0 auto!important;
+  margin-right:0!important;
+  min-width:46px!important;
+  text-align:center!important;
+  white-space:nowrap!important;
+  transform:translateY(1px)!important;
+  padding:7px 9px!important;
+}
+
+.fartPlayer{
+  margin:12px 0!important;
+  border-radius:22px!important;
+}
+
+.customPlayer{
+  min-width:0!important;
+}
+
+.waveform{
+  min-width:0!important;
+}
+
+.compactReactions{
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:8px!important;
+  margin-top:0!important;
+}
+
+.compactReactions button{
+  min-width:0!important;
+  min-height:42px!important;
+  border-radius:17px!important;
+  padding:0 8px!important;
+  font-size:13px!important;
+  overflow:hidden!important;
+  white-space:nowrap!important;
+}
+
+/* BANNERS */
+.newDropBanner,.battleTicker{
+  flex:0 0 auto!important;
+}
+
+.battleTicker{
+  border-radius:22px!important;
+  padding:12px 14px!important;
+  background:linear-gradient(135deg,rgba(163,255,18,.16),rgba(163,255,18,.055))!important;
+  border:1px solid rgba(163,255,18,.30)!important;
+  box-shadow:0 14px 46px rgba(163,255,18,.12)!important;
+  white-space:normal!important;
+  overflow:visible!important;
+}
+
+.battleTicker.hidden{
+  display:none!important;
+}
+
+.battleTicker span{
+  padding-left:0!important;
+  animation:none!important;
+  transform:none!important;
+  width:100%!important;
+}
+
+.battleTickerContent{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:12px!important;
+  width:100%!important;
+}
+
+.battleTickerMain{
+  display:flex!important;
+  flex-direction:column!important;
+  gap:2px!important;
+  min-width:0!important;
+}
+
+.battleTickerMain strong{
+  color:#ecfccb!important;
+  font-size:13px!important;
+  line-height:1.2!important;
+}
+
+.battleTickerMain small{
+  color:var(--v37-muted)!important;
+  font-size:11px!important;
+  font-weight:800!important;
+}
+
+.battleTimerPill{
+  flex:0 0 auto!important;
+  background:var(--v37-green)!important;
+  color:#000!important;
+  border-radius:999px!important;
+  padding:8px 10px!important;
+  min-width:56px!important;
+  text-align:center!important;
+  font-weight:950!important;
+  font-size:12px!important;
+}
+
+/* SECONDARY PAGES SCROLL SAFETY */
+#page-profile,#page-battles,#page-rankings{
+  padding-bottom:calc(320px + var(--v37-safe-bottom))!important;
+}
+
+#page-profile .settingsPanel,
+#page-battles .battlePanel,
+#page-rankings .wallPanel{
+  margin-bottom:190px!important;
+}
+
+.app[data-active-page="profile"] .floatingDropBtn,
+.app[data-active-page="rankings"] .floatingDropBtn{
+  display:none!important;
+}
+
+/* BATTLE UI */
+.battleGameCard{
+  border:1px solid rgba(163,255,18,.16)!important;
+  background:rgba(163,255,18,.045)!important;
+  border-radius:24px!important;
+  padding:16px!important;
+  display:grid!important;
+  gap:14px!important;
+}
+
+.battleGameCard h3{
+  margin:0!important;
+  font-size:19px!important;
+  letter-spacing:-.04em!important;
+}
+
+.battleGameCard p{
+  margin:0!important;
+  color:var(--v37-muted)!important;
+  line-height:1.35!important;
+}
+
+.battleStep{
+  display:flex!important;
+  align-items:center!important;
+  gap:9px!important;
+  color:#d9f99d!important;
+  font-size:13px!important;
+  font-weight:900!important;
+}
+
+.battleStep b{
+  width:24px!important;
+  height:24px!important;
+  display:grid!important;
+  place-items:center!important;
+  border-radius:999px!important;
+  background:var(--v37-green)!important;
+  color:#000!important;
+  font-size:12px!important;
+}
+
+.playerSlots,.battleVoteGrid{
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:10px!important;
+}
+
+.playerSlot{
+  border:1px solid rgba(255,255,255,.09)!important;
+  background:rgba(0,0,0,.25)!important;
+  border-radius:18px!important;
+  padding:12px!important;
+}
+
+.playerSlot strong{
+  display:block!important;
+  color:#fff!important;
+  margin-bottom:4px!important;
+}
+
+.playerSlot span{
+  color:var(--v37-muted)!important;
+  font-size:13px!important;
+}
+
+.battleChoiceList{
+  display:grid!important;
+  gap:9px!important;
+}
+
+.battleActionBtn,.battleChoiceList button,.battleVoteGrid button{
+  min-height:48px!important;
+  border-radius:17px!important;
+  border:1px solid rgba(163,255,18,.18)!important;
+  background:rgba(163,255,18,.075)!important;
+  color:#fff!important;
+  font-weight:850!important;
+  text-align:left!important;
+  padding:0 13px!important;
+}
+
+.battleActionBtn{
+  text-align:center!important;
+  background:var(--v37-green)!important;
+  color:#000!important;
+}
+
+.secondaryAction{
+  background:rgba(255,255,255,.07)!important;
+  color:#fff!important;
+}
+
+.battleVoteGrid button{
+  padding:13px!important;
+}
+
+.battleVoteGrid span{
+  display:block!important;
+  color:var(--v37-muted)!important;
+  font-size:12px!important;
+  margin-bottom:8px!important;
+}
+
+.battleVoteGrid strong{
+  font-size:28px!important;
+  color:#d9f99d!important;
+}
+
+.battleDropPreview{
+  display:grid!important;
+  gap:8px!important;
+}
+
+.battleDropPreview audio{
+  width:100%!important;
+}
+
+.battleWinnerBox{
+  border:1px solid rgba(163,255,18,.22)!important;
+  background:rgba(163,255,18,.08)!important;
+  border-radius:20px!important;
+  padding:14px!important;
+  color:#d9f99d!important;
+  display:grid!important;
+  gap:6px!important;
+}
+
+/* PROFILE */
+.profileStatsGrid{
+  display:grid!important;
+  grid-template-columns:1fr 1fr 1fr!important;
+  gap:8px!important;
+  margin-top:10px!important;
+}
+
+.profileStat{
+  border:1px solid rgba(163,255,18,.14)!important;
+  background:rgba(163,255,18,.045)!important;
+  border-radius:16px!important;
+  padding:10px!important;
+}
+
+.profileStat strong{
+  display:block!important;
+  color:#fff!important;
+  font-size:20px!important;
+}
+
+.profileStat span{
+  color:var(--v37-muted)!important;
+  font-size:11px!important;
+  font-weight:800!important;
+}
+
+/* NAV + CTA */
+.floatingDropBtn{
+  position:fixed!important;
+  left:50%!important;
+  bottom:calc(76px + var(--v37-safe-bottom))!important;
+  transform:translateX(-50%)!important;
+  width:min(340px,calc(100% - 38px))!important;
+  min-height:58px!important;
+  z-index:88!important;
+  border-radius:999px!important;
+}
+
+.bottomNav{
+  position:fixed!important;
+  left:10px!important;
+  right:10px!important;
+  bottom:calc(8px + var(--v37-safe-bottom))!important;
+  z-index:86!important;
+  grid-template-columns:repeat(4,1fr)!important;
+}
+
+/* MODALS */
+.overlay{
+  padding:12px!important;
+  align-items:end!important;
+}
+
+.recorderModal{
+  width:100%!important;
+  max-height:92svh!important;
+  overflow-y:auto!important;
+  -webkit-overflow-scrolling:touch!important;
+  padding-bottom:calc(22px + var(--v37-safe-bottom))!important;
+}
+
+/* WINNER ANIMATION */
+.winnerBurst{
+  position:fixed!important;
+  inset:0!important;
+  z-index:130!important;
+  pointer-events:none!important;
+  display:grid!important;
+  place-items:center!important;
+  background:radial-gradient(circle at 50% 50%, rgba(163,255,18,.18), transparent 42%)!important;
+  animation:winnerFade 2.8s ease forwards!important;
+}
+
+.winnerCard{
+  border:1px solid rgba(163,255,18,.32)!important;
+  background:rgba(0,0,0,.82)!important;
+  backdrop-filter:blur(22px)!important;
+  -webkit-backdrop-filter:blur(22px)!important;
+  border-radius:32px!important;
+  padding:26px!important;
+  width:min(340px,calc(100% - 44px))!important;
+  text-align:center!important;
+  box-shadow:0 30px 90px rgba(0,0,0,.45),0 0 60px rgba(163,255,18,.20)!important;
+  animation:winnerPop .7s cubic-bezier(.2,1.4,.3,1) forwards!important;
+}
+
+.winnerCard h2{
+  margin:0!important;
+  font-size:28px!important;
+  letter-spacing:-.06em!important;
+}
+
+.winnerCard p{
+  margin:10px 0 0!important;
+  color:#d9f99d!important;
+  font-weight:900!important;
+}
+
+.confetti{
+  position:absolute!important;
+  inset:0!important;
+  overflow:hidden!important;
+}
+
+.confetti i{
+  position:absolute!important;
+  top:-20px!important;
+  width:8px!important;
+  height:14px!important;
+  background:var(--v37-green)!important;
+  border-radius:2px!important;
+  animation:confettiFall 2.3s ease-in forwards!important;
+  opacity:.9!important;
+}
+
+@keyframes winnerFade{
+  0%{opacity:0}
+  12%{opacity:1}
+  82%{opacity:1}
+  100%{opacity:0}
+}
+
+@keyframes winnerPop{
+  0%{transform:scale(.84) translateY(18px);opacity:0}
+  100%{transform:scale(1) translateY(0);opacity:1}
+}
+
+@keyframes confettiFall{
+  0%{transform:translateY(0) rotate(0deg)}
+  100%{transform:translateY(110vh) rotate(520deg)}
+}
+
+@media(min-width:900px){
+  #page-room{
+    width:min(1100px,100%)!important;
+  }
+
+  .roomLayout{
+    display:grid!important;
+    grid-template-columns:minmax(0,1.15fr) minmax(330px,.85fr)!important;
+    align-items:start!important;
+  }
+
+  .roomFeed{
+    height:calc(100svh - 230px)!important;
+    max-height:720px!important;
+  }
+
+  .roomChat{
+    height:calc(100svh - 230px)!important;
+    max-height:720px!important;
+  }
+}
+
+@media(max-width:720px){
+  .pageHero h1{
+    font-size:24px!important;
+  }
+
+  .roomFeed{
+    height:60svh!important;
+    min-height:500px!important;
+  }
+
+  .roomChat{
+    height:390px!important;
+    min-height:390px!important;
+  }
+
+  .playerSlots,.battleVoteGrid,.profileStatsGrid{
+    grid-template-columns:1fr!important;
+  }
+
+  .compactReactions button{
+    font-size:12px!important;
+    min-height:43px!important;
+  }
+
+  #page-profile,#page-battles,#page-rankings{
+    padding-bottom:calc(350px + var(--v37-safe-bottom))!important;
+  }
+}
+
+@media(max-width:390px){
+  .roomFeed{
+    height:58svh!important;
+    min-height:470px!important;
+  }
+
+  .durationBadge{
+    font-size:11px!important;
+    min-width:42px!important;
+    padding:6px 8px!important;
+  }
+
+  .reportBtn{
+    width:28px!important;
+    height:28px!important;
+    min-width:28px!important;
+    min-height:28px!important;
+  }
+
+  .fartHeader{
+    padding-right:38px!important;
+  }
+
+  .compactReactions button{
+    font-size:11px!important;
+  }
+}
+
+
+/* V38 publish-ready polish */
+.globalStatusBar{
+  position:fixed;
+  top:calc(8px + env(safe-area-inset-top,0px));
+  left:50%;
+  transform:translateX(-50%);
+  z-index:150;
+  width:min(520px,calc(100% - 24px));
+  border:1px solid rgba(163,255,18,.24);
+  background:rgba(0,0,0,.78);
+  color:#eaffc4;
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-radius:999px;
+  padding:10px 14px;
+  font-size:13px;
+  font-weight:850;
+  text-align:center;
+  box-shadow:0 18px 60px rgba(0,0,0,.35),0 0 30px rgba(163,255,18,.10);
+}
+
+.rulesModal{
+  width:min(560px,100%)!important;
+}
+
+.rulesList{
+  display:grid;
+  gap:10px;
+  margin-top:16px;
+}
+
+.rulesList div{
+  border:1px solid rgba(163,255,18,.14);
+  background:rgba(163,255,18,.045);
+  border-radius:18px;
+  padding:13px;
+  display:grid;
+  gap:4px;
+}
+
+.rulesList strong{
+  color:#fff;
+}
+
+.rulesList span{
+  color:#9ca88c;
+  font-size:13px;
+  line-height:1.35;
+}
+
+.dangerSettings{
+  border-color:rgba(239,68,68,.22)!important;
+  color:#fecaca!important;
+  background:rgba(127,29,29,.18)!important;
+}
+
+.emptyState,.loadingState{
+  min-height:160px!important;
+  display:grid!important;
+  place-items:center!important;
+  text-align:center!important;
+}
+
+.feedScroll:empty::before{
+  content:"No drops yet. Be the first.";
+  min-height:150px;
+  display:grid;
+  place-items:center;
+  color:#9ca88c;
+  border:1px dashed rgba(163,255,18,.18);
+  border-radius:22px;
+  background:rgba(163,255,18,.035);
+}
+
+.msgs:empty::before{
+  content:"No chat yet. Say something.";
+  display:grid;
+  place-items:center;
+  min-height:120px;
+  color:#9ca88c;
+  border:1px dashed rgba(255,255,255,.10);
+  border-radius:18px;
+}
+
+.battleActionBtn:disabled,
+.battleChoiceList button:disabled{
+  opacity:.55!important;
+  cursor:not-allowed!important;
+}
+
+button:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
+
+input::placeholder{
+  color:rgba(255,255,255,.38);
+}
+
+.recorderModal audio,
+.battleDropPreview audio{
+  border-radius:16px;
+  background:#000;
+}
+
+.previewBlock audio{
+  width:100%;
+}
+
+@media(max-width:720px){
+  .globalStatusBar{
+    top:calc(8px + env(safe-area-inset-top,0px));
+    width:calc(100% - 20px);
+    font-size:12px;
+  }
+
+  .rulesModal{
+    max-height:88svh!important;
+    overflow-y:auto!important;
+  }
+}
+
+
+/* V39 CRITICAL FIXES */
+
+/* Global modal lock: when modal open, floating CTA and bottom nav cannot block interactions */
+body.modal-open .floatingDropBtn,
+body.modal-open .bottomNav,
+body.modal-open .adminFloating{
+  display:none!important;
+}
+
+/* Overlay must be above everything and scrollable */
+.overlay{
+  position:fixed!important;
+  inset:0!important;
+  z-index:200!important;
+  display:flex!important;
+  align-items:flex-end!important;
+  justify-content:center!important;
+  padding:12px!important;
+  padding-bottom:calc(12px + env(safe-area-inset-bottom,0px))!important;
+  background:rgba(0,0,0,.58)!important;
+  backdrop-filter:blur(14px)!important;
+  -webkit-backdrop-filter:blur(14px)!important;
+  overflow-y:auto!important;
+  -webkit-overflow-scrolling:touch!important;
+}
+
+.overlay.hidden{
+  display:none!important;
+}
+
+/* Recorder must fit iPhone and not be covered by Drop CTA */
+.recorderModal,
+.modal{
+  position:relative!important;
+  z-index:205!important;
+  width:min(680px,100%)!important;
+  max-height:calc(100svh - 36px - env(safe-area-inset-bottom,0px))!important;
+  overflow-y:auto!important;
+  -webkit-overflow-scrolling:touch!important;
+  padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))!important;
+}
+
+/* Rules modal: can scroll all the way down */
+.rulesModal{
+  width:min(620px,100%)!important;
+  max-height:calc(100svh - 36px - env(safe-area-inset-bottom,0px))!important;
+  overflow-y:auto!important;
+  padding-bottom:calc(36px + env(safe-area-inset-bottom,0px))!important;
+}
+
+.rulesList{
+  padding-bottom:calc(22px + env(safe-area-inset-bottom,0px))!important;
+}
+
+/* When in Battles, keep Drop button hidden so it cannot block Search / Join / Choose */
+.app[data-active-page="battles"] .floatingDropBtn,
+.app[data-active-page="profile"] .floatingDropBtn,
+.app[data-active-page="rankings"] .floatingDropBtn{
+  display:none!important;
+}
+
+/* Battle panel and profile can scroll to bottom */
+#page-battles,
+#page-profile,
+#page-rankings{
+  padding-bottom:calc(380px + env(safe-area-inset-bottom,0px))!important;
+}
+
+#page-battles .battlePanel,
+#page-profile .settingsPanel,
+#page-rankings .wallPanel{
+  margin-bottom:220px!important;
+}
+
+/* Battle primary button should be visibly tappable */
+.battleStartBtn,
+#startBattleBtn{
+  width:100%!important;
+  min-height:56px!important;
+  border-radius:20px!important;
+  font-size:15px!important;
+  font-weight:950!important;
+  position:relative!important;
+  z-index:3!important;
+}
+
+/* Avoid any accidental transparent overlay preventing button taps */
+.battlePanel,
+.battleBox,
+.battleGameCard{
+  pointer-events:auto!important;
+}
+
+/* Recorder: main record control clearer and not confused with publish button */
+#recordBtn,
+.holdCircle,
+.recordCircle{
+  touch-action:manipulation!important;
+  -webkit-user-select:none!important;
+  user-select:none!important;
+}
+
+/* Publish button inside recorder should not be confused with floating CTA */
+#publishBtn{
+  position:relative!important;
+  z-index:3!important;
+}
+
+/* Small iPhones */
+@media(max-width:430px){
+  .recorderModal,
+  .modal,
+  .rulesModal{
+    max-height:calc(100svh - 28px - env(safe-area-inset-bottom,0px))!important;
+    border-radius:28px!important;
+  }
+
+  .overlay{
+    padding:8px!important;
+    padding-bottom:calc(8px + env(safe-area-inset-bottom,0px))!important;
+  }
+}
+
+
+/* V40 landing + CTA visibility fix */
+
+/* Default: never show floating app CTA unless the app has entered state */
+.floatingDropBtn{
+  display:none!important;
+}
+
+/* Show only when inside the app, after entering the room, and not on secondary pages */
+body.app-entered .app:not(.hidden)[data-active-page="room"] .floatingDropBtn{
+  display:block!important;
+}
+
+/* Still hide it on modals and non-room pages */
+body.modal-open .floatingDropBtn,
+body:not(.app-entered) .floatingDropBtn,
+.app.hidden .floatingDropBtn,
+.app[data-active-page="battles"] .floatingDropBtn,
+.app[data-active-page="profile"] .floatingDropBtn,
+.app[data-active-page="rankings"] .floatingDropBtn{
+  display:none!important;
+}
+
+/* Landing must remain scrollable and never be blocked by app CTA */
+.landing:not(.hidden){
+  position:relative!important;
+  z-index:1!important;
+}
+
+.app.hidden{
+  display:none!important;
+}
+
+
+/* V41 LANDING CLICK FIX */
+
+/* Default before entering app: app UI must not capture any clicks */
+body:not(.app-entered) .app,
+body:not(.app-entered) .floatingDropBtn,
+body:not(.app-entered) .bottomNav,
+body:not(.app-entered) .adminFloating,
+body:not(.app-entered) .globalStatusBar{
+  pointer-events:none!important;
+}
+
+/* If app is hidden, no layout/click capture at all */
+.app.hidden,
+.app.hidden *,
+body:not(.app-entered) .app,
+body:not(.app-entered) .app *{
+  pointer-events:none!important;
+}
+
+/* Landing must always be clickable when visible */
+.landing:not(.hidden),
+.landing:not(.hidden) *{
+  pointer-events:auto!important;
+}
+
+.landing:not(.hidden){
+  position:relative!important;
+  z-index:500!important;
+  isolation:isolate!important;
+}
+
+/* Floating CTA and nav cannot show/capture before app entry */
+body:not(.app-entered) .floatingDropBtn,
+body:not(.app-entered) .bottomNav{
+  display:none!important;
+}
+
+/* Hidden overlays must be completely inert */
+.overlay.hidden{
+  display:none!important;
+  pointer-events:none!important;
+  visibility:hidden!important;
+}
+
+.overlay.hidden *{
+  pointer-events:none!important;
+}
+
+/* Only visible overlays can receive clicks */
+.overlay:not(.hidden){
+  pointer-events:auto!important;
+  visibility:visible!important;
+}
+
+/* Safety: landing buttons above any accidental background layer */
+#enterBtn,
+#enableMicBtn,
+#saveUsernameBtn,
+#usernameInput,
+.landing button,
+.landing input{
+  position:relative!important;
+  z-index:510!important;
+  pointer-events:auto!important;
+}
+
+/* If a modal is open, landing should not be visible anyway, but keep behavior clean */
+body.modal-open .landing:not(.hidden){
+  pointer-events:none!important;
+}
+
+
+/* V42 battle audio ownership clarity */
+.battleDropPreview{
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:12px!important;
+  margin:8px 0!important;
+}
+
+.battleAudioCard{
+  border:1px solid rgba(163,255,18,.16);
+  background:rgba(0,0,0,.28);
+  border-radius:22px;
+  padding:12px;
+  display:grid;
+  gap:10px;
+  min-width:0;
+}
+
+.battleAudioHeader{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+}
+
+.battleAudioHeader strong{
+  color:#fff;
+  font-size:15px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.battleAudioHeader span{
+  flex:0 0 auto;
+  border:1px solid rgba(163,255,18,.18);
+  background:rgba(163,255,18,.08);
+  color:#d9f99d;
+  border-radius:999px;
+  padding:5px 8px;
+  font-size:11px;
+  font-weight:900;
+}
+
+.battleAudioCard audio{
+  width:100%;
+  height:42px;
+  border-radius:999px;
+}
+
+.battleVoteGrid{
+  margin-top:4px!important;
+}
+
+.battleVoteGrid button{
+  display:grid!important;
+  gap:5px!important;
+}
+
+.battleVoteGrid button span{
+  font-size:13px!important;
+  color:#fff!important;
+  font-weight:900!important;
+  margin:0!important;
+}
+
+.battleVoteGrid button em{
+  font-style:normal;
+  color:#9ca88c;
+  font-size:11px;
+  font-weight:800;
+}
+
+.battleStartBtn.inBattle{
+  display:none!important;
+}
+
+@media(max-width:720px){
+  .battleDropPreview{
+    grid-template-columns:1fr!important;
+  }
+
+  .battleAudioCard{
+    border-radius:20px;
+  }
+}
+
+
+/* V43 battle reset + leave controls */
+.battleControlRow{
+  display:grid;
+  gap:9px;
+}
+
+.battleCancelBtn{
+  min-height:46px!important;
+  border-radius:17px!important;
+  border:1px solid rgba(239,68,68,.28)!important;
+  background:rgba(127,29,29,.18)!important;
+  color:#fecaca!important;
+  font-weight:900!important;
+  text-align:center!important;
+}
+
+.battleStartBtn.inBattle{
+  display:none!important;
+}
+
+.battleStartBtn:not(.inBattle){
+  display:block!important;
+}
+
+
+/* V44 battle banner join button */
+.battleTickerJoinBtn{
+  flex:0 0 auto;
+  border:0;
+  background:#a3ff12;
+  color:#000;
+  border-radius:999px;
+  padding:9px 13px;
+  font-size:12px;
+  font-weight:950;
+  box-shadow:0 0 24px rgba(163,255,18,.28);
+}
+
+.battleTickerJoinBtn:active{
+  transform:scale(.97);
+}
+
+@media(max-width:430px){
+  .battleTickerContent{
+    gap:8px!important;
+  }
+
+  .battleTickerJoinBtn{
+    padding:8px 10px;
+    font-size:11px;
+  }
+}
+
+
+/* V45 report polish + admin panel */
+
+/* Make report a clean floating mini icon */
+.reportBtn{
+  position:absolute!important;
+  top:12px!important;
+  right:12px!important;
+  left:auto!important;
+  width:32px!important;
+  height:32px!important;
+  min-width:32px!important;
+  min-height:32px!important;
+  max-width:32px!important;
+  max-height:32px!important;
+  padding:0!important;
+  border-radius:999px!important;
+  border:1px solid rgba(255,255,255,.10)!important;
+  background:rgba(0,0,0,.34)!important;
+  backdrop-filter:blur(12px)!important;
+  -webkit-backdrop-filter:blur(12px)!important;
+  color:#9ca88c!important;
+  display:grid!important;
+  place-items:center!important;
+  z-index:8!important;
+  opacity:.72!important;
+  font-size:0!important;
+  overflow:hidden!important;
+  box-shadow:none!important;
+}
+
+.reportBtn::before{
+  content:"!";
+  width:18px;
+  height:18px;
+  display:grid;
+  place-items:center;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.18);
+  color:#d9f99d;
+  font-size:11px;
+  font-weight:950;
+  line-height:1;
+}
+
+.reportBtn:hover,
+.reportBtn:active{
+  opacity:1!important;
+  background:rgba(163,255,18,.10)!important;
+  border-color:rgba(163,255,18,.22)!important;
+}
+
+.reportBtn.reported{
+  opacity:1!important;
+  border-color:rgba(163,255,18,.30)!important;
+  background:rgba(163,255,18,.12)!important;
+}
+
+.reportBtn.reported::before{
+  content:"✓";
+  color:#000;
+  background:#a3ff12;
+  border-color:#a3ff12;
+}
+
+/* Remove report from reaction grid layout if browser still treats it there */
+.compactReactions .reportBtn{
+  position:absolute!important;
+  width:32px!important;
+}
+
+/* Extra right breathing room in card header */
+.fartHeader{
+  padding-right:46px!important;
+}
+
+/* Admin nav appears only in admin mode */
+.adminNav.hidden{
+  display:none!important;
+}
+
+body.admin-active .adminNav{
+  display:flex!important;
+}
+
+body.admin-active .bottomNav{
+  grid-template-columns:repeat(5,1fr)!important;
+}
+
+/* Admin page */
+#page-admin{
+  padding-bottom:calc(330px + env(safe-area-inset-bottom,0px))!important;
+}
+
+.adminPanel{
+  display:grid;
+  gap:12px;
+}
+
+.adminStatsGrid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+
+.adminStat{
+  border:1px solid rgba(163,255,18,.14);
+  background:rgba(163,255,18,.045);
+  border-radius:18px;
+  padding:12px;
+}
+
+.adminStat strong{
+  display:block;
+  color:#fff;
+  font-size:22px;
+}
+
+.adminStat span{
+  color:#9ca88c;
+  font-size:12px;
+  font-weight:850;
+}
+
+.adminList{
+  display:grid;
+  gap:10px;
+}
+
+.adminItem{
+  border:1px solid rgba(255,255,255,.09);
+  background:rgba(0,0,0,.24);
+  border-radius:18px;
+  padding:12px;
+  display:grid;
+  gap:10px;
+}
+
+.adminItemTop{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:flex-start;
+}
+
+.adminItemTop strong{
+  color:#fff;
+  word-break:break-word;
+}
+
+.adminItemTop span{
+  color:#9ca88c;
+  font-size:12px;
+  white-space:nowrap;
+}
+
+.adminItem p{
+  margin:0;
+  color:#9ca88c;
+  font-size:13px;
+}
+
+.adminActions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+
+.adminActions button{
+  min-height:40px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.055);
+  color:#fff;
+  font-weight:850;
+}
+
+.adminActions .danger{
+  border-color:rgba(239,68,68,.30);
+  background:rgba(127,29,29,.22);
+  color:#fecaca;
+}
+
+.adminActions .good{
+  border-color:rgba(163,255,18,.25);
+  background:rgba(163,255,18,.10);
+  color:#d9f99d;
+}
+
+@media(max-width:720px){
+  .adminStatsGrid{
+    grid-template-columns:1fr;
+  }
+
+  .adminActions{
+    grid-template-columns:1fr;
+  }
+
+  body.admin-active .bottomNav button span{
+    font-size:9px!important;
+  }
+}
+
+
+/* V46 visible admin access */
+#adminLoginBtn{
+  border-color:rgba(163,255,18,.18)!important;
+  background:rgba(163,255,18,.06)!important;
+  color:#d9f99d!important;
+}
+
+body.admin-active #adminLoginBtn{
+  display:none!important;
+}
+
+body.admin-active .adminNav{
+  display:flex!important;
+}
+
+.settingsPanel .adminNav{
+  width:100%!important;
+  min-height:52px!important;
+  justify-content:flex-start!important;
+  align-items:center!important;
+}
+
+
+/* V47 admin visibility + room stats + no system chat */
+#adminLoginBtn{
+  display:flex!important;
+  border-color:rgba(163,255,18,.22)!important;
+  background:rgba(163,255,18,.07)!important;
+  color:#d9f99d!important;
+}
+
+body.admin-active #adminLoginBtn{
+  display:none!important;
+}
+
+body.admin-active .adminNav{
+  display:flex!important;
+}
+
+.settingsPanel .adminNav{
+  width:100%!important;
+  min-height:52px!important;
+  justify-content:flex-start!important;
+  align-items:center!important;
+}
+
+#roomCount{
+  white-space:nowrap!important;
+  min-width:max-content!important;
+  font-size:12px!important;
+  padding:8px 10px!important;
+}
+
+@media(max-width:430px){
+  #roomCount{
+    font-size:11px!important;
+    padding:7px 9px!important;
+  }
+
+  .pageHero{
+    gap:8px!important;
+  }
+}
+
+
+/* V48 report icon + admin delete cleanup */
+
+/* Force report to be icon-only. No text leakage. */
+.reportBtn,
+.compactReactions .reportBtn{
+  font-size:0!important;
+  color:transparent!important;
+  text-indent:0!important;
+  overflow:hidden!important;
+  white-space:nowrap!important;
+}
+
+.reportBtn::before{
+  content:"!"!important;
+  font-size:11px!important;
+  color:#d9f99d!important;
+}
+
+.reportBtn.reported::before{
+  content:"✓"!important;
+  color:#000!important;
+}
+
+/* Ensure leaderboard only has meaningful entries visually */
+.rank.zeroReaction{
+  display:none!important;
+}
+
+
+/* V49 fully functional admin */
+#page-admin{
+  padding-bottom:calc(360px + env(safe-area-inset-bottom,0px))!important;
+}
+
+.adminRefreshBtn{
+  flex:0 0 auto;
+  min-height:40px;
+  border-radius:999px;
+  border:1px solid rgba(163,255,18,.24);
+  background:rgba(163,255,18,.10);
+  color:#d9f99d;
+  font-weight:950;
+  padding:0 14px;
+}
+
+.adminPanel{
+  display:flex!important;
+  flex-direction:column!important;
+  gap:14px!important;
+  padding:16px!important;
+  min-height:auto!important;
+  overflow:visible!important;
+}
+
+.adminSectionTitle h2{
+  margin:0!important;
+  font-size:17px!important;
+}
+
+.adminSectionTitle p{
+  margin:4px 0 0!important;
+  color:#9ca88c!important;
+  font-size:13px!important;
+}
+
+.adminStatsGrid{
+  display:grid!important;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.adminStat{
+  border:1px solid rgba(163,255,18,.16);
+  background:rgba(163,255,18,.055);
+  border-radius:18px;
+  padding:13px;
+}
+
+.adminStat strong{
+  display:block;
+  color:#fff;
+  font-size:24px;
+  line-height:1;
+}
+
+.adminStat span{
+  display:block;
+  margin-top:6px;
+  color:#9ca88c;
+  font-size:12px;
+  font-weight:850;
+}
+
+.adminList{
+  display:grid!important;
+  gap:10px!important;
+  min-height:44px;
+}
+
+.adminEmpty{
+  border:1px dashed rgba(255,255,255,.12);
+  background:rgba(255,255,255,.035);
+  color:#9ca88c;
+  border-radius:18px;
+  padding:16px;
+  text-align:center;
+}
+
+.adminItem{
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(0,0,0,.26);
+  border-radius:20px;
+  padding:13px;
+  display:grid;
+  gap:11px;
+}
+
+.adminItemTop{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.adminItemTop strong{
+  color:#fff;
+  font-size:15px;
+  word-break:break-word;
+}
+
+.adminItemTop span{
+  flex:0 0 auto;
+  color:#d9f99d;
+  border:1px solid rgba(163,255,18,.18);
+  background:rgba(163,255,18,.08);
+  border-radius:999px;
+  padding:5px 8px;
+  font-size:11px;
+  font-weight:900;
+}
+
+.adminItem p{
+  margin:0;
+  color:#9ca88c;
+  font-size:13px;
+  line-height:1.35;
+}
+
+.adminItem audio{
+  width:100%;
+  height:40px;
+}
+
+.adminActions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+
+.adminActions.single{
+  grid-template-columns:1fr 1fr;
+}
+
+.adminActions button{
+  min-height:42px;
+  border-radius:15px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.055);
+  color:#fff;
+  font-weight:900;
+}
+
+.adminActions .danger,
+#adminCloseActiveBattleBtn{
+  border-color:rgba(239,68,68,.32)!important;
+  background:rgba(127,29,29,.22)!important;
+  color:#fecaca!important;
+}
+
+.adminActions .good,
+#adminReloadDataBtn{
+  border-color:rgba(163,255,18,.26)!important;
+  background:rgba(163,255,18,.10)!important;
+  color:#d9f99d!important;
+}
+
+#adminLoginBtn{
+  display:flex!important;
+  border-color:rgba(163,255,18,.22)!important;
+  background:rgba(163,255,18,.07)!important;
+  color:#d9f99d!important;
+}
+
+body.admin-active #adminLoginBtn{
+  display:none!important;
+}
+
+body.admin-active .adminNav{
+  display:flex!important;
+}
+
+body.admin-active .bottomNav{
+  grid-template-columns:repeat(5,1fr)!important;
+}
+
+@media(max-width:720px){
+  .adminStatsGrid,
+  .adminActions,
+  .adminActions.single{
+    grid-template-columns:1fr!important;
+  }
+
+  #page-admin{
+    padding-bottom:calc(420px + env(safe-area-inset-bottom,0px))!important;
+  }
+}
+
+
+/* V50 admin login fix */
+#adminLoginBtn{
+  display:flex!important;
+  border-color:rgba(163,255,18,.24)!important;
+  background:rgba(163,255,18,.08)!important;
+  color:#d9f99d!important;
+}
+
+body.admin-active #adminLoginBtn{
+  display:none!important;
+}
+
+body.admin-active .adminNav{
+  display:flex!important;
+}
+
+body:not(.admin-active) .adminNav{
+  display:none!important;
+}
+
+.adminRefreshBtn{
+  pointer-events:auto!important;
+}
+
+</style>
+<meta name="theme-color" content="#a3ff12">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="FARTER">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="description" content="FARTER — the global live fart room. Drop, listen, react and battle.">
+<meta property="og:title" content="FARTER">
+<meta property="og:description" content="The global live fart room.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/icon.svg">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+
+</head>
+<body>
+<main class="landing" id="landing">
+<nav class="nav"><div class="brand farterBrand"><div class="logo">F</div>FARTER</div><div class="links"><span>Leaderboard</span><span>Verified audio</span></div></nav>
+<section class="hero">
+<div class="planetPill"><span class="planetIcon">🌍</span><span id="landingCount">Connecting...</span></div>
+<h1>The global live fart room.</h1>
+<p>Enter your username, enable your mic, drop a fart, and let the room react in real time.</p><div class="homeSteps">
+  <div><b>1</b><span>Enter username</span></div>
+  <div><b>2</b><span>Enable mic</span></div>
+  <div><b>3</b><span>Drop a fart</span></div>
+  <div><b>4</b><span>Let the room react</span></div>
+</div>
+<div class="username"><input id="usernameInput" placeholder="Enter username here"><button id="saveUsernameBtn">Save username</button></div><div class="buttons" style="margin-top:14px">
+<button class="secondary" id="enableMicBtn">Enable microphone</button>
+<span class="muted" id="micStatus">Microphone not enabled yet</span>
+</div>
+<p id="signedInLabel" class="muted"></p>
+<div class="error small hidden" id="landingError"></div>
+<div class="buttons landingCta"><button class="primary" id="enterBtn">ENTER THE ROOM</button></div>
+</section>
+</main>
+<div class="globalStatusBar hidden" id="globalStatusBar"></div>
+<main class="app hidden" id="app">
+<header class="header appTopbar appleTopbar">
+  <div class="brand">
+    <div class="logo">F</div>
+    <div>FARTER<small id="headerStatus">Connecting...</small></div>
+  </div>
+</header>
+
+<section class="appPage active" id="page-room">
+  <div class="pageHero collapsibleHero" id="collapsibleHero">
+    <div>
+      <h1>Room</h1>
+      <p class="muted">Latest drops and live chat together.</p>
+    </div>
+    <span class="tag" id="roomCount">0 online</span>
+  </div>
+
+  <div class="battleTicker hidden" id="battleTicker"><span id="battleTickerText">Battle update</span></div>
+  <div class="newDropBanner hidden" id="newDropBanner">🛬 New fart just landed</div>
+
+  <div class="roomLayout">
+    <section class="roomFeed">
+      <div class="sectionHeader">
+        <div>
+          <h2>Latest drops</h2>
+          <p>Tap a drop to listen and react.</p>
+        </div>
+      </div>
+      <div class="feedScroll pageScroll" id="feed"></div>
+    </section>
+
+    <aside class="chat roomChat">
+      <div class="chatH compactChatHeader">
+        <h2>Chat</h2>
+        <p class="muted">React together.</p>
+      </div>
+      <div class="msgs" id="chatMessages"></div>
+      <div class="chatInput">
+        <input id="chatInput" placeholder="Say something...">
+        <button id="sendBtn">➤</button>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="appPage" id="page-rankings">
+  <div class="pageHero">
+    <div>
+      <h1>Rankings</h1>
+      <p class="muted">Today, week and all-time legends.</p>
+    </div>
+  </div>
+
+  <section class="panel dropDayPanel">
+    <h2>🏆 Drop of the day</h2>
+    <div id="dropOfDay" class="dropOfDayBox">No drop yet today.</div>
+  </section>
+
+  <section class="panel leaderboardPanel">
+    <h2>🏆 Leaderboard</h2>
+    <div class="leaderTabs">
+      <button class="active" data-leader-tab="today">Today</button>
+      <button data-leader-tab="week">Week</button>
+      <button data-leader-tab="all">All time</button>
+    </div>
+    <div id="leaderboard"></div>
+  </section>
+
+  <section class="panel wallPanel">
+    <h2>🌟 Wall of Fame</h2>
+    <div id="wallOfFame" class="wallBox">No legends yet.</div>
+  </section>
+</section>
+
+<section class="appPage" id="page-battles">
+  <div class="pageHero">
+    <div>
+      <h1>Battles</h1>
+      <p class="muted">Find an opponent, pick a drop, and let the room vote.</p>
+    </div>
+  </div>
+
+  <section class="panel battlePanel">
+    <h2>⚔️ Battle lobby</h2>
+    <p class="muted">Start a search or join someone waiting.</p>
+    <div id="battleBox" class="battleBox">No battle active.</div>
+    <button class="primary battleStartBtn" id="startBattleBtn">Search opponent</button>
+  </section>
+</section>
+
+<section class="appPage" id="page-profile">
+  <div class="pageHero">
+    <div>
+      <h1>Profile</h1>
+      <p class="muted">Your identity and settings.</p>
+    </div>
+  </div>
+
+  <section class="panel profilePanel">
+    <h2>👤 Your profile</h2>
+    <div id="profileBox" class="profileBox">Loading profile...</div>
+  </section>
+
+  <section class="panel settingsPanel">
+    <h2>⚙️ Settings</h2>
+    <button class="settingsBtn" id="changeUsernameBtn">Change username</button>
+    <button class="settingsBtn" id="soundBtn">Sound on</button>
+    <button class="settingsBtn" id="shareBtn">Invite friends</button>
+    <button class="settingsBtn" id="installBtn">Install app</button>
+    <button class="settingsBtn" id="rulesBtn">Rules & safety</button>
+    <button class="settingsBtn" id="adminLoginBtn" type="button">Admin login</button><button class="settingsBtn hidden adminNav" data-page="admin">Admin panel</button>
+    <button class="settingsBtn dangerSettings" id="resetSessionBtn">Reset session</button>
+  </section>
+</section>
+
+
+<section class="appPage" id="page-admin">
+  <div class="pageHero">
+    <div>
+      <h1>Admin</h1>
+      <p class="muted">Moderate drops, reports and battles.</p>
+    </div>
+  </div>
+
+  <section class="panel adminPanel">
+    <h2>🛡️ Control room</h2>
+    <div id="adminStats" class="adminStatsGrid"></div>
+  </section>
+
+  <section class="panel adminPanel">
+    <h2>⚠️ Reported drops</h2>
+    <div id="adminReports" class="adminList">Activate admin mode to view reports.</div>
+  </section>
+
+  <section class="panel adminPanel">
+    <h2>💨 Latest drops</h2>
+    <div id="adminDrops" class="adminList">Activate admin mode to view drops.</div>
+  </section>
+
+  <section class="panel adminPanel">
+    <h2>⚔️ Battles</h2>
+    <div id="adminBattles" class="adminList">Activate admin mode to view battles.</div>
+  </section>
+</section>
+
+<nav class="bottomNav appleNav">
+  <button class="active" data-page="room">💨<span>Room</span></button>
+  <button data-page="rankings">🏆<span>Ranks</span></button>
+  <button data-page="battles">⚔️<span>Battles</span></button>
+  <button data-page="profile">👤<span>Profile</span></button><button class="adminNav hidden" data-page="admin">🛡️<span>Admin</span></button>
+</nav>
+
+<button class="floatingDropBtn" id="dropBtn">Drop a fart</button>
+</main>
+<button class="adminFloating" id="adminBtn">Admin</button>
+<div class="toast" id="toast"></div>
+
+<div class="overlay hidden" id="rulesModal">
+  <div class="modal rulesModal">
+    <div class="modalTop">
+      <div>
+        <h2>FARTER rules</h2>
+        <p class="muted">Keep the room funny and usable.</p>
+      </div>
+      <button class="iconBtn" id="rulesCloseBtn" aria-label="Close">×</button>
+    </div>
+    <div class="rulesList">
+      <div><strong>💨 Farts only</strong><span>No voice notes, music, spam, harassment or personal info.</span></div>
+      <div><strong>⚠️ Report bad drops</strong><span>Reported content can be hidden or deleted by admin.</span></div>
+      <div><strong>🎙️ Audio is public</strong><span>Only publish audio you are comfortable sharing with the room.</span></div>
+      <div><strong>⚔️ Battles are public</strong><span>Votes are for fun. A battle lasts 2 minutes once both drops are selected.</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay hidden" id="recorder">
+<div class="modal recorderModal">
+  <div class="modalTop">
+    <div>
+      <h2 id="recorderTitle">Ready to record</h2>
+      <p class="muted" id="recorderSubtitle">Tap to start, then stop when you are done.</p>
+    </div>
+    <button class="iconBtn" id="cancelBtn" aria-label="Close">×</button>
+  </div>
+
+  <div class="record">
+    <div class="holdCircle" id="holdCircle">
+      <div class="holdCircleInner">
+        <span id="holdLabel">Tap</span>
+        <small id="duration">0.0s</small>
+      </div>
+    </div>
+
+    <div class="status" id="status">Ready</div>
+
+    <div class="previewBlock hidden" id="previewBlock">
+      <p class="previewTitle">Preview your recording</p>
+      <div id="preview"></div>
+    </div>
+
+    <div class="simpleStatus" id="simpleStatus">Microphone ready</div><div class="limitPill">Max 10s · no spam</div>
+  </div>
+
+  <div class="modalActions recorderActions">
+    <button class="secondary hidden" id="rerecordBtn">Re-record</button>
+    <button class="primary" id="recordBtn">Tap to record</button>
+    <button class="primary hidden" id="stopBtn">Stop recording</button>
+    <button class="primary hidden publishMain" id="publishBtn">Publish</button>
+  </div>
+</div>
+</div>
+<script type="module">
+
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.4";
+
+const SUPABASE_URL = "https://uyvnsvbncdaakfhvjhzc.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_t9wDuuZ9APMzIHYss_urnw_zFasvZz-";
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const $ = (id) => document.getElementById(id);
+
+let user = null;
+let username = localStorage.getItem("live_room_username") || "";
+let microphoneEnabled = false;
+const MIC_MEMORY_MINUTES = 30;
+const micMemoryUntil = Number(localStorage.getItem("live_room_mic_until") || 0);
+if (micMemoryUntil && Date.now() < micMemoryUntil) {
+  microphoneEnabled = true;
+}
+let onlineCount = 1;
+let posts = [];
+let messages = [];
+let reactionCounts = {};
+let reportCounts = {};
+let activeLeaderboardTab = "today";
+let battles = [];
+let battleVotes = [];
+let pendingBattlePickId = null;
+let battleTimerInterval = null;
+let pendingBattleAfterPublish = null;
+let lastShownWinnerBattleId = localStorage.getItem("last_shown_winner_battle_id") || null;
+let soundEnabled = localStorage.getItem("live_room_sound") !== "false";
+let audioUnlocked = false;
+let lastSeenPostId = null;
+let adminMode = localStorage.getItem("live_room_admin") === "true";
+const ADMIN_CODE = "farteradmin";
+const POST_COOLDOWN_MS = 60000;
+const MAX_RECORDING_MS = 10000;
+const MIN_RECORDING_MS = 450;
+const BATTLE_VOTE_MS = 120000;
+const BATTLE_LOBBY_MS = 300000;
+let maxRecordingTimeout = null;
+let isLoadingData = true;
+let mediaRecorder = null;
+let stream = null;
+let chunks = [];
+let startedAt = 0;
+let currentBlob = null;
+let currentDuration = "0.0s";
+let timerInterval = null;
+let audioContext = null;
+let audioSource = null;
+let audioProcessor = null;
+let audioGain = null;
+let wavBuffers = [];
+let wavSampleRate = 44100;
+let recordingMode = "mediarecorder";
+
+let tabId = sessionStorage.getItem("live_room_tab_id");
+if (!tabId) {
+  tabId = crypto.randomUUID();
+  sessionStorage.setItem("live_room_tab_id", tabId);
+}
+
+function cleanName(value) {
+  const v = (value || "").trim().replace(/\s+/g, "").replace(/[^a-zA-Z0-9_]/g, "").slice(0, 18);
+  return v ? `@${v}` : "";
+}
+
+function showError(message) {
+  const landing = $("landingError");
+  const app = $("appError");
+  if (landing) {
+    landing.textContent = message || "";
+    landing.classList.toggle("hidden", !message);
+  }
+  if (app) {
+    app.textContent = message || "";
+    app.classList.toggle("hidden", !message);
+  }
+}
+
+function hasUsername() {
+  return Boolean(username || cleanName($("usernameInput")?.value || localStorage.getItem("live_room_username") || ""));
+}
+
+function updateEntryGate() {
+  const ready = hasUsername() && microphoneEnabled;
+  $("enterBtn")?.classList.toggle("locked", !ready);
+  $("viewBtn")?.classList.toggle("locked", !ready);
+  if ($("enterBtn")) $("enterBtn").title = ready ? "" : "Enter a username and enable microphone first.";
+  if ($("viewBtn")) if ($("viewBtn")) $("viewBtn").title = ready ? "" : "Enter a username and enable microphone first.";
+}
+
+
+
+
+
+function syncAppEntryState() {
+  const landingVisible = !$("landing")?.classList.contains("hidden");
+  const appVisible = !$("app")?.classList.contains("hidden");
+
+  if (appVisible && !landingVisible) {
+    document.body.classList.add("app-entered");
+  } else {
+    document.body.classList.remove("app-entered");
+  }
+
+  if (landingVisible) {
+    document.body.classList.remove("modal-open");
+    document.querySelectorAll(".overlay").forEach((overlay) => overlay.classList.add("hidden"));
+  }
+}
+
+function openModal(id) {
+  const modal = $(id);
+  if (!modal) return;
+  modal.classList.remove("hidden");
+  document.body.classList.add("modal-open");
+}
+
+function closeModal(id) {
+  const modal = $(id);
+  if (!modal) return;
+  modal.classList.add("hidden");
+
+  const anyOpen = Array.from(document.querySelectorAll(".overlay")).some((overlay) => !overlay.classList.contains("hidden"));
+  if (!anyOpen) document.body.classList.remove("modal-open");
+}
+
+function showGlobalStatus(message, timeout = 2600) {
+  const bar = $("globalStatusBar");
+  if (!bar) return;
+  bar.textContent = message;
+  bar.classList.remove("hidden");
+  clearTimeout(window.__globalStatusTimer);
+  window.__globalStatusTimer = setTimeout(() => bar.classList.add("hidden"), timeout);
+}
+
+function setOnlineStateUI() {
+  if (!navigator.onLine) {
+    showGlobalStatus("You are offline. Some live features may pause.", 5000);
+  }
+}
+
+function showToast(message) {
+  const toast = $("toast");
+  if (!toast) return;
+
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2200);
+}
+
+function getCooldownRemainingMs() {
+  const lastPostAt = Number(localStorage.getItem("live_room_last_post_at") || 0);
+  return Math.max(0, POST_COOLDOWN_MS - (Date.now() - lastPostAt));
+}
+
+function canPostNow() {
+  const remaining = getCooldownRemainingMs();
+
+  if (remaining > 0) {
+    const seconds = Math.ceil(remaining / 1000);
+    showError(`Slow down. You can publish again in ${seconds}s.`);
+    showToast(`Wait ${seconds}s before next drop`);
+    return false;
+  }
+
+  return true;
+}
+
+async function enableMicrophone() {
+  try {
+    const testStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    testStream.getTracks().forEach((track) => track.stop());
+
+    microphoneEnabled = true;
+    localStorage.setItem("live_room_mic_until", String(Date.now() + MIC_MEMORY_MINUTES * 60 * 1000));
+    $("micStatus").textContent = "Microphone ready";
+    $("micStatus").classList.remove("blocked");
+    $("micStatus").classList.add("ready");
+    showError("");
+    updateEntryGate();
+  if ($("adminBtn")) {
+    $("adminBtn").classList.toggle("active", adminMode);
+    $("adminBtn").textContent = adminMode ? "Admin on" : "Admin";
+  }
+  } catch (e) {
+    microphoneEnabled = false;
+    localStorage.removeItem("live_room_mic_until");
+    $("micStatus").textContent = "Microphone blocked";
+    $("micStatus").classList.remove("ready");
+    $("micStatus").classList.add("blocked");
+    showError("Microphone access was blocked. Allow it in your browser settings.");
+    updateEntryGate();
+  }
+}
+
+async function saveProfile() {
+  if (!user || !username) return;
+  const result = await supabase.from("profiles").upsert({ user_id: user.id, username });
+  if (result.error) showError(result.error.message);
+}
+
+async function ensureReady() {
+  if (!user) {
+    showError("Still connecting. Try again in 2 seconds.");
+    return false;
+  }
+
+  if (!username) {
+    const n = cleanName($("usernameInput")?.value || localStorage.getItem("live_room_username") || "");
+    if (!n) {
+      showError("Enter a username first.");
+      updateEntryGate();
+      return false;
+    }
+
+    username = n;
+    localStorage.setItem("live_room_username", username);
+    await saveProfile();
+  }
+
+  return true;
+}
+
+async function enterRoom() {
+  const n = cleanName($("usernameInput").value || username || localStorage.getItem("live_room_username") || "");
+
+  if (!n) {
+    showError("Enter a username first.");
+    updateEntryGate();
+    return;
+  }
+
+  username = n;
+  localStorage.setItem("live_room_username", username);
+  if (user) await saveProfile();
+
+  if (!microphoneEnabled) {
+    showError("Enable microphone before entering the room.");
+    updateEntryGate();
+    return;
+  }
+
+  if (!(await ensureReady())) return;
+
+  localStorage.setItem("live_room_last_entered", String(Date.now()));
+  if (!localStorage.getItem("farter_rules_seen")) {
+    localStorage.setItem("farter_rules_seen", "true");
+    setTimeout(() => openModal("rulesModal"), 450);
+  }
+  document.body.classList.add("app-entered");
+  $("landing").classList.add("hidden");
+  $("app").classList.remove("hidden");
+  syncAppEntryState();
+  showError("");
+  await updateOnline();
+  render();
+}
+
+async function boot() {
+  syncAppEntryState();
+  if ($("app")?.classList.contains("hidden")) document.body.classList.remove("app-entered");
+  try {
+    const session = await supabase.auth.getSession();
+    user = session.data.session?.user || null;
+
+    if (!user) {
+      const result = await supabase.auth.signInAnonymously();
+
+      if (result.error) {
+        showError("Enable Anonymous Sign-Ins in Supabase: " + result.error.message);
+        render();
+        return;
+      }
+
+      user = result.data.user;
+    }
+
+    if (username) await saveProfile();
+
+    await loadData();
+    setupRealtime();
+    startOnlineHeartbeat();
+    render();
+
+    const lastEntered = Number(localStorage.getItem("live_room_last_entered") || 0);
+    const shouldRestoreRoom = username && microphoneEnabled && lastEntered && Date.now() - lastEntered < MIC_MEMORY_MINUTES * 60 * 1000;
+
+    if (shouldRestoreRoom) {
+      document.body.classList.add("app-entered");
+      $("landing").classList.add("hidden");
+      $("app").classList.remove("hidden");
+      syncAppEntryState();
+      await updateOnline();
+      render();
+    }
+  } catch (e) {
+    showError(e.message);
+    render();
+  }
+}
+
+async function loadData() {
+  isLoadingData = true;
+  render();
+  const postsResult = await supabase.from("posts").select("*").order("created_at", { ascending: false }).limit(75);
+
+  if (postsResult.error) { showError(postsResult.error.message); showGlobalStatus("Could not load drops. Try refreshing.", 4000); }
+  else {
+    posts = postsResult.data || [];
+    await loadReactions(posts.map((p) => p.id));
+    await loadReportCounts(posts.map((p) => p.id));
+    await loadBattles();
+  }
+
+  const messagesResult = await supabase.from("messages").select("*").order("created_at", { ascending: true }).limit(100);
+
+  if (messagesResult.error) { showError(messagesResult.error.message); showGlobalStatus("Could not load chat. Try refreshing.", 4000); }
+  else messages = messagesResult.data || [];
+
+  isLoadingData = false;
+  render();
+}
+
+async function loadReactions(ids) {
+  reactionCounts = {};
+  if (!ids.length) return;
+
+  const result = await supabase.from("reactions").select("post_id,type").in("post_id", ids);
+  if (result.error) return;
+
+  for (const r of result.data || []) {
+    if (!reactionCounts[r.post_id]) {
+      reactionCounts[r.post_id] = { skull: 0, fire: 0, toxic: 0, vote: 0 };
+    }
+
+    reactionCounts[r.post_id][r.type] += 1;
+  }
+}
+
+
+function isToday(dateValue) {
+  const d = new Date(dateValue);
+  const now = new Date();
+  return d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth() && d.getDate() === now.getDate();
+}
+
+function isThisWeek(dateValue) {
+  const d = new Date(dateValue);
+  const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+  return d >= sevenDaysAgo;
+}
+
+function filteredPostsForTab(tab) {
+  if (tab === "today") return posts.filter((p) => isToday(p.created_at));
+  if (tab === "week") return posts.filter((p) => isThisWeek(p.created_at));
+  return posts;
+}
+
+
+function rankedPostsWithReactions(list = posts) {
+  return rankedPosts(list).filter((p) => reactionTotal(p.id) > 0);
+}
+
+function rankedPosts(list = posts) {
+  return [...list].sort((a, b) => reactionTotal(b.id) - reactionTotal(a.id));
+}
+
+function playUiSound(type = "pop") {
+  if (!soundEnabled || !audioUnlocked) return;
+
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = "sine";
+    osc.frequency.value = type === "new" ? 620 : 420;
+    gain.gain.value = 0.035;
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    setTimeout(() => { osc.stop(); ctx.close(); }, type === "new" ? 120 : 70);
+  } catch(e) {}
+}
+
+function showNewDropBanner() {
+  const banner = $("newDropBanner");
+  if (!banner) return;
+  banner.classList.remove("hidden");
+  banner.classList.add("show");
+  setTimeout(() => {
+    banner.classList.remove("show");
+    setTimeout(() => banner.classList.add("hidden"), 220);
+  }, 2200);
+}
+
+function toggleSound() {
+  soundEnabled = !soundEnabled;
+  audioUnlocked = true;
+  localStorage.setItem("live_room_sound", String(soundEnabled));
+  if ($("soundBtn")) if ($("soundBtn")) $("soundBtn").textContent = soundEnabled ? "Sound on" : "Muted";
+  showToast(soundEnabled ? "Sound on" : "Muted");
+
+  if (soundEnabled) {
+    setTimeout(() => playUiSound("pop"), 40);
+  }
+}
+
+
+
+function isSystemMessage(m) {
+  const u = String(m.username || "").toLowerCase();
+  const c = String(m.content || "").toLowerCase();
+  return u === "system" || c.includes("dropped a verified audio");
+}
+
+function todaysDropCount() {
+  return posts.filter((p) => isToday(p.created_at)).length;
+}
+
+function profileStats() {
+  const myPosts = posts.filter((p) => p.user_id === user?.id || p.username === username);
+  const reactions = myPosts.reduce((sum, p) => sum + reactionTotal(p.id), 0);
+  const wins = battles.filter((b) => b.status === "closed" && b.winner_user_id === user?.id).length;
+  return { drops: myPosts.length, reactions, wins };
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function getActiveBattle() {
+  return [...battles]
+    .filter((b) => {
+      const s = battleStatus(b);
+      return ["waiting","selecting","voting","expired","stale"].includes(s);
+    })
+    .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))[0];
+}
+
+function battleStatus(battle) {
+  if (!battle || battle.status === "closed") return "none";
+
+  const createdAt = new Date(battle.created_at).getTime();
+  const age = Date.now() - createdAt;
+
+  if (battle.ends_at && battleRemainingSeconds(battle) <= 0) return "expired";
+  if (!battle.ends_at && age > BATTLE_LOBBY_MS) return "stale";
+  if (!battle.player_b) return "waiting";
+  if (!battle.post_a || !battle.post_b) return "selecting";
+  return "voting";
+}
+
+function battleRemainingSeconds(battle) {
+  if (!battle?.ends_at) return null;
+  return Math.max(0, Math.ceil((new Date(battle.ends_at).getTime() - Date.now()) / 1000));
+}
+
+function formatBattleTime(seconds) {
+  if (seconds === null) return "2:00";
+  const m = Math.floor(seconds / 60);
+  const s = seconds % 60;
+  return `${m}:${String(s).padStart(2, "0")}`;
+}
+
+function battleWinnerFromVotes(battle) {
+  const aVotes = battleVoteCount(battle.id, "a");
+  const bVotes = battleVoteCount(battle.id, "b");
+
+  if (aVotes === bVotes) {
+    return { winner_user_id: null, winner_username: "Tie" };
+  }
+
+  if (aVotes > bVotes) {
+    return { winner_user_id: battle.player_a || null, winner_username: battle.username_a || "Player A" };
+  }
+
+  return { winner_user_id: battle.player_b || null, winner_username: battle.username_b || "Player B" };
+}
+
+function showWinnerAnimation(name) {
+  const existing = document.querySelector(".winnerBurst");
+  if (existing) existing.remove();
+
+  const wrap = document.createElement("div");
+  wrap.className = "winnerBurst";
+
+  const confetti = Array.from({length:28}).map((_, i) => {
+    const left = Math.round(Math.random() * 100);
+    const delay = (Math.random() * .55).toFixed(2);
+    const duration = (1.7 + Math.random() * .9).toFixed(2);
+    const color = i % 3 === 0 ? "#a3ff12" : i % 3 === 1 ? "#ffffff" : "#d9f99d";
+    return `<i style="left:${left}%;animation-delay:${delay}s;animation-duration:${duration}s;background:${color}"></i>`;
+  }).join("");
+
+  wrap.innerHTML = `<div class="confetti">${confetti}</div><div class="winnerCard"><h2>🏆 Battle winner</h2><p>${name}</p></div>`;
+  document.body.appendChild(wrap);
+  setTimeout(() => wrap.remove(), 3000);
+}
+
+function maybeShowLatestWinner() {
+  const latestClosed = battles
+    .filter((b) => b.status === "closed" && b.closed_at)
+    .sort((a,b) => new Date(b.closed_at) - new Date(a.closed_at))[0];
+
+  if (!latestClosed || latestClosed.id === lastShownWinnerBattleId) return;
+
+  lastShownWinnerBattleId = latestClosed.id;
+  localStorage.setItem("last_shown_winner_battle_id", latestClosed.id);
+
+  if (latestClosed.winner_username && !["Expired","Cancelled","Search closed"].includes(latestClosed.winner_username)) {
+    showWinnerAnimation(latestClosed.winner_username);
+  }
+}
+
+async function closeExpiredBattleIfNeeded() {
+  const battle = getActiveBattle();
+  if (!battle) return;
+
+  const status = battleStatus(battle);
+  if (!["expired","stale"].includes(status)) return;
+
+  let winner = { winner_user_id: null, winner_username: "Expired" };
+
+  if (battle.post_a && battle.post_b) {
+    winner = battleWinnerFromVotes(battle);
+  }
+
+  const result = await supabase.from("battles").update({
+    status: "closed",
+    closed_at: new Date().toISOString(),
+    winner_user_id: winner.winner_user_id,
+    winner_username: winner.winner_username
+  }).eq("id", battle.id);
+
+  if (!result.error) {
+    showToast(winner.winner_username === "Expired" ? "Battle expired" : `${winner.winner_username} won`);
+    await loadBattles();
+
+    if (winner.winner_username !== "Expired") {
+      showWinnerAnimation(winner.winner_username);
+    }
+
+    render();
+  }
+}
+
+function ensureBattleTimerLoop() {
+  if (battleTimerInterval) return;
+
+  battleTimerInterval = setInterval(async () => {
+    const battle = getActiveBattle();
+    if (!battle) return;
+
+    updateBattleTicker();
+  renderAdminPanel();
+  renderAdminPanel();
+
+  const startBattleButton = $("startBattleBtn");
+  if (startBattleButton) {
+    const active = getActiveBattle();
+    startBattleButton.classList.toggle("inBattle", Boolean(active));
+    startBattleButton.textContent = active ? "Battle in progress" : "Search opponent";
+  }
+    await closeExpiredBattleIfNeeded();
+  }, 1000);
+}
+
+function battleVoteCount(battleId, choice) {
+  return battleVotes.filter((v) => v.battle_id === battleId && v.choice === choice).length;
+}
+
+
+async function loadReportCounts(ids) {
+  reportCounts = {};
+  if (!ids.length) return;
+  const result = await supabase.from("reports").select("post_id").in("post_id", ids);
+  if (result.error) return;
+  for (const r of result.data || []) {
+    reportCounts[r.post_id] = (reportCounts[r.post_id] || 0) + 1;
+  }
+}
+
+async function loadBattles() {
+  const battleResult = await supabase.from("battles").select("*").order("created_at", { ascending: false }).limit(20);
+  if (!battleResult.error) battles = battleResult.data || [];
+
+  const activeIds = battles.map((b) => b.id);
+  if (!activeIds.length) {
+    battleVotes = [];
+    return;
+  }
+
+  const voteResult = await supabase.from("battle_votes").select("*").in("battle_id", activeIds);
+  if (!voteResult.error) battleVotes = voteResult.data || [];
+  ensureBattleTimerLoop();
+  maybeShowLatestWinner();
+  setTimeout(() => closeExpiredBattleIfNeeded(), 250);
+}
+
+function reactionTotal(id) {
+  const c = reactionCounts[id] || { skull: 0, fire: 0, toxic: 0, vote: 0 };
+  return (c.skull || 0) + (c.fire || 0) + (c.toxic || 0) + (c.vote || 0);
+}
+
+function setupRealtime() {
+  supabase.channel("posts-live")
+    .on("postgres_changes", { event: "INSERT", schema: "public", table: "posts" }, (payload) => {
+      posts = [payload.new, ...posts.filter((p) => p.id !== payload.new.id)];
+      if (lastSeenPostId && payload.new.id !== lastSeenPostId) {
+        playUiSound("new");
+        showNewDropBanner();
+      }
+      lastSeenPostId = payload.new.id;
+      render();
+    })
+    .on("postgres_changes", { event: "DELETE", schema: "public", table: "posts" }, (payload) => {
+      posts = posts.filter((p) => p.id !== payload.old.id);
+      render();
+    })
+    .subscribe();
+
+  supabase.channel("messages-live")
+    .on("postgres_changes", { event: "INSERT", schema: "public", table: "messages" }, (payload) => {
+      messages = [...messages, payload.new].slice(-100);
+      render();
+    })
+    .subscribe();
+
+  supabase.channel("reactions-live")
+    .on("postgres_changes", { event: "INSERT", schema: "public", table: "reactions" }, (payload) => {
+      const r = payload.new;
+
+      if (!reactionCounts[r.post_id]) {
+        reactionCounts[r.post_id] = { skull: 0, fire: 0, toxic: 0, vote: 0 };
+      }
+
+      reactionCounts[r.post_id][r.type] += 1;
+      playUiSound("pop");
+      render();
+    })
+    .subscribe();
+
+  supabase.channel("battles-live")
+    .on("postgres_changes", { event: "*", schema: "public", table: "battles" }, async () => {
+      await loadBattles();
+      await closeExpiredBattleIfNeeded();
+      render();
+    })
+    .on("postgres_changes", { event: "*", schema: "public", table: "battle_votes" }, async () => {
+      await loadBattles();
+      render();
+    })
+    .subscribe();
+}
+
+function startOnlineHeartbeat() {
+  updateOnline();
+  setInterval(updateOnline, 15000);
+  setInterval(fetchOnlineCount, 10000);
+}
+
+async function updateOnline() {
+  if (!user) return;
+
+  await supabase.from("online_sessions").upsert({
+    session_id: tabId,
+    user_id: user.id,
+    username: username || "@anonymous",
+    last_seen: new Date().toISOString()
+  });
+
+  await fetchOnlineCount();
+}
+
+async function fetchOnlineCount() {
+  const since = new Date(Date.now() - 45000).toISOString();
+  const result = await supabase.from("online_sessions").select("session_id", { count: "exact", head: true }).gte("last_seen", since);
+
+  if (!result.error && typeof result.count === "number") {
+    onlineCount = Math.max(1, result.count);
+    render();
+  }
+}
+
+
+function waveformBars(id, count = 36) {
+  let seed = 0;
+  const input = String(id || "wave");
+
+  for (let i = 0; i < input.length; i++) {
+    seed = (seed * 31 + input.charCodeAt(i)) % 9973;
+  }
+
+  let html = "";
+
+  for (let i = 0; i < count; i++) {
+    seed = (seed * 9301 + 49297) % 233280;
+    const random = seed / 233280;
+    const wave = Math.abs(Math.sin((i + 1) * 0.55));
+    const height = Math.round(10 + random * 30 + wave * 18);
+    html += `<span style="height:${height}px"></span>`;
+  }
+
+  return html;
+}
+
+function setupAudioPlayers() {
+  document.querySelectorAll("[data-play-audio]").forEach((button) => {
+    button.onclick = () => {
+      const id = button.dataset.playAudio;
+      const audio = document.querySelector(`[data-audio-id="${id}"]`);
+
+      if (!audio) return;
+
+      document.querySelectorAll("audio[data-audio-id]").forEach((other) => {
+        if (other !== audio) {
+          other.pause();
+          const otherButton = document.querySelector(`[data-play-audio="${other.dataset.audioId}"]`);
+          if (otherButton) otherButton.textContent = "▶";
+        }
+      });
+
+      if (audio.paused) {
+        audio.play();
+        button.textContent = "⏸";
+      } else {
+        audio.pause();
+        button.textContent = "▶";
+      }
+
+      audio.onended = () => {
+        button.textContent = "▶";
+      };
+    };
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function updateBattleTicker() {
+  const ticker = $("battleTicker");
+  const text = $("battleTickerText");
+  if (!ticker || !text) return;
+
+  const battle = getActiveBattle();
+
+  if (!battle) {
+    ticker.classList.add("hidden");
+    ticker.classList.remove("show");
+    return;
+  }
+
+  ticker.classList.remove("hidden");
+  ticker.classList.add("show");
+
+  const status = battleStatus(battle);
+
+  if (status === "waiting") {
+    text.innerHTML = `<div class="battleTickerContent"><div class="battleTickerMain"><strong>${battle.username_a || "Someone"} is looking for an opponent</strong><small>Open Battles to join.</small></div><button class="battleTickerJoinBtn" data-go-battles="true">Join Battle</button></div>`;
+    return;
+  }
+
+  if (status === "selecting") {
+    text.innerHTML = `<div class="battleTickerContent"><div class="battleTickerMain"><strong>Battle joined</strong><small>Players are choosing their drops.</small></div><div class="battleTimerPill">Pick</div></div>`;
+    return;
+  }
+
+  if (status === "stale" || status === "expired") {
+    text.innerHTML = `<div class="battleTickerContent"><div class="battleTickerMain"><strong>Battle ending...</strong><small>Cleaning up expired battle.</small></div><div class="battleTimerPill">End</div></div>`;
+    return;
+  }
+
+  const remaining = battleRemainingSeconds(battle);
+  text.innerHTML = `<div class="battleTickerContent"><div class="battleTickerMain"><strong>Battle is live — vote now</strong><small>${battle.username_a || "Player A"} vs ${battle.username_b || "Player B"}</small></div><div class="battleTimerPill">${formatBattleTime(remaining)}</div></div>`;
+}
+
+
+async function closeBattleManually(battleId, label = "Cancelled") {
+  if (!(await ensureReady())) return;
+
+  const battle = battles.find((b) => b.id === battleId);
+  if (!battle) return;
+
+  const isPlayer = battle.player_a === user?.id || battle.player_b === user?.id;
+  if (!isPlayer && !adminMode) {
+    showError("Only a battle player can cancel this battle.");
+    return;
+  }
+
+  const result = await supabase.from("battles").update({
+    status: "closed",
+    closed_at: new Date().toISOString(),
+    winner_user_id: null,
+    winner_username: label
+  }).eq("id", battleId);
+
+  if (result.error) {
+    showError(result.error.message);
+    return;
+  }
+
+  pendingBattleAfterPublish = null;
+  showToast(label === "Cancelled" ? "Battle cancelled" : "Search closed");
+  await loadBattles();
+  showPage("battles");
+  render();
+}
+
+async function joinBattle(battleId) {
+  if (!(await ensureReady())) return;
+
+  const battle = battles.find((b) => b.id === battleId);
+  if (!battle || battleStatus(battle) !== "waiting") {
+    showToast("This battle is no longer open");
+    return;
+  }
+
+  if (battle.player_a === user.id) {
+    showToast("Waiting for another opponent");
+    return;
+  }
+
+  const result = await supabase.from("battles").update({
+    player_b: user.id,
+    username_b: username,
+    status: "selecting"
+  }).eq("id", battleId);
+
+  if (result.error) {
+    showError(result.error.message);
+    return;
+  }
+
+  showToast("Battle joined");
+  await loadBattles();
+  showPage("battles");
+  render();
+}
+
+async function pickBattleDrop(battleId, postId) {
+  if (!(await ensureReady())) return;
+
+  const post = posts.find((p) => p.id === postId);
+
+  if (!post || post.user_id !== user.id) {
+    showError("You can only select your own drops for a battle.");
+    return;
+  }
+
+  const battle = battles.find((b) => b.id === battleId);
+  if (!battle) return;
+
+  if (battle.player_a !== user.id && battle.player_b !== user.id) {
+    showError("You are not a player in this battle.");
+    return;
+  }
+
+  const payload = battle.player_a === user.id ? { post_a: postId } : { post_b: postId };
+  const willHaveA = payload.post_a || battle.post_a;
+  const willHaveB = payload.post_b || battle.post_b;
+
+  if (willHaveA && willHaveB) {
+    payload.status = "voting";
+    payload.ends_at = new Date(Date.now() + BATTLE_VOTE_MS).toISOString();
+  } else {
+    payload.status = "selecting";
+  }
+
+  const result = await supabase.from("battles").update(payload).eq("id", battleId);
+
+  if (result.error) {
+    showError(result.error.message);
+    return;
+  }
+
+  pendingBattleAfterPublish = null;
+  showToast(willHaveA && willHaveB ? "Battle live for 2 minutes" : "Drop selected");
+  await loadBattles();
+  ensureBattleTimerLoop();
+  showPage("battles");
+  render();
+}
+
+async function startBattle() {
+  if (!(await ensureReady())) return;
+
+  const existing = getActiveBattle();
+  if (existing) {
+    showToast("A battle is already active");
+    showPage("battles");
+    return;
+  }
+
+  const result = await supabase.from("battles").insert({
+    player_a: user.id,
+    username_a: username,
+    created_by: user.id,
+    status: "waiting"
+  });
+
+  if (result.error) {
+    showError(result.error.message);
+    if (result.error.message.includes("battles_status_check")) {
+      showGlobalStatus("Battle setup missing. Run v40_battle_constraint_fix.sql in Supabase.", 7000);
+    } else {
+      showGlobalStatus("Battle could not start: " + result.error.message, 5000);
+    }
+    return;
+  }
+
+  showToast("Searching for opponent");
+  showGlobalStatus("Searching for a battle opponent.", 2600);
+  await loadBattles();
+  showPage("battles");
+  render();
+}
+
+function recordNewForBattle(battleId) {
+  pendingBattleAfterPublish = battleId;
+  showPage("room");
+  openRecorder();
+  showToast("Record your battle drop");
+}
+
+async function voteBattle(battleId, choice) {
+  if (!(await ensureReady())) return;
+  await closeExpiredBattleIfNeeded();
+  await closeExpiredBattleIfNeeded();
+  await closeExpiredBattleIfNeeded();
+  const result = await supabase.from("battle_votes").insert({ battle_id: battleId, user_id: user.id, choice });
+  if (result.error) {
+    if (result.error.message.includes("duplicate")) {
+      showToast("You already voted");
+      return;
+    }
+    showError(result.error.message);
+    return;
+  }
+  playUiSound("pop");
+  showToast("Vote counted");
+  await loadBattles();
+  render();
+}
+
+
+function shortDate(value) {
+  try {
+    return new Date(value).toLocaleString([], { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
+  } catch(e) {
+    return "";
+  }
+}
+
+
+
+
+
+
+
+
+function adminDate(value) {
+  try {
+    return new Date(value).toLocaleString([], { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
+  } catch(e) {
+    return "";
+  }
+}
+
+function adminAudio(post) {
+  return post?.audio_url ? `<audio controls src="${post.audio_url}"></audio>` : `<p>Audio unavailable</p>`;
+}
+
+
+let adminLoginInProgress = false;
+
+function setAdminActive(active) {
+  adminMode = Boolean(active);
+  document.body.classList.toggle("admin-active", adminMode);
+  document.querySelectorAll(".adminNav").forEach((el) => {
+    el.classList.toggle("hidden", !adminMode);
+  });
+
+  if (adminMode) {
+    localStorage.setItem("farter_admin", "true");
+  } else {
+    localStorage.removeItem("farter_admin");
+  }
+}
+
+async function activateAdminMode() {
+  if (adminMode) {
+    setAdminActive(true);
+    await loadData();
+    render();
+    renderAdminPanel();
+    showPage("admin");
+    return;
+  }
+
+  if (adminLoginInProgress) return;
+  adminLoginInProgress = true;
+
+  try {
+    const code = prompt("Admin code");
+    if (!code) return;
+
+    const expected = typeof ADMIN_CODE !== "undefined" ? ADMIN_CODE : "admin";
+
+    if (code !== expected) {
+      showError("Wrong admin code.");
+      return;
+    }
+
+    setAdminActive(true);
+    showToast("Admin mode activated");
+    await loadData();
+    render();
+    renderAdminPanel();
+    showPage("admin");
+  } finally {
+    adminLoginInProgress = false;
+  }
+}
+
+document.addEventListener("click", async (event) => {
+  const adminLogin = event.target.closest("#adminLoginBtn");
+  if (!adminLogin) return;
+
+  event.preventDefault();
+  event.stopPropagation();
+  event.stopImmediatePropagation();
+  await activateAdminMode();
+}, true);
+
+function renderAdminPanel() {
+  const stats = $("adminStats");
+  const reportsBox = $("adminReports");
+  const dropsBox = $("adminDrops");
+  const battlesBox = $("adminBattles");
+
+  if (!stats || !reportsBox || !dropsBox || !battlesBox) return;
+
+  if (!adminMode) {
+    document.body.classList.remove("admin-active");
+    stats.innerHTML = `<div class="adminStat"><strong>Locked</strong><span>Admin login required</span></div>`;
+    reportsBox.innerHTML = `<div class="adminEmpty">Go to Profile → Admin login.</div>`;
+    dropsBox.innerHTML = `<div class="adminEmpty">Go to Profile → Admin login.</div>`;
+    battlesBox.innerHTML = `<div class="adminEmpty">Go to Profile → Admin login.</div>`;
+    return;
+  }
+
+  setAdminActive(true);
+
+  const activeBattle = getActiveBattle();
+  const reportedPosts = posts
+    .filter((p) => (reportCounts[p.id] || 0) > 0)
+    .sort((a,b) => (reportCounts[b.id] || 0) - (reportCounts[a.id] || 0));
+
+  stats.innerHTML = `
+    <div class="adminStat"><strong>${posts.length}</strong><span>Drops loaded</span></div>
+    <div class="adminStat"><strong>${reportedPosts.length}</strong><span>Reported drops</span></div>
+    <div class="adminStat"><strong>${activeBattle ? "1" : "0"}</strong><span>Active battle</span></div>
+  `;
+
+  reportsBox.innerHTML = reportedPosts.length ? reportedPosts.slice(0, 20).map((p) => `
+    <div class="adminItem">
+      <div class="adminItemTop">
+        <strong>${p.username || "Unknown"}</strong>
+        <span>${reportCounts[p.id] || 0} report(s)</span>
+      </div>
+      <p>${p.duration || "Audio"} · ${adminDate(p.created_at)}</p>
+      ${adminAudio(p)}
+      <div class="adminActions">
+        <button class="danger" data-admin-delete="${p.id}">Delete everywhere</button>
+        <button class="good" data-admin-copy="${p.audio_url || ""}">Copy URL</button>
+      </div>
+    </div>
+  `).join("") : `<div class="adminEmpty">No reported drops.</div>`;
+
+  dropsBox.innerHTML = posts.length ? posts.slice(0, 30).map((p) => `
+    <div class="adminItem">
+      <div class="adminItemTop">
+        <strong>${p.username || "Unknown"}</strong>
+        <span>${reactionTotal(p.id)} reaction(s)</span>
+      </div>
+      <p>${p.duration || "Audio"} · ${adminDate(p.created_at)} · ${reportCounts[p.id] || 0} report(s)</p>
+      ${adminAudio(p)}
+      <div class="adminActions">
+        <button class="danger" data-admin-delete="${p.id}">Delete everywhere</button>
+        <button class="good" data-admin-copy="${p.audio_url || ""}">Copy URL</button>
+      </div>
+    </div>
+  `).join("") : `<div class="adminEmpty">No drops loaded.</div>`;
+
+  battlesBox.innerHTML = battles.length ? battles.slice(0, 20).map((b) => `
+    <div class="adminItem">
+      <div class="adminItemTop">
+        <strong>${b.username_a || "Player A"} vs ${b.username_b || "Player B"}</strong>
+        <span>${b.status}</span>
+      </div>
+      <p>${adminDate(b.created_at)}${b.winner_username ? ` · winner: ${b.winner_username}` : ""}</p>
+      <div class="adminActions">
+        ${b.status !== "closed" ? `<button class="danger" data-admin-close-battle="${b.id}">Close battle</button>` : `<button disabled>Closed</button>`}
+        <button class="good" data-go-battles="true">Open Battles</button>
+      </div>
+    </div>
+  `).join("") : `<div class="adminEmpty">No battles loaded.</div>`;
+}
+
+async function deletePost(postId) {
+  if (!adminMode) {
+    showError("Admin mode required.");
+    return;
+  }
+
+  if (!confirm("Delete this drop everywhere?")) return;
+
+  const targetPost = posts.find((p) => p.id === postId);
+
+  const impactedBattles = battles.filter((b) => b.status !== "closed" && (b.post_a === postId || b.post_b === postId));
+
+  for (const battle of impactedBattles) {
+    await supabase.from("battles").update({
+      status: "closed",
+      closed_at: new Date().toISOString(),
+      winner_user_id: null,
+      winner_username: "Admin deleted"
+    }).eq("id", battle.id);
+  }
+
+  const result = await supabase.from("posts").delete().eq("id", postId);
+
+  if (result.error) {
+    showError(result.error.message);
+    showGlobalStatus("Delete failed: " + result.error.message, 5000);
+    return;
+  }
+
+  if (targetPost?.audio_path) {
+    try {
+      await supabase.storage.from("farts").remove([targetPost.audio_path]);
+    } catch(e) {}
+  }
+
+  posts = posts.filter((p) => p.id !== postId);
+  delete reactionCounts[postId];
+  delete reportCounts[postId];
+  battleVotes = battleVotes.filter((v) => !impactedBattles.some((b) => b.id === v.battle_id));
+  battles = battles.map((b) => impactedBattles.some((ib) => ib.id === b.id)
+    ? { ...b, status: "closed", closed_at: new Date().toISOString(), winner_username: "Admin deleted" }
+    : b
+  );
+
+  showToast("Deleted everywhere");
+  showGlobalStatus("Drop removed from feed, rankings, reports and battles.", 3000);
+
+  await loadData();
+  render();
+  renderAdminPanel();
+}
+
+async function adminCloseActiveBattle() {
+  if (!adminMode) {
+    showError("Admin mode required.");
+    return;
+  }
+
+  const active = getActiveBattle();
+
+  if (!active) {
+    showToast("No active battle");
+    return;
+  }
+
+  await closeBattleManually(active.id, "Admin closed");
+  await loadData();
+  render();
+  renderAdminPanel();
+}
+
+async function adminReloadData() {
+  showToast("Reloading data");
+  await loadData();
+  render();
+  renderAdminPanel();
+}
+
+async function reportPost(postId, button) {
+  if (!(await ensureReady())) return;
+
+  const confirmed = window.confirm("Report this audio for spam, voice, music, or non-fart content?");
+  if (!confirmed) return;
+
+  const result = await supabase.from("reports").insert({
+    post_id: postId,
+    user_id: user.id,
+    username,
+    reason: "user_report"
+  });
+
+  if (result.error) {
+    if (result.error.message.includes("duplicate")) {
+      showToast("Already reported");
+      button.classList.add("reported");
+      button.textContent = "Reported";
+      return;
+    }
+
+    showError(result.error.message);
+    return;
+  }
+
+  reportCounts[postId] = (reportCounts[postId] || 0) + 1;
+  button.classList.add("reported");
+  button.textContent = "Reported";
+  showToast(reportCounts[postId] >= 3 ? "Reported. Hidden from public feed." : "Reported. Thanks.");
+  showGlobalStatus("Thanks for helping keep the room clean.", 2200);
+  render();
+}
+
+async function shareSite() {
+  const shareData = {
+    title: "FARTER",
+    text: "Join me on FARTER — the global live fart room.",
+    url: window.location.origin
+  };
+
+  try {
+    if (navigator.share) {
+      await navigator.share(shareData);
+      return;
+    }
+
+    await navigator.clipboard.writeText(window.location.origin);
+    showToast("Link copied");
+  } catch (e) {
+    try {
+      await navigator.clipboard.writeText(window.location.origin);
+      showToast("Link copied");
+    } catch(err) {
+      showError("Could not copy link.");
+    }
+  }
+}
+
+async function changeUsername() {
+  const current = (username || "").replace(/^@/, "");
+  const next = window.prompt("New username", current);
+  const clean = cleanName(next || "");
+
+  if (!clean) return;
+
+  username = clean;
+  localStorage.setItem("live_room_username", username);
+
+  if (user) await saveProfile();
+
+  showToast(`Username changed to ${username}`);
+  render();
+}
+
+
+
+
+
+
+function showPage(page) {
+  document.querySelectorAll(".appPage").forEach((section) => {
+    section.classList.toggle("active", section.id === `page-${page}`);
+  });
+
+  document.querySelectorAll("[data-page]").forEach((button) => {
+    button.classList.toggle("active", button.dataset.page === page);
+  });
+
+  localStorage.setItem("live_room_page", page);
+  $("app")?.setAttribute("data-active-page", page);
+  document.getElementById(`page-${page}`)?.scrollTo?.({top:0, behavior:"auto"});
+  if (page === "admin") renderAdminPanel();
+  document.getElementById(`page-${page}`)?.scrollTo?.({top:0, behavior:"auto"});
+  if (page === "admin") renderAdminPanel();
+  document.getElementById(`page-${page}`)?.scrollTo?.({top:0, behavior:"auto"});
+  if (page === "admin") renderAdminPanel();
+}
+
+function toggleTopbar() {
+  $("app").querySelector(".appTopbar").classList.toggle("collapsed");
+  $("collapsibleHero")?.classList.toggle("compact");
+}
+
+function render() {
+  if ($("landingCount")) $("landingCount").textContent = `${onlineCount} online now`;
+  if ($("headerStatus")) $("headerStatus").textContent = `${onlineCount} online · ${username || "No username"}`;
+  if ($("roomCount")) $("roomCount").textContent = `Fart Released Today: ${todaysDropCount()}`;
+  if ($("usernameInput")) {
+    $("usernameInput").placeholder = username || "Enter username here";
+    if (username && !$("usernameInput").value) $("usernameInput").value = username.replace(/^@/, "");
+  }
+  if ($("signedInLabel")) $("signedInLabel").textContent = username ? `Connected as ${username}` : "";
+  if (microphoneEnabled && $("micStatus")) {
+    $("micStatus").textContent = "Microphone ready";
+    $("micStatus").classList.remove("blocked");
+    $("micStatus").classList.add("ready");
+  }
+
+  updateEntryGate();
+
+  const leaderboard = $("leaderboard");
+
+  if (leaderboard) {
+    leaderboard.innerHTML = rankedPostsWithReactions(filteredPostsForTab(activeLeaderboardTab))
+      .slice(0, 5)
+      .map((p, i) => `
+        <div class="rank">
+          <div class="rankL">
+            <span class="rankNo">${i + 1}</span>
+            <div>
+              <strong>${p.username}</strong>
+              <p class="muted">${reactionTotal(p.id)} reactions</p>
+            </div>
+          </div>
+          <b>${reactionTotal(p.id)}</b>
+        </div>
+      `)
+      .join("") || `<p class="muted">No drops yet.</p>`;
+  }
+
+
+  const profileBox = $("profileBox");
+  if (profileBox) {
+    const s = profileStats();
+    profileBox.innerHTML = `
+      <strong>${username || "@anonymous"}</strong>
+      <div class="profileStatsGrid">
+        <div class="profileStat"><strong>${s.drops}</strong><span>Drops</span></div>
+        <div class="profileStat"><strong>${s.reactions}</strong><span>Reactions</span></div>
+        <div class="profileStat"><strong>${s.wins}</strong><span>Battle wins</span></div>
+      </div>
+    `;
+  }
+
+  const dropDay = $("dropOfDay");
+  if (dropDay) {
+    const bestToday = rankedPostsWithReactions(posts.filter((p) => isToday(p.created_at)))[0];
+    dropDay.innerHTML = bestToday ? `<strong>${bestToday.username}</strong><span>${reactionTotal(bestToday.id)} reactions today</span>` : `No drop yet today.`;
+  }
+
+  const wall = $("wallOfFame");
+  if (wall) {
+    const topAll = rankedPostsWithReactions(posts).slice(0, 5);
+    wall.innerHTML = topAll.length ? topAll.map((p, i) => `
+      <div class="wallRow"><span>${i + 1}</span><strong>${p.username}</strong><em>${reactionTotal(p.id)}</em></div>
+    `).join("") : `No legends yet.`;
+  }
+
+  const battleBox = $("battleBox");
+  if (battleBox) {
+    const battle = getActiveBattle();
+    const latestClosed = battles.filter((b) => b.status === "closed" && b.closed_at).sort((a,b) => new Date(b.closed_at) - new Date(a.closed_at))[0];
+
+    if (!battle) {
+      battleBox.innerHTML = `
+        ${latestClosed ? `<div class="battleWinnerBox"><strong>Last winner: ${latestClosed.winner_username || "Tie"}</strong><span>Battle finished.</span></div>` : ""}
+        <div class="battleGameCard">
+          <div class="battleStep"><b>1</b><span>Search for an opponent</span></div>
+          <h3>No active battle</h3>
+          <p>Launch a search. Another user joins. Then both players choose one of their own drops or record a new one.</p>
+        </div>
+      `;
+    } else {
+      const status = battleStatus(battle);
+      const amA = battle.player_a === user?.id;
+      const amB = battle.player_b === user?.id;
+      const myPostSelected = amA ? battle.post_a : amB ? battle.post_b : true;
+      const ownPosts = posts.filter((p) => p.user_id === user?.id);
+      const a = posts.find((p) => p.id === battle.post_a);
+      const b = posts.find((p) => p.id === battle.post_b);
+      const aVotes = battleVoteCount(battle.id, "a");
+      const bVotes = battleVoteCount(battle.id, "b");
+
+      if (status === "waiting") {
+        battleBox.innerHTML = `
+          <div class="battleGameCard">
+            <div class="battleStep"><b>1</b><span>Opponent search</span></div>
+            <h3>${battle.username_a || "Someone"} is searching</h3>
+            <p>One opponent can join. After that, both players pick their own drops.</p>
+            <div class="playerSlots">
+              <div class="playerSlot"><strong>${battle.username_a || "Player A"}</strong><span>Searching</span></div>
+              <div class="playerSlot"><strong>Opponent</strong><span>Open slot</span></div>
+            </div>
+            ${amA ? `
+              <div class="battleControlRow">
+                <button class="battleActionBtn secondaryAction" disabled>Waiting for opponent...</button>
+                <button class="battleCancelBtn" data-close-battle="${battle.id}" data-close-label="Search closed">Leave search</button>
+              </div>
+            ` : `<button class="battleActionBtn" data-join-battle="${battle.id}">Join battle</button>`}
+          </div>
+        `;
+      } else if ((amA || amB) && !myPostSelected) {
+        battleBox.innerHTML = `
+          <div class="battleGameCard">
+            <div class="battleStep"><b>2</b><span>Choose your drop</span></div>
+            <h3>${battle.username_a || "Player A"} vs ${battle.username_b || "Player B"}</h3>
+            <p>Select one of your own drops, or record a new one and it will auto-attach to this battle.</p>
+            <div class="battleControlRow">
+              <button class="battleActionBtn" data-record-battle="${battle.id}">Record new fart</button>
+              <button class="battleCancelBtn" data-close-battle="${battle.id}" data-close-label="Cancelled">Cancel battle</button>
+            </div>
+            <div class="battleChoiceList">
+              ${ownPosts.length ? ownPosts.slice(0, 8).map((p) => `
+                <button data-pick-battle="${battle.id}" data-pick-post="${p.id}">
+                  ${p.duration || "Audio"} · ${reactionTotal(p.id)} reactions
+                </button>
+              `).join("") : `<button disabled>No own drops yet. Record one first.</button>`}
+            </div>
+          </div>
+        `;
+      } else if (status === "selecting") {
+        battleBox.innerHTML = `
+          <div class="battleGameCard">
+            <div class="battleStep"><b>2</b><span>Waiting for drops</span></div>
+            <h3>Battle joined</h3>
+            <p>Both players must choose their own drop before the 2-minute vote starts.</p>
+            <div class="playerSlots">
+              <div class="playerSlot"><strong>${battle.username_a || "Player A"}</strong><span>${battle.post_a ? "Drop selected" : "Choosing..."}</span></div>
+              <div class="playerSlot"><strong>${battle.username_b || "Player B"}</strong><span>${battle.post_b ? "Drop selected" : "Choosing..."}</span></div>
+            </div>
+            ${(amA || amB) ? `<button class="battleCancelBtn" data-close-battle="${battle.id}" data-close-label="Cancelled">Cancel battle</button>` : ""}
+          </div>
+        `;
+      } else {
+        const remaining = battleRemainingSeconds(battle);
+        battleBox.innerHTML = `
+          <div class="battleGameCard">
+            <div class="battleStep"><b>3</b><span>Vote before ${formatBattleTime(remaining)}</span></div>
+            <h3>Vote for the winner</h3>
+            <p>Battle lasts exactly 2 minutes. Each audio is labeled with its player. Listen, then vote.</p>
+            <div class="battleDropPreview">
+              <div class="battleAudioCard">
+                <div class="battleAudioHeader">
+                  <strong>${a?.username || battle.username_a || "Player A"}</strong>
+                  <span>Player A</span>
+                </div>
+                ${a?.audio_url ? `<audio controls src="${a.audio_url}"></audio>` : `<p class="muted">Audio unavailable</p>`}
+              </div>
+
+              <div class="battleAudioCard">
+                <div class="battleAudioHeader">
+                  <strong>${b?.username || battle.username_b || "Player B"}</strong>
+                  <span>Player B</span>
+                </div>
+                ${b?.audio_url ? `<audio controls src="${b.audio_url}"></audio>` : `<p class="muted">Audio unavailable</p>`}
+              </div>
+            </div>
+
+            <div class="battleVoteGrid">
+              <button data-battle-id="${battle.id}" data-battle-choice="a">
+                <span>Vote ${a?.username || battle.username_a || "Player A"}</span>
+                <em>Player A</em>
+                <strong>${aVotes}</strong>
+              </button>
+              <button data-battle-id="${battle.id}" data-battle-choice="b">
+                <span>Vote ${b?.username || battle.username_b || "Player B"}</span>
+                <em>Player B</em>
+                <strong>${bVotes}</strong>
+              </button>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    document.querySelectorAll("[data-join-battle]").forEach((button) => {
+      button.onclick = () => joinBattle(button.dataset.joinBattle);
+    });
+
+    document.querySelectorAll("[data-record-battle]").forEach((button) => {
+      button.onclick = () => recordNewForBattle(button.dataset.recordBattle);
+    });
+
+    document.querySelectorAll("[data-pick-battle]").forEach((button) => {
+      button.onclick = () => pickBattleDrop(button.dataset.pickBattle, button.dataset.pickPost);
+    });
+
+    document.querySelectorAll("[data-battle-id]").forEach((button) => {
+      button.onclick = () => voteBattle(button.dataset.battleId, button.dataset.battleChoice);
+    });
+
+    document.querySelectorAll("[data-close-battle]").forEach((button) => {
+      button.onclick = () => closeBattleManually(button.dataset.closeBattle, button.dataset.closeLabel || "Cancelled");
+    });
+  }
+
+  updateBattleTicker();
+
+  const roomCountEl = $("roomCount");
+  if (roomCountEl) {
+    roomCountEl.textContent = `Fart Released Today: ${todaysDropCount()}`;
+  }
+
+  const feed = $("feed");
+
+  if (feed) {
+    if (isLoadingData) {
+      feed.innerHTML = `<article class="loadingState">Loading drops<span class="loadingDots"></span></article>`;
+      return;
+    }
+    const visiblePosts = posts.filter((p) => adminMode || (reportCounts[p.id] || 0) < 3);
+    feed.innerHTML = visiblePosts.map((p, index) => {
+      const c = reactionCounts[p.id] || { skull: 0, fire: 0, toxic: 0, vote: 0 };
+
+      return `
+        <article class="post fartCard ${index === 0 ? "mostRecent" : ""}">
+          ${index === 0 ? `<div class="recentBanner">🌍 Most recent fart released</div>` : ""}
+
+          <div class="fartHeader">
+            <div>
+              <div class="eyebrow"><i class="dot"></i>Fart drop</div>
+              <h3>${p.username}</h3>
+            </div>
+            <span class="durationBadge">${p.duration || ""}</span>
+          </div>
+
+          <div class="player fartPlayer">
+            ${p.audio_url ? `
+              <div class="customPlayer">
+                <button class="playBubble" data-play-audio="${p.id}">▶</button>
+                <div class="waveform" aria-hidden="true">${waveformBars(p.id, 30)}</div>
+                <audio data-audio-id="${p.id}" preload="metadata" src="${p.audio_url}"></audio>
+              </div>
+            ` : `<span class="muted">Audio unavailable</span>`}
+          </div>
+
+          <div class="reactions compactReactions">
+            <button data-id="${p.id}" data-type="skull">💀 Deadly <b>${c.skull}</b></button>
+            <button data-id="${p.id}" data-type="fire">🔥 Fire <b>${c.fire}</b></button>
+            <button data-id="${p.id}" data-type="toxic">😭 Crying <b>${c.toxic}</b></button>
+            <button data-id="${p.id}" data-type="vote">🚨 Evacuate <b>${c.vote}</b></button>
+            <button class="reportBtn" data-report-id="${p.id}">Report</button>
+            ${adminMode ? `<button class="adminDelete" data-delete-id="${p.id}">Delete</button>` : ""}
+          </div>
+        </article>
+      `;
+    }).join("") || `<article class="emptyState"><h3>No drops yet</h3><p>Be the first to drop something and make the room react.</p></article>`;
+
+    document.querySelectorAll("[data-id]").forEach((button) => {
+      button.onclick = () => react(button.dataset.id, button.dataset.type);
+    });
+
+    document.querySelectorAll("[data-delete-id]").forEach((button) => {
+      button.onclick = () => deletePost(button.dataset.deleteId);
+    });
+
+    document.querySelectorAll("[data-report-id]").forEach((button) => {
+      button.onclick = () => reportPost(button.dataset.reportId, button);
+    });
+
+    setupAudioPlayers();
+  }
+
+  const chat = $("chatMessages");
+
+  if (chat) {
+    chat.innerHTML = messages.map((m) => `<div class="bubble"><span>${m.username}</span>${m.content}</div>`).join("");
+    chat.scrollTop = chat.scrollHeight;
+  }
+}
+
+async function react(id, type) {
+  if (!(await ensureReady())) return;
+
+  const result = await supabase.from("reactions").insert({ post_id: id, user_id: user.id, type });
+
+  if (result.error) {
+    showError(result.error.message.includes("duplicate") ? "You already used this reaction." : result.error.message);
+  }
+}
+
+async function sendMessage() {
+  const content = $("chatInput").value.trim();
+
+  if (!content || !(await ensureReady())) return;
+
+  $("chatInput").value = "";
+
+  const result = await supabase.from("messages").insert({ user_id: user.id, username, content });
+
+  if (result.error) showError(result.error.message);
+}
+
+
+function setRecorderState(state) {
+  if (state === "ready") {
+    $("recorderTitle").textContent = "Ready to record";
+    $("recorderSubtitle").textContent = "Tap to start, then stop when you are done.";
+    $("simpleStatus").textContent = "Microphone ready";
+    $("status").textContent = "Ready";
+    $("holdLabel").textContent = "Tap";
+    $("duration").textContent = "0.0s";
+    $("duration").classList.remove("recordingTime");
+    $("holdCircle").classList.remove("recordingCircle");
+    $("previewBlock").classList.add("hidden");
+    $("preview").innerHTML = "";
+    $("recordBtn").classList.remove("hidden");
+    $("stopBtn").classList.add("hidden");
+    $("publishBtn").classList.add("hidden");
+    $("rerecordBtn").classList.add("hidden");
+    $("rerecordBtn").onclick = resetRecordingForRedo;
+$("recordBtn").textContent = "Tap to record";
+    $("publishBtn").disabled = false;
+    $("publishBtn").textContent = "Publish";
+  }
+
+  if (state === "recording") {
+    $("recorderTitle").textContent = "Recording...";
+    $("recorderSubtitle").textContent = "Tap stop when the sound is captured.";
+    $("simpleStatus").textContent = "Recording in progress";
+    $("status").textContent = "Recording";
+    $("status").className = "status recording";
+    $("holdLabel").textContent = "Live";
+    $("duration").classList.add("recordingTime");
+    $("holdCircle").classList.add("recordingCircle");
+    $("recordBtn").classList.add("hidden");
+    $("stopBtn").classList.remove("hidden");
+    $("publishBtn").classList.add("hidden");
+    $("rerecordBtn").classList.add("hidden");
+  }
+
+  if (state === "checking") {
+    $("recorderTitle").textContent = "Checking audio";
+    $("recorderSubtitle").textContent = "One second, preparing your preview.";
+    $("simpleStatus").textContent = "Checking audio...";
+    $("status").textContent = "Checking";
+    $("status").className = "status";
+    $("holdLabel").textContent = "Done";
+    $("duration").classList.remove("recordingTime");
+    $("holdCircle").classList.remove("recordingCircle");
+  }
+
+  if (state === "preview") {
+    $("recorderTitle").textContent = "Preview ready";
+    $("recorderSubtitle").textContent = "Listen, re-record or publish to the room.";
+    $("simpleStatus").textContent = "Ready to publish";
+    $("status").textContent = "Ready";
+    $("status").className = "status";
+    $("previewBlock").classList.remove("hidden");
+    $("recordBtn").classList.add("hidden");
+    $("stopBtn").classList.add("hidden");
+    $("publishBtn").classList.remove("hidden");
+    $("rerecordBtn").classList.remove("hidden");
+  }
+
+  if (state === "publishing") {
+    $("recorderTitle").textContent = "Publishing...";
+    $("recorderSubtitle").textContent = "Sending your audio to the room.";
+    $("simpleStatus").textContent = "Uploading audio...";
+    $("publishBtn").disabled = true;
+    $("publishBtn").textContent = "Publishing...";
+    $("rerecordBtn").classList.add("hidden");
+  }
+}
+
+function resetRecordingForRedo() {
+  currentBlob = null;
+  currentDuration = "0.0s";
+  chunks = [];
+  setRecorderState("ready");
+}
+
+function openRecorder() {
+  ensureReady().then((ok) => {
+    if (!ok) return;
+
+    currentBlob = null;
+    currentDuration = "0.0s";
+    chunks = [];
+    setRecorderState("ready");
+    openModal("recorder");
+  });
+}
+
+function closeRecorder() {
+  try {
+    if (mediaRecorder?.state === "recording") mediaRecorder.stop();
+  } catch(e) {}
+
+  try {
+    audioProcessor?.disconnect();
+    audioSource?.disconnect();
+    audioGain?.disconnect();
+    audioContext?.close();
+  } catch(e) {}
+
+  try {
+    stream?.getTracks().forEach((t) => t.stop());
+  } catch(e) {}
+
+  recordingMode = "idle";
+
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+
+  if (maxRecordingTimeout) {
+    clearTimeout(maxRecordingTimeout);
+    maxRecordingTimeout = null;
+  }
+
+  $("duration").classList.remove("recordingTime");
+  closeModal("recorder");
+}
+
+
+function isIOSDevice() {
+  return /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+}
+
+function encodeWav(samples, sampleRate) {
+  const buffer = new ArrayBuffer(44 + samples.length * 2);
+  const view = new DataView(buffer);
+
+  function writeString(offset, string) {
+    for (let i = 0; i < string.length; i++) {
+      view.setUint8(offset + i, string.charCodeAt(i));
+    }
+  }
+
+  writeString(0, "RIFF");
+  view.setUint32(4, 36 + samples.length * 2, true);
+  writeString(8, "WAVE");
+  writeString(12, "fmt ");
+  view.setUint32(16, 16, true);
+  view.setUint16(20, 1, true);
+  view.setUint16(22, 1, true);
+  view.setUint32(24, sampleRate, true);
+  view.setUint32(28, sampleRate * 2, true);
+  view.setUint16(32, 2, true);
+  view.setUint16(34, 16, true);
+  writeString(36, "data");
+  view.setUint32(40, samples.length * 2, true);
+
+  let offset = 44;
+  for (let i = 0; i < samples.length; i++, offset += 2) {
+    const s = Math.max(-1, Math.min(1, samples[i]));
+    view.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7fff, true);
+  }
+
+  return new Blob([view], { type: "audio/wav" });
+}
+
+function mergeFloat32(buffers) {
+  let totalLength = 0;
+
+  for (const buffer of buffers) {
+    totalLength += buffer.length;
+  }
+
+  const result = new Float32Array(totalLength);
+  let offset = 0;
+
+  for (const buffer of buffers) {
+    result.set(buffer, offset);
+    offset += buffer.length;
+  }
+
+  return result;
+}
+
+function finishRecording(blob, durationMs, extension, mimeType) {
+  if (durationMs < MIN_RECORDING_MS) {
+    currentBlob = null;
+    currentDuration = "0.0s";
+    showError("Recording too short. Try again.");
+    setRecorderState("ready");
+    return;
+  }
+if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+
+  currentDuration = `${(durationMs / 1000).toFixed(1)}s`;
+  currentBlob = blob;
+  window.currentExtension = extension;
+  window.currentMimeType = mimeType;
+
+  $("duration").textContent = currentDuration;
+  $("preview").innerHTML = `<audio controls src="${URL.createObjectURL(currentBlob)}"></audio>`;
+
+  setRecorderState("checking");
+
+  setTimeout(() => {
+    setRecorderState("preview");
+  }, 850);
+}
+
+async function startRecording() {
+  try {
+    if (mediaRecorder?.state === "recording" || recordingMode === "wav-recording") return;
+
+    stream = await navigator.mediaDevices.getUserMedia({
+      audio: {
+        echoCancellation: false,
+        noiseSuppression: false,
+        autoGainControl: false
+      }
+    });
+
+    chunks = [];
+    startedAt = Date.now();
+
+    if (timerInterval) clearInterval(timerInterval);
+
+    timerInterval = setInterval(() => {
+      const elapsed = (Date.now() - startedAt) / 1000;
+      $("duration").textContent = `${elapsed.toFixed(1)}s`;
+    }, 100);
+
+    if (maxRecordingTimeout) clearTimeout(maxRecordingTimeout);
+    maxRecordingTimeout = setTimeout(() => {
+      if (mediaRecorder?.state === "recording" || recordingMode === "wav-recording") {
+        stopRecording();
+        showToast("Max 10 seconds reached");
+      }
+    }, MAX_RECORDING_MS);
+
+    setRecorderState("recording");
+    $("stopBtn").textContent = "Stop recording";
+
+    if (isIOSDevice()) {
+      recordingMode = "wav-recording";
+
+      audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioContext.state === "suspended") {
+        await audioContext.resume();
+      }
+
+      wavSampleRate = audioContext.sampleRate;
+      wavBuffers = [];
+
+      audioSource = audioContext.createMediaStreamSource(stream);
+      audioProcessor = audioContext.createScriptProcessor(4096, 1, 1);
+      audioGain = audioContext.createGain();
+      audioGain.gain.value = 0;
+
+      audioProcessor.onaudioprocess = (event) => {
+        const input = event.inputBuffer.getChannelData(0);
+        wavBuffers.push(new Float32Array(input));
+      };
+
+      audioSource.connect(audioProcessor);
+      audioProcessor.connect(audioGain);
+      audioGain.connect(audioContext.destination);
+      return;
+    }
+
+    recordingMode = "mediarecorder";
+
+    let options = {};
+    let mimeType = "audio/webm";
+    let extension = "webm";
+
+    if (window.MediaRecorder && MediaRecorder.isTypeSupported("audio/webm;codecs=opus")) {
+      options = { mimeType: "audio/webm;codecs=opus" };
+      mimeType = "audio/webm";
+      extension = "webm";
+    } else if (window.MediaRecorder && MediaRecorder.isTypeSupported("audio/mp4")) {
+      options = { mimeType: "audio/mp4" };
+      mimeType = "audio/mp4";
+      extension = "mp4";
+    }
+
+    window.currentExtension = extension;
+    window.currentMimeType = mimeType;
+
+    mediaRecorder = Object.keys(options).length ? new MediaRecorder(stream, options) : new MediaRecorder(stream);
+
+    mediaRecorder.ondataavailable = (e) => {
+      if (e.data.size > 0) chunks.push(e.data);
+    };
+
+    mediaRecorder.onstop = () => {
+      const durationMs = Date.now() - startedAt;
+      const realType = window.currentMimeType || chunks[0]?.type || "audio/webm";
+      const blob = new Blob(chunks, { type: realType });
+      finishRecording(blob, durationMs, window.currentExtension || "webm", realType);
+    };
+
+    mediaRecorder.start();
+  } catch (e) {
+    showError("Microphone permission blocked or unsupported on this browser.");
+  }
+}
+
+function stopRecording() {
+  const durationMs = Date.now() - startedAt;
+
+  if (recordingMode === "wav-recording") {
+    try { audioProcessor?.disconnect(); } catch(e) {}
+    try { audioSource?.disconnect(); } catch(e) {}
+    try { audioGain?.disconnect(); } catch(e) {}
+
+    const samples = mergeFloat32(wavBuffers);
+    const wavBlob = encodeWav(samples, wavSampleRate);
+    finishRecording(wavBlob, durationMs, "wav", "audio/wav");
+
+    try { stream?.getTracks().forEach((t) => t.stop()); } catch(e) {}
+    try { audioContext?.close(); } catch(e) {}
+
+    recordingMode = "idle";
+    $("rerecordBtn").onclick = resetRecordingForRedo;
+$("recordBtn").textContent = "Tap to record";
+    return;
+  }
+
+  if (mediaRecorder?.state === "recording") mediaRecorder.stop();
+
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+
+  stream?.getTracks().forEach((t) => t.stop());
+  $("duration").classList.remove("recordingTime");
+  $("rerecordBtn").onclick = resetRecordingForRedo;
+$("recordBtn").textContent = "Tap to record";
+  $("holdCircle").classList.remove("recordingCircle");
+}
+
+async function publish() {
+  if (!currentBlob) { showError("Record audio first."); return; }
+  if (!(await ensureReady())) return;
+
+  if (!canPostNow()) return;
+
+  const confirmed = window.confirm("Are you sure it's a fart? Please do not publish voices, music, spam, or random audio. Only post real fart sounds.");
+  if (!confirmed) return;
+
+  setRecorderState("publishing");
+
+  const extension = window.currentExtension || "webm";
+  const path = `${user.id}/${Date.now()}-${Math.random().toString(36).slice(2)}.${extension}`;
+
+  const upload = await supabase.storage.from("farts").upload(path, currentBlob, {
+    contentType: currentBlob.type || window.currentMimeType || "audio/webm",
+    upsert: false
+  });
+
+  if (upload.error) {
+    $("publishBtn").disabled = false;
+    return showError(upload.error.message);
+  }
+
+  const audio_url = supabase.storage.from("farts").getPublicUrl(path).data.publicUrl;
+
+  const insert = await supabase.from("posts").insert({
+    user_id: user.id,
+    username,
+    score: 0,
+    tier: "Audio",
+    duration: currentDuration,
+    audio_url,
+    audio_path: path
+  }).select().single();
+
+  if (insert.error) {
+    $("publishBtn").disabled = false;
+    showToast("Wait before publishing again");
+    return showError(insert.error.message);
+  }
+
+  // System drop notification disabled in V47.
+
+  localStorage.setItem("live_room_last_post_at", String(Date.now()));
+
+  if (pendingBattleAfterPublish && insert.data?.id) {
+    posts = [insert.data, ...posts.filter((p) => p.id !== insert.data.id)];
+    await loadBattles();
+    await pickBattleDrop(pendingBattleAfterPublish, insert.data.id);
+  }
+
+  $("recorderTitle").textContent = "Published";
+  $("recorderSubtitle").textContent = "Your audio is now live in the room.";
+  $("simpleStatus").textContent = "Published to the room";
+
+  setTimeout(() => {
+    closeRecorder();
+  }, 650);
+}
+
+if ($("enableMicBtn")) $("enableMicBtn").onclick = (e) => { e?.preventDefault?.(); enableMicrophone(); };
+$("usernameInput").oninput = updateEntryGate;
+
+$("saveUsernameBtn").onclick = async () => {
+  const n = cleanName($("usernameInput").value || username);
+
+  if (!n) return showError("Choose a username.");
+
+  username = n;
+  localStorage.setItem("live_room_username", n);
+  $("usernameInput").value = "";
+
+  if (user) await saveProfile();
+
+  showError("");
+  updateEntryGate();
+  render();
+};
+
+if ($("enterBtn")) $("enterBtn").onclick = (e) => { e?.preventDefault?.(); enterRoom(); };
+if ($("viewBtn")) $("viewBtn").onclick = enterRoom;
+$("sendBtn").onclick = sendMessage;
+
+$("chatInput").onkeydown = (e) => {
+  if (e.key === "Enter") sendMessage();
+};
+
+$("dropBtn").onclick = openRecorder;
+if ($("shareBtn")) if ($("shareBtn")) $("shareBtn").onclick = shareSite;
+if ($("soundBtn")) if ($("soundBtn")) $("soundBtn").onclick = toggleSound;
+if ($("soundBtn")) if ($("soundBtn")) $("soundBtn").textContent = soundEnabled ? "Sound on" : "Muted";
+if ($("changeUsernameBtn")) if ($("changeUsernameBtn")) $("changeUsernameBtn").onclick = changeUsername;
+if ($("startBattleBtn")) if ($("startBattleBtn")) $("startBattleBtn").onclick = (e) => { e?.preventDefault?.(); startBattle(); };
+document.querySelectorAll("[data-leader-tab]").forEach((button) => { button.onclick = () => { activeLeaderboardTab = button.dataset.leaderTab; document.querySelectorAll("[data-leader-tab]").forEach((b) => b.classList.toggle("active", b === button)); render(); }; });
+$("cancelBtn").onclick = closeRecorder;
+$("rerecordBtn").onclick = resetRecordingForRedo;
+$("recordBtn").textContent = "Tap to record";
+
+$("recordBtn").onclick = async (e) => {
+  e.preventDefault();
+  await startRecording();
+};
+
+$("recordBtn").oncontextmenu = (e) => e.preventDefault();
+$("recordBtn").onselectstart = (e) => e.preventDefault();
+$("stopBtn").onclick = (e) => { e.preventDefault(); stopRecording(); };
+$("publishBtn").onclick = publish;
+if ($("adminBtn")) $("adminBtn").onclick = activateAdminMode;
+
+
+document.querySelectorAll("[data-page]").forEach((button) => {
+  button.onclick = () => showPage(button.dataset.page);
+});
+
+showPage(localStorage.getItem("live_room_page") || "room");
+
+
+if ($("rulesBtn")) $("rulesBtn").onclick = () => openModal("rulesModal");
+if ($("rulesCloseBtn")) $("rulesCloseBtn").onclick = () => closeModal("rulesModal");
+if ($("installBtn")) $("installBtn").onclick = async () => {
+  if (window.__deferredInstallPrompt) {
+    window.__deferredInstallPrompt.prompt();
+    await window.__deferredInstallPrompt.userChoice;
+    window.__deferredInstallPrompt = null;
+    showToast("Install prompt opened");
+  } else {
+    showGlobalStatus("On iPhone: Share → Add to Home Screen.", 4200);
+  }
+};
+if ($("resetSessionBtn")) $("resetSessionBtn").onclick = () => {
+  if (!confirm("Reset this browser session? You will choose a username again.")) return;
+  localStorage.removeItem("live_room_username");
+  localStorage.removeItem("live_room_last_entered");
+  localStorage.removeItem("live_room_mic_until");
+  location.reload();
+};
+
+window.addEventListener("beforeinstallprompt", (event) => {
+  event.preventDefault();
+  window.__deferredInstallPrompt = event;
+});
+
+window.addEventListener("online", () => showGlobalStatus("Back online.", 2200));
+window.addEventListener("offline", () => showGlobalStatus("Offline. Live updates paused.", 5000));
+setOnlineStateUI();
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js").catch(() => null);
+  });
+}
+
+
+document.addEventListener("click", (event) => {
+  const start = event.target.closest("#startBattleBtn");
+  if (start) {
+    event.preventDefault();
+    startBattle();
+    return;
+  }
+
+  const rulesClose = event.target.closest("#rulesCloseBtn");
+  if (rulesClose) {
+    event.preventDefault();
+    closeModal("rulesModal");
+    return;
+  }
+});
+
+
+document.addEventListener("click", (event) => {
+  const enter = event.target.closest("#enterBtn");
+  if (enter) {
+    event.preventDefault();
+    enterRoom();
+    return;
+  }
+
+  const mic = event.target.closest("#enableMicBtn");
+  if (mic) {
+    event.preventDefault();
+    enableMicrophone();
+    return;
+  }
+
+  const saveName = event.target.closest("#saveUsernameBtn");
+  if (saveName) {
+    event.preventDefault();
+    saveUsername();
+    return;
+  }
+});
+
+syncAppEntryState();
+
+
+
+
+render();
+boot();
+
+</script>
+</body>
+</html>
