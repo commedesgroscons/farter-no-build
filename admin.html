@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FARTER Admin</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+:root{
+  --green:#a3ff12;
+  --bg:#000;
+  --card:rgba(255,255,255,.06);
+  --line:rgba(255,255,255,.11);
+  --muted:#9ca88c;
+  --red:#fecaca;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 50% -10%, rgba(163,255,18,.14), transparent 35%),
+    linear-gradient(180deg,#050605,#000);
+  color:#fff;
+  font-family:Inter,Arial,sans-serif;
+  min-height:100svh;
+}
+button,input{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
+.wrap{
+  width:min(1040px,100%);
+  margin:0 auto;
+  padding:18px 12px 80px;
+}
+.header{
+  position:sticky;
+  top:0;
+  z-index:5;
+  background:rgba(0,0,0,.72);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.headerInner{
+  width:min(1040px,100%);
+  margin:0 auto;
+  padding:14px 12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:950;
+}
+.logoIcon{
+  width:36px;
+  height:36px;
+  border-radius:13px;
+  display:grid;
+  place-items:center;
+  background:var(--green);
+  color:#000;
+}
+.status{
+  color:#d9f99d;
+  font-size:13px;
+  font-weight:800;
+}
+.login{
+  min-height:calc(100svh - 70px);
+  display:grid;
+  place-items:center;
+  padding:20px;
+}
+.loginCard,.panel{
+  border:1px solid var(--line);
+  background:var(--card);
+  border-radius:28px;
+  box-shadow:0 24px 80px rgba(0,0,0,.35);
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+}
+.loginCard{
+  width:min(440px,100%);
+  padding:22px;
+  display:grid;
+  gap:14px;
+}
+.loginCard h1{
+  margin:0;
+  font-size:34px;
+  letter-spacing:-.07em;
+}
+.loginCard p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.4;
+}
+.loginCard input{
+  width:100%;
+  min-height:52px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(0,0,0,.36);
+  color:#fff;
+  padding:0 14px;
+}
+.primary{
+  min-height:52px;
+  border:0;
+  border-radius:18px;
+  background:var(--green);
+  color:#000;
+  font-weight:950;
+}
+.panel{
+  padding:16px;
+  margin-top:14px;
+}
+.panelHead{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:12px;
+}
+.panelHead h2{
+  margin:0;
+  font-size:18px;
+}
+.panelHead p{
+  margin:4px 0 0;
+  color:var(--muted);
+  font-size:13px;
+}
+.actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.actions button,.itemActions button{
+  min-height:42px;
+  border-radius:15px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.06);
+  color:#fff;
+  font-weight:900;
+  padding:0 12px;
+}
+.actions .danger,.itemActions .danger{
+  border-color:rgba(239,68,68,.32);
+  background:rgba(127,29,29,.22);
+  color:var(--red);
+}
+.actions .good,.itemActions .good{
+  border-color:rgba(163,255,18,.26);
+  background:rgba(163,255,18,.10);
+  color:#d9f99d;
+}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+.stat{
+  border:1px solid rgba(163,255,18,.16);
+  background:rgba(163,255,18,.055);
+  border-radius:18px;
+  padding:14px;
+}
+.stat strong{
+  display:block;
+  font-size:28px;
+  line-height:1;
+}
+.stat span{
+  display:block;
+  margin-top:6px;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:800;
+}
+.list{
+  display:grid;
+  gap:10px;
+}
+.empty{
+  border:1px dashed rgba(255,255,255,.12);
+  background:rgba(255,255,255,.035);
+  color:var(--muted);
+  border-radius:18px;
+  padding:16px;
+  text-align:center;
+}
+.item{
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(0,0,0,.28);
+  border-radius:20px;
+  padding:13px;
+  display:grid;
+  gap:10px;
+}
+.itemTop{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+.itemTop strong{
+  word-break:break-word;
+}
+.badge{
+  flex:0 0 auto;
+  color:#d9f99d;
+  border:1px solid rgba(163,255,18,.18);
+  background:rgba(163,255,18,.08);
+  border-radius:999px;
+  padding:5px 8px;
+  font-size:11px;
+  font-weight:900;
+}
+.item p{
+  margin:0;
+  color:var(--muted);
+  font-size:13px;
+}
+audio{width:100%;filter:invert(1);opacity:.9}
+.itemActions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+.error{
+  color:var(--red);
+  font-size:13px;
+  min-height:18px;
+}
+@media(max-width:720px){
+  .stats,.itemActions{grid-template-columns:1fr}
+  .panelHead{align-items:flex-start;flex-direction:column}
+  .actions{width:100%}
+  .actions button{width:100%}
+}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="headerInner">
+    <div class="logo"><div class="logoIcon">F</div><span>FARTER Admin</span></div>
+    <div class="status" id="status">Locked</div>
+  </div>
+</header>
+
+<section class="login" id="login">
+  <div class="loginCard">
+    <h1>Admin console</h1>
+    <p>This page uses a Supabase Edge Function. Your service role key never lives in the browser.</p>
+    <input id="secretInput" type="password" placeholder="Admin secret">
+    <button class="primary" id="loginBtn">Unlock admin</button>
+    <div class="error" id="loginError"></div>
+  </div>
+</section>
+
+<main class="wrap hidden" id="app">
+  <section class="panel">
+    <div class="panelHead">
+      <div>
+        <h2>🛡️ Control room</h2>
+        <p>Safe server-side moderation.</p>
+      </div>
+      <div class="actions">
+        <button class="good" id="refreshBtn">Refresh</button>
+        <button class="danger" id="closeActiveBattleBtn">Force close active battle</button>
+        <button id="lockBtn">Lock</button>
+      </div>
+    </div>
+    <div class="stats" id="stats"></div>
+  </section>
+
+  <section class="panel">
+    <div class="panelHead">
+      <div>
+        <h2>⚠️ Reported drops</h2>
+        <p>Reported by users.</p>
+      </div>
+    </div>
+    <div class="list" id="reportedDrops"></div>
+  </section>
+
+  <section class="panel">
+    <div class="panelHead">
+      <div>
+        <h2>💨 Latest drops</h2>
+        <p>Newest public audio drops.</p>
+      </div>
+    </div>
+    <div class="list" id="latestDrops"></div>
+  </section>
+
+  <section class="panel">
+    <div class="panelHead">
+      <div>
+        <h2>⚔️ Battles</h2>
+        <p>Close stuck or abusive battles.</p>
+      </div>
+    </div>
+    <div class="list" id="battles"></div>
+  </section>
+</main>
+
+<script>
+const SUPABASE_URL = "https://uyvnsvbncdaakfhvjhzc.supabase.co";
+const FUNCTION_URL = `${SUPABASE_URL}/functions/v1/admin-actions`;
+
+const $ = (id) => document.getElementById(id);
+let adminSecret = sessionStorage.getItem("farter_admin_secret") || "";
+let state = {
+  posts: [],
+  reportedPosts: [],
+  battles: [],
+  stats: { posts: 0, reportedPosts: 0, activeBattle: 0 },
+};
+
+function setStatus(text) {
+  $("status").textContent = text;
+}
+
+function setError(text = "") {
+  $("loginError").textContent = text;
+}
+
+function fmtDate(value) {
+  try {
+    return new Date(value).toLocaleString([], { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
+  } catch(e) {
+    return "";
+  }
+}
+
+async function callAdmin(action, payload = {}) {
+  const response = await fetch(FUNCTION_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-admin-secret": adminSecret,
+    },
+    body: JSON.stringify({ action, ...payload }),
+  });
+
+  const data = await response.json().catch(() => ({}));
+
+  if (!response.ok || data.error) {
+    throw new Error(data.error || `Admin action failed (${response.status})`);
+  }
+
+  return data;
+}
+
+async function unlock() {
+  const value = $("secretInput").value.trim();
+
+  if (!value) {
+    setError("Enter admin secret.");
+    return;
+  }
+
+  adminSecret = value;
+  sessionStorage.setItem("farter_admin_secret", adminSecret);
+
+  try {
+    setStatus("Loading...");
+    await loadData();
+    $("login").classList.add("hidden");
+    $("app").classList.remove("hidden");
+    setStatus("Unlocked");
+  } catch(error) {
+    sessionStorage.removeItem("farter_admin_secret");
+    adminSecret = "";
+    setStatus("Locked");
+    setError(error.message);
+  }
+}
+
+function lock() {
+  sessionStorage.removeItem("farter_admin_secret");
+  adminSecret = "";
+  $("app").classList.add("hidden");
+  $("login").classList.remove("hidden");
+  $("secretInput").value = "";
+  setStatus("Locked");
+}
+
+async function loadData() {
+  const data = await callAdmin("list");
+  state.posts = data.posts || [];
+  state.reportedPosts = data.reportedPosts || [];
+  state.battles = data.battles || [];
+  state.stats = data.stats || { posts: 0, reportedPosts: 0, activeBattle: 0 };
+  render();
+}
+
+function renderStats() {
+  $("stats").innerHTML = `
+    <div class="stat"><strong>${state.stats.posts}</strong><span>Drops loaded</span></div>
+    <div class="stat"><strong>${state.stats.reportedPosts}</strong><span>Reported drops</span></div>
+    <div class="stat"><strong>${state.stats.activeBattle}</strong><span>Active battle</span></div>
+  `;
+}
+
+function postItem(post, reported = false) {
+  return `
+    <div class="item">
+      <div class="itemTop">
+        <strong>${post.username || "Unknown"}</strong>
+        <span class="badge">${reported ? `${post.report_count} report(s)` : `${post.reaction_count} reaction(s)`}</span>
+      </div>
+      <p>${post.duration || "Audio"} · ${fmtDate(post.created_at)} · ${post.report_count || 0} report(s)</p>
+      ${post.audio_url ? `<audio controls src="${post.audio_url}"></audio>` : `<p>Audio unavailable</p>`}
+      <div class="itemActions">
+        <button class="danger" data-delete="${post.id}">Delete everywhere</button>
+        <button class="good" data-copy="${post.audio_url || ""}">Copy URL</button>
+      </div>
+    </div>
+  `;
+}
+
+function battleItem(battle) {
+  return `
+    <div class="item">
+      <div class="itemTop">
+        <strong>${battle.username_a || "Player A"} vs ${battle.username_b || "Player B"}</strong>
+        <span class="badge">${battle.status}</span>
+      </div>
+      <p>${fmtDate(battle.created_at)}${battle.winner_username ? ` · winner: ${battle.winner_username}` : ""}</p>
+      <div class="itemActions">
+        ${battle.status !== "closed" ? `<button class="danger" data-close-battle="${battle.id}">Close battle</button>` : `<button disabled>Closed</button>`}
+        <button class="good" data-copy="${battle.id}">Copy battle ID</button>
+      </div>
+    </div>
+  `;
+}
+
+function render() {
+  renderStats();
+
+  $("reportedDrops").innerHTML = state.reportedPosts.length
+    ? state.reportedPosts.map((post) => postItem(post, true)).join("")
+    : `<div class="empty">No reported drops.</div>`;
+
+  $("latestDrops").innerHTML = state.posts.length
+    ? state.posts.map((post) => postItem(post, false)).join("")
+    : `<div class="empty">No drops loaded.</div>`;
+
+  $("battles").innerHTML = state.battles.length
+    ? state.battles.map((battle) => battleItem(battle)).join("")
+    : `<div class="empty">No battles loaded.</div>`;
+}
+
+async function deleteDrop(postId) {
+  if (!confirm("Delete this drop everywhere?")) return;
+
+  setStatus("Deleting...");
+  await callAdmin("deleteDrop", { postId });
+  await loadData();
+  setStatus("Unlocked");
+}
+
+async function closeBattle(battleId) {
+  setStatus("Closing battle...");
+  await callAdmin("closeBattle", { battleId });
+  await loadData();
+  setStatus("Unlocked");
+}
+
+async function closeActiveBattle() {
+  setStatus("Closing active battle...");
+  await callAdmin("closeActiveBattle");
+  await loadData();
+  setStatus("Unlocked");
+}
+
+document.addEventListener("click", async (event) => {
+  try {
+    const del = event.target.closest("[data-delete]");
+    if (del) {
+      await deleteDrop(del.dataset.delete);
+      return;
+    }
+
+    const close = event.target.closest("[data-close-battle]");
+    if (close) {
+      await closeBattle(close.dataset.closeBattle);
+      return;
+    }
+
+    const copy = event.target.closest("[data-copy]");
+    if (copy) {
+      await navigator.clipboard.writeText(copy.dataset.copy || "");
+      setStatus("Copied");
+      setTimeout(() => setStatus("Unlocked"), 1200);
+      return;
+    }
+  } catch(error) {
+    setStatus("Error");
+    alert(error.message);
+  }
+});
+
+$("loginBtn").onclick = unlock;
+$("refreshBtn").onclick = async () => {
+  try {
+    setStatus("Refreshing...");
+    await loadData();
+    setStatus("Unlocked");
+  } catch(error) {
+    setStatus("Error");
+    alert(error.message);
+  }
+};
+$("closeActiveBattleBtn").onclick = async () => {
+  try {
+    await closeActiveBattle();
+  } catch(error) {
+    setStatus("Error");
+    alert(error.message);
+  }
+};
+$("lockBtn").onclick = lock;
+
+if (adminSecret) {
+  $("secretInput").value = adminSecret;
+  unlock();
+}
+</script>
+</body>
+</html>
